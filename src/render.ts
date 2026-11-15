@@ -10,6 +10,29 @@ export function renderSvg(scene: Scene, th: Theme, opts: { fontCss?: string } = 
   const { color: C, stroke: W, size: S, font: F } = th;
   const base = F.lineHeight / 2 + F.size * 0.35; // baseline offset within a text row
   const out: string[] = [];
+  let sketchSeed = 0;
+
+  const roughPath = (points: [number, number][], closed = false) => {
+    const seed = ++sketchSeed;
+    const noise = (n: number) => {
+      const v = Math.sin((seed * 97 + n) * 12.9898) * 43758.5453;
+      return (v - Math.floor(v) - 0.5) * 1.4;
+    };
+    const result: [number, number][] = [];
+    const count = closed ? points.length : points.length - 1;
+    for (let i = 0; i < count; i++) {
+      const a = points[i]!, b = points[(i + 1) % points.length]!;
+      const dx = b[0] - a[0], dy = b[1] - a[1], length = Math.hypot(dx, dy);
+      const steps = Math.max(1, Math.ceil(length / 28));
+      for (let j = 0; j < steps; j++) {
+        const t = j / steps;
+        const offset = noise(i * 100 + j);
+        result.push([a[0] + dx * t - dy / (length || 1) * offset, a[1] + dy * t + dx / (length || 1) * offset]);
+      }
+    }
+    if (!closed) result.push(points[points.length - 1]!);
+    return result.map(([x, y], i) => `${i ? 'L' : 'M'}${r1(x)},${r1(y)}`).join(' ') + (closed ? ' Z' : '');
+  };
 
   const text = (ls: string[], x: number, top: number, o: { anchor?: string; bold?: boolean; prefix?: string; cls?: string } = {}) => {
     ls.forEach((l, k) => {
@@ -23,8 +46,15 @@ export function renderSvg(scene: Scene, th: Theme, opts: { fontCss?: string } = 
     });
     if (o.prefix && !ls.length) out.push(`<text x="${r1(x)}" y="${r1(top + base)}" font-weight="bold">${esc(o.prefix)}</text>`);
   };
-  const line = (x1: number, y1: number, x2: number, y2: number, stroke: string, w: number, dash?: string) =>
-    out.push(`<line x1="${r1(x1)}" y1="${r1(y1)}" x2="${r1(x2)}" y2="${r1(y2)}" stroke="${stroke}" stroke-width="${w}"${dash ? ` stroke-dasharray="${dash}"` : ''}/>`);
+  const line = (x1: number, y1: number, x2: number, y2: number, stroke: string, w: number, dash?: string) => {
+    const attrs = `stroke="${stroke}" stroke-width="${w}"${dash ? ` stroke-dasharray="${dash}"` : ''}`;
+    if (th.lineStyle === 'sketch') out.push(`<path d="${roughPath([[x1, y1], [x2, y2]])}" fill="none" ${attrs} stroke-linecap="round" stroke-linejoin="round"/>`);
+    else out.push(`<line x1="${r1(x1)}" y1="${r1(y1)}" x2="${r1(x2)}" y2="${r1(y2)}" ${attrs}/>`);
+  };
+  const rect = (x: number, y: number, w: number, h: number, attrs: string, rx?: number) =>
+    th.lineStyle === 'sketch'
+      ? `<path d="${roughPath([[x, y], [x + w, y], [x + w, y + h], [x, y + h]], true)}" ${attrs} stroke-linejoin="round"/>`
+      : `<rect x="${r1(x)}" y="${r1(y)}" width="${r1(w)}" height="${r1(h)}"${rx !== undefined ? ` rx="${rx}"` : ''} ${attrs}/>`;
 
   const head = (h: ArrowHead, x: number, y: number, d: number, c: string) => {
     const p = (pts: [number, number][]) => pts.map(([a, b]) => `${r1(a)},${r1(b)}`).join(' ');
@@ -73,13 +103,13 @@ export function renderSvg(scene: Scene, th: Theme, opts: { fontCss?: string } = 
     const d = ` data-line="${'line' in s ? s.line : ''}"`;
     switch (s.t) {
       case 'group':
-        out.push(`<g><rect x="${r1(s.x)}" y="${r1(s.y)}" width="${r1(s.w)}" height="${r1(s.h)}" fill="${s.color ? css(s.color) : C.groupFill}" stroke="#000" stroke-width="1"/>`);
+        out.push(`<g>${rect(s.x, s.y, s.w, s.h, `fill="${s.color ? css(s.color) : C.groupFill}" stroke="#000" stroke-width="1"`)}`);
         text([s.name], s.x + s.w / 2, s.y + 1, { anchor: 'middle', bold: true });
         out.push('</g>');
         break;
       case 'lifeline': line(s.x, s.y1, s.x, s.y2, C.lifeline, W.lifeline, s.dotted ? '1,3' : '5,5'); break;
       case 'activation':
-        out.push(`<rect x="${r1(s.x)}" y="${r1(s.y1)}" width="${S.actW}" height="${r1(s.y2 - s.y1)}" fill="${s.color ? css(s.color) : C.barFill}" stroke="${C.barStroke}" stroke-width="${W.line}"/>`);
+        out.push(rect(s.x, s.y1, S.actW, s.y2 - s.y1, `fill="${s.color ? css(s.color) : C.barFill}" stroke="${C.barStroke}" stroke-width="${W.line}"`));
         break;
       case 'destroy':
         line(s.x - 9, s.y - 9, s.x + 9, s.y + 9, C.line, 2); line(s.x - 9, s.y + 9, s.x + 9, s.y - 9, C.line, 2);
@@ -89,8 +119,8 @@ export function renderSvg(scene: Scene, th: Theme, opts: { fontCss?: string } = 
         if (['participant', 'collections', 'queue'].includes(s.p.kind)) {
           const fill = s.p.color ? css(s.p.color) : C.boxFill;
           const rx = s.p.kind === 'queue' ? s.h / 2 : S.boxRadius;
-          if (s.p.kind === 'collections') out.push(`<rect x="${r1(s.x + 3)}" y="${r1(s.y - 3)}" width="${r1(s.w)}" height="${r1(s.h)}" rx="${rx}" fill="${fill}" stroke="${C.boxStroke}" stroke-width="${W.box}"/>`);
-          out.push(`<rect x="${r1(s.x)}" y="${r1(s.y)}" width="${r1(s.w)}" height="${r1(s.h)}" rx="${rx}" fill="${fill}" stroke="${C.boxStroke}" stroke-width="${W.box}"/>`);
+          if (s.p.kind === 'collections') out.push(rect(s.x + 3, s.y - 3, s.w, s.h, `fill="${fill}" stroke="${C.boxStroke}" stroke-width="${W.box}"`, rx));
+          out.push(rect(s.x, s.y, s.w, s.h, `fill="${fill}" stroke="${C.boxStroke}" stroke-width="${W.box}"`, rx));
           text(s.lines, s.x + s.w / 2, s.y + S.boxPadY, { anchor: 'middle' });
         } else icon(s);
         out.push('</g>');
@@ -101,7 +131,10 @@ export function renderSvg(scene: Scene, th: Theme, opts: { fontCss?: string } = 
         out.push(`<g${d}>`);
         const labelTop = s.y - S.labelGap - Math.max(1, s.lines.length) * F.lineHeight;
         if (s.self) {
-          out.push(`<path d="M${r1(s.x1)},${r1(s.y)} h${S.selfW} v${S.selfH} h${-S.selfW}" fill="none" stroke="${c}" stroke-width="${W.line}"${dash ? ` stroke-dasharray="${dash}"` : ''}/>`);
+          const path = th.lineStyle === 'sketch'
+            ? roughPath([[s.x1, s.y], [s.x1 + S.selfW, s.y], [s.x1 + S.selfW, s.y + S.selfH], [s.x1, s.y + S.selfH]])
+            : `M${r1(s.x1)},${r1(s.y)} h${S.selfW} v${S.selfH} h${-S.selfW}`;
+          out.push(`<path d="${path}" fill="none" stroke="${c}" stroke-width="${W.line}"${dash ? ` stroke-dasharray="${dash}"` : ''}/>`);
           head(s.endHead, s.x1, s.y + S.selfH, -1, c);
           text(s.lines, s.x1 + 7, labelTop, { ...(s.prefix ? { prefix: s.prefix } : {}) });
         } else {
@@ -119,7 +152,7 @@ export function renderSvg(scene: Scene, th: Theme, opts: { fontCss?: string } = 
         const st = `fill="${fill}" stroke="${C.noteStroke}" stroke-width="1"`;
         out.push(`<g${d}>`);
         if (s.shape === 'hnote') out.push(`<polygon points="${r1(x + 8)},${y} ${r1(x + w - 8)},${y} ${r1(x + w)},${r1(y + h / 2)} ${r1(x + w - 8)},${r1(y + h)} ${r1(x + 8)},${r1(y + h)} ${r1(x)},${r1(y + h / 2)}" ${st}/>`);
-        else if (s.shape === 'rnote') out.push(`<rect x="${r1(x)}" y="${r1(y)}" width="${r1(w)}" height="${r1(h)}" ${st}/>`);
+        else if (s.shape === 'rnote') out.push(rect(x, y, w, h, st));
         else {
           out.push(`<polygon points="${r1(x)},${y} ${r1(x + w - f)},${y} ${r1(x + w)},${r1(y + f)} ${r1(x + w)},${r1(y + h)} ${r1(x)},${r1(y + h)}" ${st}/>`);
           out.push(`<path d="M${r1(x + w - f)},${y} v${f} h${f}" fill="none" stroke="${C.noteStroke}" stroke-width="1"/>`);
@@ -129,7 +162,7 @@ export function renderSvg(scene: Scene, th: Theme, opts: { fontCss?: string } = 
         break;
       }
       case 'ref': {
-        out.push(`<g${d}><rect x="${r1(s.x)}" y="${r1(s.y)}" width="${r1(s.w)}" height="${r1(s.h)}" fill="none" stroke="${C.fragStroke}" stroke-width="${W.frag}"/>`);
+        out.push(`<g${d}>${rect(s.x, s.y, s.w, s.h, `fill="none" stroke="${C.fragStroke}" stroke-width="${W.frag}"`)}`);
         out.push(`<polygon points="${r1(s.x)},${r1(s.y)} ${r1(s.x + 30)},${r1(s.y)} ${r1(s.x + 30)},${r1(s.y + 11)} ${r1(s.x + 24)},${r1(s.y + 17)} ${r1(s.x)},${r1(s.y + 17)}" fill="${C.tabFill}" stroke="${C.fragStroke}" stroke-width="1"/>`);
         text(['ref'], s.x + 6, s.y + 1, { bold: true });
         text(s.lines, s.x + s.w / 2, s.y + 12, { anchor: 'middle' });
@@ -138,7 +171,7 @@ export function renderSvg(scene: Scene, th: Theme, opts: { fontCss?: string } = 
       }
       case 'fragment': {
         const th_ = S.tabH - 4;
-        out.push(`<g${d}><rect x="${r1(s.x)}" y="${r1(s.y)}" width="${r1(s.w)}" height="${r1(s.h)}" fill="none" stroke="${C.fragStroke}" stroke-width="${W.frag}"/>`);
+        out.push(`<g${d}>${rect(s.x, s.y, s.w, s.h, `fill="none" stroke="${C.fragStroke}" stroke-width="${W.frag}"`)}`);
         out.push(`<polygon points="${r1(s.x)},${r1(s.y)} ${r1(s.x + s.tabW)},${r1(s.y)} ${r1(s.x + s.tabW)},${r1(s.y + th_ - 6)} ${r1(s.x + s.tabW - 6)},${r1(s.y + th_)} ${r1(s.x)},${r1(s.y + th_)}" fill="${C.tabFill}" stroke="${C.fragStroke}" stroke-width="1"/>`);
         text([s.kind], s.x + 8, s.y + (th_ - F.lineHeight) / 2, { bold: true });
         if (s.label) text([`[${s.label}]`], s.x + s.tabW + 8, s.y + (th_ - F.lineHeight) / 2, { bold: true });
@@ -153,14 +186,14 @@ export function renderSvg(scene: Scene, th: Theme, opts: { fontCss?: string } = 
         const cy = s.y + s.h / 2, cxm = (s.x1 + s.x2) / 2;
         out.push(`<g${d}>`);
         line(s.x1, cy - 2, s.x2, cy - 2, '#000', 1); line(s.x1, cy + 2, s.x2, cy + 2, '#000', 1);
-        out.push(`<rect x="${r1(cxm - s.w / 2)}" y="${r1(s.y + 4)}" width="${r1(s.w)}" height="${s.h - 8}" fill="${C.tabFill}" stroke="#000" stroke-width="1.5"/>`);
+        out.push(rect(cxm - s.w / 2, s.y + 4, s.w, s.h - 8, `fill="${C.tabFill}" stroke="#000" stroke-width="1.5"`));
         text([s.text], cxm, s.y + (s.h - F.lineHeight) / 2, { anchor: 'middle', bold: true });
         out.push('</g>');
         break;
       }
       case 'delay':
         if (s.text) {
-          out.push(`<rect x="${r1(s.x - s.w / 2)}" y="${r1(s.y + (s.h - F.lineHeight) / 2)}" width="${r1(s.w)}" height="${F.lineHeight}" fill="${C.bg}"/>`);
+          out.push(rect(s.x - s.w / 2, s.y + (s.h - F.lineHeight) / 2, s.w, F.lineHeight, `fill="${C.bg}"`));
           text([s.text], s.x, s.y + (s.h - F.lineHeight) / 2, { anchor: 'middle' });
         }
         break;

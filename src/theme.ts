@@ -1,5 +1,6 @@
 /** Everything visual lives here as data. Layout and renderer read only from a Theme. */
 export interface Theme {
+  lineStyle: 'clean' | 'sketch';
   font: { family: string; size: number; lineHeight: number };
   color: {
     bg: string; text: string; line: string; lifeline: string;
@@ -17,6 +18,7 @@ export interface Theme {
 }
 
 export const classic: Theme = {
+  lineStyle: 'clean',
   font: { family: "'Liberation Sans', Arimo, Helvetica, Arial, sans-serif", size: 13, lineHeight: 16 },
   color: {
     bg: '#FFFFFF', text: '#000000', line: '#A80036', lifeline: '#A80036',
@@ -32,6 +34,37 @@ export const classic: Theme = {
     fragPad: 10, tabH: 20, lifeTail: 14, dividerH: 28, delayH: 30,
   },
 };
+
+export const modern: Theme = {
+  ...classic,
+  font: { ...classic.font, lineHeight: 17 },
+  color: {
+    bg: '#F8FAFC', text: '#172033', line: '#4F46E5', lifeline: '#94A3B8',
+    boxFill: '#E0E7FF', boxStroke: '#4F46E5', noteFill: '#FEF3C7', noteStroke: '#D97706',
+    barFill: '#C7D2FE', barStroke: '#4F46E5', fragStroke: '#64748B', tabFill: '#E2E8F0', groupFill: '#F1F5F9',
+  },
+  stroke: { box: 1.4, line: 1.5, lifeline: 1, frag: 1.2 },
+  size: {
+    ...classic.size,
+    boxPadX: 10, boxPadY: 6, boxRadius: 8, minGap: 48, boxGap: 20,
+    afterBoxes: 10, rowGap: 18, actW: 8, notePadX: 10, notePadY: 7,
+  },
+};
+
+export const handDrawn: Theme = {
+  ...classic,
+  lineStyle: 'sketch',
+  color: {
+    bg: '#FFFDF5', text: '#2F2A26', line: '#3F3A34', lifeline: '#8A8178',
+    boxFill: '#FFF1C2', boxStroke: '#3F3A34', noteFill: '#FFF3A3', noteStroke: '#3F3A34',
+    barFill: '#FFFFFF', barStroke: '#3F3A34', fragStroke: '#4A443E', tabFill: '#F2E9D8', groupFill: '#F7F0DF',
+  },
+  stroke: { box: 1.3, line: 1.3, lifeline: 1, frag: 1.3 },
+  size: { ...classic.size, boxRadius: 0 },
+};
+
+export const themes = { classic, modern, handDrawn };
+export type ThemeName = keyof typeof themes;
 
 /** CSS accepts `red` but not `#red`; PlantUML uses both spellings. */
 export const css = (c: string) => (/^#([0-9a-f]{3,8})$/i.test(c) ? c : c.replace(/^#/, ''));

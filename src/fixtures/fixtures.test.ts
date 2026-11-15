@@ -5,7 +5,7 @@ import { layoutPages } from '../layout.ts';
 import { estimateMeasure } from '../measure.ts';
 import { parse } from '../parser/parse.ts';
 import { renderSvg } from '../render.ts';
-import { classic } from '../theme.ts';
+import { classic, handDrawn, modern } from '../theme.ts';
 import { fixtures } from './corpus.ts';
 
 const snapshotDir = fileURLToPath(new URL('./snapshots/', import.meta.url));
@@ -30,6 +30,10 @@ describe('fixture corpus', () => {
       const svg = renderSvg(scenes[i]!, classic);
       const suffix = i === 0 ? '' : `.page-${i + 1}`;
       await expect(svg + '\n').toMatchFileSnapshot(`${snapshotDir}/${slug}${suffix}.svg`);
+    }
+    for (const theme of [modern, handDrawn]) {
+      const themedScenes = layoutPages(diagram, theme, estimateMeasure(theme.font.size));
+      for (const scene of themedScenes) expect(renderSvg(scene, theme)).toContain('</svg>');
     }
   });
 });

@@ -2,7 +2,7 @@ import './style.css';
 import { parse } from './parser/parse.ts';
 import { layoutPages, type Scene } from './layout.ts';
 import { renderSvg } from './render.ts';
-import { classic, withSkinparams, type Theme } from './theme.ts';
+import { classic, themes, withSkinparams, type Theme, type ThemeName } from './theme.ts';
 import { canvasMeasure } from './measure.ts';
 import { fontCss, loadFonts } from './fonts.ts';
 import { createEditor } from './editor.ts';
@@ -32,6 +32,7 @@ note right of Web : cached for 5 min
 @enduml`;
 
 const KEY = 'seqdiagram:doc';
+const THEME_KEY = 'seqdiagram:theme';
 const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
 const stage = $('stage'), view = $('view'), status = $('status');
 const debounce = <A extends unknown[]>(fn: (...a: A) => void, ms: number) => {
@@ -39,15 +40,18 @@ const debounce = <A extends unknown[]>(fn: (...a: A) => void, ms: number) => {
   return (...a: A) => { clearTimeout(t); t = window.setTimeout(() => fn(...a), ms); };
 };
 const store = {
-  get: () => { try { return localStorage.getItem(KEY); } catch { return null; } },
-  set: (v: string) => { try { localStorage.setItem(KEY, v); } catch { /* private mode etc. */ } },
+  get: (key = KEY) => { try { return localStorage.getItem(key); } catch { return null; } },
+  set: (v: string, key = KEY) => { try { localStorage.setItem(key, v); } catch { /* private mode etc. */ } },
 };
 
 async function main() {
   await loadFonts(classic.font.size);
   const vp = createViewport(view, stage);
-  const pageSelect = $<HTMLSelectElement>('page');
-  let scene: Scene | undefined, scenes: Scene[] = [], theme: Theme = classic, title = 'diagram', first = true;
+  const pageSelect = $<HTMLSelectElement>('page'), themeSelect = $<HTMLSelectElement>('theme');
+  const savedTheme = store.get(THEME_KEY);
+  let themeName: ThemeName = savedTheme && Object.hasOwn(themes, savedTheme) ? savedTheme as ThemeName : 'classic';
+  themeSelect.value = themeName;
+  let scene: Scene | undefined, scenes: Scene[] = [], theme: Theme = themes[themeName], title = 'diagram', first = true;
   let page = 0, fileHandle: DiagramFileHandle | undefined, fileName = 'diagram.puml';
   const warningsPanel = $('warnings'), warningList = $('warning-list');
 
@@ -78,7 +82,7 @@ async function main() {
 
   const render = (text: string) => {
     const d = parse(text);
-    theme = withSkinparams(classic, d.skinparams);
+    theme = withSkinparams(themes[themeName], d.skinparams);
     scenes = layoutPages(d, theme, canvasMeasure(theme.font.family, theme.font.size));
     if (page >= scenes.length) page = 0;
     pageSelect.hidden = scenes.length < 2;
@@ -118,6 +122,12 @@ async function main() {
   });
 
   const svgText = () => scene && renderSvg(scene, theme, { fontCss });
+  themeSelect.onchange = () => {
+    themeName = themeSelect.value as ThemeName;
+    store.set(themeName, THEME_KEY);
+    render(editor.getDoc());
+    if (scene) vp.fit(scene.viewBox.w, scene.viewBox.h);
+  };
   pageSelect.onchange = () => {
     page = Number(pageSelect.value);
     showPage();
