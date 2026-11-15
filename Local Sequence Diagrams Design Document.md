@@ -151,11 +151,11 @@ Color strings accept both `#red` and `#FF0000`. The renderer converts the former
 
 ## 8. App shell
 
-- **Editor.** CodeMirror 6 with a small stream-language tokenizer for PlantUML. Parser and layout warnings are shown as gutter markers via the lint API.
+- **Editor.** CodeMirror 6 with a small stream-language tokenizer for PlantUML. Autocomplete suggests supported keywords and participant aliases, quoting names that contain spaces. Parser and layout warnings appear as gutter markers and in a clickable warnings panel that navigates to the source line.
 - **Preview.** Wheel-zoom and drag-pan on a transformed stage. A drag does not trigger a click. Fit-to-pane on first render and via a button.
 - **Click to source.** Every message, note, fragment, divider and participant carries `data-line`; clicking selects that line in the editor.
 - **Rendering cadence.** Edits re-render after a 120 ms debounce. Layout is synchronous and fast for typical diagrams; if it becomes a bottleneck it can move into a Web Worker.
-- **Persistence.** The last diagram is stored in `localStorage` (guarded for private mode). A diagram in the URL hash takes priority on load.
+- **Persistence and files.** The last diagram is stored in `localStorage` (guarded for private mode). A diagram in the URL hash takes priority on load. Open and Save use the File System Access API where available, retaining the opened handle for subsequent saves; other browsers use a file input and `.puml` download.
 - **Sharing.** The text is compressed with `CompressionStream('deflate-raw')`, base64url-encoded, and kept in the hash as `#d=...`. Hashes are never sent to a server. Corrupt or foreign hashes are ignored.
 - **Export.** SVG is a standalone file with the fonts embedded. PNG rasterises that SVG at 2x on a canvas. PDF uses the browser print dialog with print CSS that shows only the diagram.
 
@@ -172,7 +172,7 @@ Referrer-Policy: no-referrer
 X-Content-Type-Options: nosniff
 ```
 
-`connect-src 'none'` means the browser blocks `fetch`, XHR and WebSocket even if a bug or dependency tried to use them. The only storage is the user's own `localStorage` and URL hash. The header badge states the guarantee in the UI.
+`connect-src 'none'` means the browser blocks `fetch`, XHR and WebSocket even if a bug or dependency tried to use them. Automatic storage is limited to the user's own `localStorage` and URL hash; local files are read or written only through explicit Open and Save actions. The header badge states the guarantee in the UI.
 
 Fonts are bundled as inlined data URIs (hence `font-src data:`). Because exports embed the same fonts, an exported SVG renders identically anywhere, including when rasterised.
 
@@ -180,13 +180,13 @@ User input is treated as untrusted: all text is XML-escaped before entering SVG,
 
 ## 10. Testing and calibration
 
-**Unit tests (Vitest).** The parser tests cover participants, arrows, structure, autonumber, skinparam, boxes and error tolerance. The layout tests cover vertical ordering, column widening, the `return` call stack, and SVG escaping with `data-line`. The share tests cover round-trip, large input, and rejection of corrupt hashes.
+**Unit tests (Vitest).** The parser tests cover participants, arrows, structure, autonumber, skinparam, boxes and error tolerance. The layout tests cover vertical ordering, column widening, the `return` call stack, and SVG escaping with `data-line`. The share tests cover round-trip, large input, and rejection of corrupt hashes. Completion tests cover keywords and participant aliases; file tests cover native handles and browser fallbacks.
 
 **Fixture corpus.** Fifty-five original diagrams in `src/fixtures/corpus.ts` cover supported syntax, realistic combinations, spacing stress cases, and error recovery. `src/fixtures/fixtures.test.ts` renders each one and stores its AST as JSON and its SVG in `src/fixtures/snapshots/`. Any diagram a user reports as broken becomes a new fixture.
 
 **Calibration page.** `calibration.html` is a Vite development-only entry point and is excluded from the production build. It downloads a fixture's `.puml` source, accepts a PNG rendered by real PlantUML on the developer's own machine, and provides side-by-side, flip, overlay, and opacity controls. Nothing is uploaded. Initial calibration against PlantUML 1.2023.13 covered basic messages, activation, notes, long labels, autonumbering, and realistic flows; it reduced the outer margin from 10 to 5 px and removed a duplicate trailing margin. Spacing and proportion matter more than color for the "feels right" factor: box padding, row spacing, lifeline overshoot, label alignment and arrowhead geometry. These are all theme numbers, so tuning is cheap.
 
-**Current verification status.** All 86 unit and fixture snapshot tests pass. The Vite production build and app shell have been exercised in Chromium: editing, warnings, click-to-source, persistence, share-link restoration, and SVG/PNG export work. Fixture switching, source download, local PNG loading, calibration comparison controls, Creole styling, parallel messages, dotted delays, and multipage selection/export also pass browser checks. Initial reference-based theme tuning is complete; Vercel CSP headers, print/PDF, and Safari PNG export still need deployment/device verification.
+**Current verification status.** All 94 unit and fixture snapshot tests pass. The Vite production build and app shell have been exercised in Chromium: editing, autocomplete, warning-panel navigation, click-to-source, persistence, share-link restoration, and SVG/PNG export work. Native file handles and file-input/download fallbacks have focused tests; OS file-picker interaction still needs manual verification outside the built-in test browser. Fixture switching, source download, local PNG loading, calibration comparison controls, Creole styling, parallel messages, dotted delays, and multipage selection/export also pass browser checks. Initial reference-based theme tuning is complete; Vercel CSP headers, print/PDF, and Safari PNG export still need deployment/device verification.
 
 ## 11. Licensing and provenance
 
@@ -210,7 +210,7 @@ These are choices made from memory or inference that should be verified against 
 1. **Verify the app end to end.** Install dependencies, fix any Vite/CodeMirror wiring issues, confirm fonts and CSP behave in a Vercel preview, check PNG export on Safari.
 2. **Fixture corpus and calibration page.** Built and initially calibrated against local PlantUML 1.2023.13 reference renders.
 3. **Tier 2 syntax.** Implemented Creole inline markup (`**bold**`, `//italic//`, `<color>`), `newpage`, multi-line `ref`, parallel messages (`&`), and dotted lifelines inside delays.
-4. **Editor polish.** Autocomplete for keywords and participant names, a warnings panel, file open/save via the File System Access API.
+4. **Editor polish.** Implemented autocomplete for keywords and participant names, a clickable warnings panel, and file open/save via the File System Access API with browser fallbacks.
 5. **Themes.** A modern theme and a hand-drawn theme, selectable in the UI.
 6. **PWA.** Service worker so the app works fully offline after the first load.
 7. **Performance.** Move layout into a Web Worker if large diagrams make typing laggy.

@@ -3,14 +3,12 @@ import { EditorView, keymap, lineNumbers, highlightActiveLine, drawSelection } f
 import { defaultKeymap, history, historyKeymap, indentWithTab } from '@codemirror/commands';
 import { StreamLanguage, HighlightStyle, syntaxHighlighting } from '@codemirror/language';
 import { lintGutter, setDiagnostics, type Diagnostic } from '@codemirror/lint';
+import { autocompletion } from '@codemirror/autocomplete';
 import { tags } from '@lezer/highlight';
 import type { Warning } from './parser/ast.ts';
+import { PLANTUML_KEYWORDS, plantumlCompletions } from './completion.ts';
 
-const KEYWORDS = new Set((
-  'participant actor boundary control entity database collections queue as order create destroy activate deactivate return ' +
-  'alt else opt loop par par2 break critical group end note hnote rnote over left right of across ref box title header footer ' +
-  'autonumber stop resume hide show footbox skinparam newpage legend'
-).split(' '));
+const KEYWORDS = new Set(PLANTUML_KEYWORDS);
 
 const plantuml = StreamLanguage.define<{ label: boolean }>({
   startState: () => ({ label: false }),
@@ -56,6 +54,7 @@ export function createEditor(parent: HTMLElement, doc: string, onChange: (text: 
       extensions: [
         lineNumbers(), lintGutter(), history(), drawSelection(), highlightActiveLine(),
         plantuml, syntaxHighlighting(highlight),
+        autocompletion({ override: [plantumlCompletions] }),
         keymap.of([...defaultKeymap, ...historyKeymap, indentWithTab]),
         EditorView.updateListener.of((u) => { if (u.docChanged) onChange(u.state.doc.toString()); }),
         EditorView.theme({ '&': { height: '100%' }, '.cm-scroller': { fontFamily: 'ui-monospace, Menlo, Consolas, monospace', fontSize: '13px' } }),

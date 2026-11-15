@@ -12,6 +12,8 @@
       <span class="grow"></span>
       <span id="status"></span>
       <select id="page" aria-label="Diagram page" hidden></select>
+      <button id="open">Open</button>
+      <button id="save">Save</button>
       <button id="fit">Fit</button>
       <button id="svg">SVG</button>
       <button id="png">PNG</button>
@@ -19,9 +21,16 @@
       <button id="link">Copy link</button>
     </header>
     <main>
-      <section id="editor"></section>
+      <section id="source">
+        <section id="editor" aria-label="PlantUML source"></section>
+        <aside id="warnings" aria-label="Diagram warnings" hidden>
+          <div id="warnings-title">Warnings</div>
+          <ul id="warning-list"></ul>
+        </aside>
+      </section>
       <section id="view"><div id="stage"></div></section>
     </main>
+    <input id="file-input" type="file" accept=".puml,.txt,text/plain" hidden />
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

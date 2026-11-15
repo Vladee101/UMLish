@@ -10,6 +10,8 @@ import { createViewport } from './viewport.ts';
 import { encodeDoc, decodeDoc } from './share.ts';
 import { download, pngBlob, svgBlob } from './export.ts';
 import { plainInline } from './richText.ts';
+import { openDiagram, saveDiagram, type DiagramFileHandle } from './files.ts';
+import type { Warning } from './parser/ast.ts';
 
 const SAMPLE = `@startuml
 title Login flow
@@ -46,7 +48,26 @@ async function main() {
   const vp = createViewport(view, stage);
   const pageSelect = $<HTMLSelectElement>('page');
   let scene: Scene | undefined, scenes: Scene[] = [], theme: Theme = classic, title = 'diagram', first = true;
-  let page = 0;
+  let page = 0, fileHandle: DiagramFileHandle | undefined, fileName = 'diagram.puml';
+  const warningsPanel = $('warnings'), warningList = $('warning-list');
+
+  const showWarnings = (warnings: Warning[]) => {
+    warningsPanel.hidden = warnings.length === 0;
+    $('warnings-title').textContent = `Warnings (${warnings.length})`;
+    warningList.replaceChildren(...warnings.map((warning) => {
+      const item = document.createElement('li');
+      const button = document.createElement('button');
+      button.dataset.line = String(warning.line);
+      const line = document.createElement('span');
+      line.className = 'warning-line';
+      line.textContent = `Line ${warning.line}`;
+      const message = document.createElement('span');
+      message.textContent = warning.message;
+      button.append(line, message);
+      item.append(button);
+      return item;
+    }));
+  };
 
   const showPage = () => {
     scene = scenes[page]!;
@@ -66,6 +87,7 @@ async function main() {
     showPage();
     const warnings = [...d.warnings, ...scenes.flatMap((s) => s.warnings)];
     editor.setWarnings(warnings);
+    showWarnings(warnings);
     status.textContent = warnings.length ? `${warnings.length} warning${warnings.length > 1 ? 's' : ''}` : '';
   };
 
@@ -89,12 +111,40 @@ async function main() {
     const n = Number(el?.getAttribute('data-line'));
     if (n) editor.goToLine(n);
   });
+  warningList.addEventListener('click', (e) => {
+    const button = (e.target as Element).closest('[data-line]');
+    const n = Number(button?.getAttribute('data-line'));
+    if (n) editor.goToLine(n);
+  });
 
   const svgText = () => scene && renderSvg(scene, theme, { fontCss });
   pageSelect.onchange = () => {
     page = Number(pageSelect.value);
     showPage();
     if (scene) vp.fit(scene.viewBox.w, scene.viewBox.h);
+  };
+  $('open').onclick = async () => {
+    try {
+      const file = await openDiagram($<HTMLInputElement>('file-input'));
+      if (!file) return;
+      fileHandle = 'handle' in file ? file.handle : undefined;
+      fileName = file.name;
+      editor.setDoc(file.text);
+      status.textContent = `Opened ${file.name}`;
+    } catch (error) {
+      if (error instanceof Error && error.name === 'AbortError') return;
+      status.textContent = 'Could not open file';
+    }
+  };
+  $('save').onclick = async () => {
+    try {
+      fileHandle = await saveDiagram(fileName, editor.getDoc(), fileHandle);
+      if (fileHandle) fileName = fileHandle.name;
+      status.textContent = `Saved ${fileName}`;
+    } catch (error) {
+      if (error instanceof Error && error.name === 'AbortError') return;
+      status.textContent = 'Could not save file';
+    }
   };
   $('fit').onclick = () => scene && vp.fit(scene.viewBox.w, scene.viewBox.h);
   $('svg').onclick = () => { const s = svgText(); if (s) download(`${title}.svg`, svgBlob(s)); };
