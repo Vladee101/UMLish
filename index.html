@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Local Sequence Diagrams</title>
+  </head>
+  <body>
+    <header id="bar">
+      <strong>Sequence diagrams</strong>
+      <span class="badge" title="The page's Content-Security-Policy blocks all network requests (connect-src 'none').">local only · nothing leaves your browser</span>
+      <span class="grow"></span>
+      <span id="status"></span>
+      <button id="fit">Fit</button>
+      <button id="svg">SVG</button>
+      <button id="png">PNG</button>
+      <button id="print">Print / PDF</button>
+      <button id="link">Copy link</button>
+    </header>
+    <main>
+      <section id="editor"></section>
+      <section id="view"><div id="stage"></div></section>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
