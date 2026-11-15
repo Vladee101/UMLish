@@ -1,6 +1,6 @@
 import './style.css';
 import { parse } from './parser/parse.ts';
-import { layout, type Scene } from './layout.ts';
+import { layoutPages, type Scene } from './layout.ts';
 import { renderSvg } from './render.ts';
 import { classic, withSkinparams, type Theme } from './theme.ts';
 import { canvasMeasure } from './measure.ts';
@@ -9,6 +9,7 @@ import { createEditor } from './editor.ts';
 import { createViewport } from './viewport.ts';
 import { encodeDoc, decodeDoc } from './share.ts';
 import { download, pngBlob, svgBlob } from './export.ts';
+import { plainInline } from './richText.ts';
 
 const SAMPLE = `@startuml
 title Login flow
@@ -43,18 +44,29 @@ const store = {
 async function main() {
   await loadFonts(classic.font.size);
   const vp = createViewport(view, stage);
-  let scene: Scene | undefined, theme: Theme = classic, title = 'diagram', first = true;
+  const pageSelect = $<HTMLSelectElement>('page');
+  let scene: Scene | undefined, scenes: Scene[] = [], theme: Theme = classic, title = 'diagram', first = true;
+  let page = 0;
+
+  const showPage = () => {
+    scene = scenes[page]!;
+    title = (scene.title?.lines[0] ?? 'diagram').replace(/[^\w\- ]+/g, '').trim() || 'diagram';
+    stage.innerHTML = renderSvg(scene, theme);
+    if (first) { vp.fit(scene.viewBox.w, scene.viewBox.h); first = false; }
+  };
 
   const render = (text: string) => {
     const d = parse(text);
     theme = withSkinparams(classic, d.skinparams);
-    scene = layout(d, theme, canvasMeasure(theme.font.family, theme.font.size));
-    title = (d.title ?? 'diagram').split('\n')[0]!.replace(/[^\w\- ]+/g, '').trim() || 'diagram';
-    stage.innerHTML = renderSvg(scene, theme);
-    const warnings = [...d.warnings, ...scene.warnings];
+    scenes = layoutPages(d, theme, canvasMeasure(theme.font.family, theme.font.size));
+    if (page >= scenes.length) page = 0;
+    pageSelect.hidden = scenes.length < 2;
+    pageSelect.replaceChildren(...scenes.map((s, i) => new Option(s.title?.lines[0] ? plainInline(s.title.lines[0]) : `Page ${i + 1}`, String(i))));
+    pageSelect.value = String(page);
+    showPage();
+    const warnings = [...d.warnings, ...scenes.flatMap((s) => s.warnings)];
     editor.setWarnings(warnings);
     status.textContent = warnings.length ? `${warnings.length} warning${warnings.length > 1 ? 's' : ''}` : '';
-    if (first) { vp.fit(scene.viewBox.w, scene.viewBox.h); first = false; }
   };
 
   const syncHash = debounce(async (text: string) => {
@@ -79,6 +91,11 @@ async function main() {
   });
 
   const svgText = () => scene && renderSvg(scene, theme, { fontCss });
+  pageSelect.onchange = () => {
+    page = Number(pageSelect.value);
+    showPage();
+    if (scene) vp.fit(scene.viewBox.w, scene.viewBox.h);
+  };
   $('fit').onclick = () => scene && vp.fit(scene.viewBox.w, scene.viewBox.h);
   $('svg').onclick = () => { const s = svgText(); if (s) download(`${title}.svg`, svgBlob(s)); };
   $('png').onclick = async () => { const s = svgText(); if (s) download(`${title}.png`, await pngBlob(s, 2)); };

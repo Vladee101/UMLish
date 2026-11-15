@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 0 141.12 143" width="141.12" height="143" font-family="'Liberation Sans', Arimo, Helvetica, Arial, sans-serif" font-size="13" fill="#000000">
+<rect x="-20" y="0" width="141.12" height="143" fill="#FFFFFF"/>
+<text x="50.56" y="17.55" text-anchor="middle" font-weight="bold" xml:space="preserve">optional title</text>
+<line x1="0" y1="59" x2="0" y2="113" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<line x1="101.12" y1="59" x2="101.12" y2="113" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<g data-line="7">
+<line x1="101.12" y1="85" x2="0" y2="85" stroke="#A80036" stroke-width="1" stroke-dasharray="2,2"/>
+<polygon points="10,81 0,85 10,89 6,85" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="7" y="77.55" xml:space="preserve">also retained</text>
+</g>
+<g data-line="3">
+<rect x="-15" y="35" width="30" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="0" y="51.55" text-anchor="middle" xml:space="preserve">A</text>
+</g>
+<g data-line="3">
+<rect x="-15" y="113" width="30" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="0" y="129.55" text-anchor="middle" xml:space="preserve">A</text>
+</g>
+<g data-line="4">
+<rect x="86.12" y="35" width="30" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="101.12" y="51.55" text-anchor="middle" xml:space="preserve">B</text>
+</g>
+<g data-line="4">
+<rect x="86.12" y="113" width="30" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="101.12" y="129.55" text-anchor="middle" xml:space="preserve">B</text>
+</g>
+</svg>

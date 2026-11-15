@@ -1,10 +1,11 @@
 import type { ArrowHead, Diagram, Endpoint, Event, Message, Participant, Warning } from './parser/ast.ts';
 import type { Theme } from './theme.ts';
 import type { Measure } from './measure.ts';
+import { measureInline } from './richText.ts';
 
 export type Shape =
   | { t: 'participant'; p: Participant; x: number; y: number; w: number; h: number; lines: string[]; line: number }
-  | { t: 'lifeline'; x: number; y1: number; y2: number }
+  | { t: 'lifeline'; x: number; y1: number; y2: number; dotted?: boolean }
   | { t: 'activation'; x: number; y1: number; y2: number; color?: string }
   | { t: 'message'; line: number; x1: number; x2: number; y: number; lines: string[]; prefix?: string;
       dashed: boolean; color?: string; startHead: ArrowHead; endHead: ArrowHead; self: boolean }
@@ -29,12 +30,35 @@ export interface Scene {
 const ICON_KINDS = new Set(['actor', 'boundary', 'control', 'entity', 'database']);
 const lines = (s: string | undefined) => (s ? s.split('\n') : []);
 
+export function layoutPages(d: Diagram, th: Theme, measure: Measure): Scene[] {
+  const pages: Diagram[] = [];
+  let current = d;
+  let events: Event[] = [];
+  for (const e of d.events) {
+    if (e.type === 'newpage') {
+      pages.push({ ...current, events });
+      current = {
+        ...current,
+        title: e.title || undefined,
+        participants: current.participants.map((p) => ({ ...p, created: false })),
+      };
+      events = [];
+    } else events.push(e);
+  }
+  pages.push({ ...current, events });
+  return pages.map((page) => layoutPage(page, th, measure));
+}
+
 export function layout(d: Diagram, th: Theme, measure: Measure): Scene {
+  return layoutPages(d, th, measure)[0]!;
+}
+
+function layoutPage(d: Diagram, th: Theme, measure: Measure): Scene {
   const S = th.size, lineH = th.font.lineHeight;
   const P = d.participants, n = P.length;
   const warnings: Warning[] = [];
   const idx = new Map(P.map((p, i) => [p.id, i]));
-  const tw = (ls: string[], bold = false) => ls.reduce((m, l) => Math.max(m, measure(l, bold)), 0);
+  const tw = (ls: string[], bold = false) => ls.reduce((m, l) => Math.max(m, measureInline(l, measure, bold)), 0);
   const pid = (e: Endpoint) => (e.kind === 'participant' ? e.id : undefined);
   const pidx = (e: Endpoint) => { const id = pid(e); return id === undefined ? undefined : idx.get(id); };
 
@@ -79,7 +103,7 @@ export function layout(d: Diagram, th: Theme, measure: Measure): Scene {
   // ---- column spacing: relax constraints, shortest span first --------------
   const lw = (text: string, pre?: string) => {
     const ls = lines(text);
-    return ls.reduce((m, l, k) => Math.max(m, measure(l) + (k === 0 && pre ? measure(pre, true) + 4 : 0)), pre && !ls.length ? measure(pre, true) : 0);
+    return ls.reduce((m, l, k) => Math.max(m, measureInline(l, measure) + (k === 0 && pre ? measure(pre, true) + 4 : 0)), pre && !ls.length ? measure(pre, true) : 0);
   };
   const noteSize = (text: string) => {
     const ls = lines(text);
@@ -153,7 +177,7 @@ export function layout(d: Diagram, th: Theme, measure: Measure): Scene {
       } else if (e.type === 'fragment') {
         const sub = ext(e.sections.flatMap((s) => s.events)) ?? [X(0), X(n - 1)];
         const tabW = measure(e.kind, true) + 26;
-        const w = Math.max(sub[1] - sub[0] + 2 * S.fragPad, tabW + measure(`[${e.sections[0]!.label}]`, true) + 20);
+        const w = Math.max(sub[1] - sub[0] + 2 * S.fragPad, tabW + measureInline(`[${e.sections[0]!.label}]`, measure, true) + 20);
         u(sub[0] - S.fragPad, sub[0] - S.fragPad + w);
       }
     }
@@ -194,11 +218,12 @@ export function layout(d: Diagram, th: Theme, measure: Measure): Scene {
     bars.push({ t: 'activation', x: X(idx.get(id)!) - S.actW / 2 + st.length * S.actShift, y1: b.y, y2: Math.max(yEnd, b.y + 2), ...(b.color ? { color: b.color } : {}) });
   };
 
-  const doMessage = (m: Message, pre: string | undefined, eff?: { op: string; color?: string }) => {
+  const doMessage = (m: Message, pre: string | undefined, eff?: { op: string; color?: string }, parallelTo?: number) => {
     const ls = lines(m.text), L = lw(m.text, pre);
     const fromId = pid(m.from), toId = pid(m.to), fi = pidx(m.from), ti = pidx(m.to);
     const self = fi !== undefined && fi === ti;
     let ay = y + (ls.length || pre ? Math.max(1, ls.length) * lineH : 0) + S.labelGap;
+    if (parallelTo !== undefined) ay = parallelTo + lineH + 4;
     const creating = toId !== undefined && created.has(toId) && !createY.has(toId);
     if (creating) { const h = dims[ti!]!.h; ay = Math.max(ay, y + h / 2 + 2); createY.set(toId!, ay - h / 2); }
     const op = eff?.op ?? m.activation?.op, color = eff?.color ?? m.activation?.color;
@@ -229,8 +254,10 @@ export function layout(d: Diagram, th: Theme, measure: Measure): Scene {
   };
 
   const run = (evs: Event[]) => {
+    let previousMessageY: number | undefined;
     for (let k = 0; k < evs.length; k++) {
       const e = evs[k]!;
+      if (e.type !== 'message') previousMessageY = undefined;
       switch (e.type) {
         case 'message': {
           const nx = evs[k + 1];
@@ -238,7 +265,9 @@ export function layout(d: Diagram, th: Theme, measure: Measure): Scene {
           if (nx?.type === 'activation' && nx.op === 'activate' && e.to.kind === 'participant' && nx.target === e.to.id) {
             eff = { op: '++', ...(nx.color ? { color: nx.color } : {}) }; k++;
           }
-          doMessage(e, prefix.get(e), eff);
+          if (e.parallel && previousMessageY === undefined) warnings.push({ line: e.line, message: 'parallel message has no preceding message, rendered normally' });
+          doMessage(e, prefix.get(e), eff, e.parallel ? previousMessageY : undefined);
+          previousMessageY = lastY;
           break;
         }
         case 'return': {
@@ -274,7 +303,7 @@ export function layout(d: Diagram, th: Theme, measure: Measure): Scene {
         }
         case 'fragment': {
           const sub = ext(e.sections.flatMap((s) => s.events)) ?? [X(0), X(n - 1)];
-          const tabW = measure(e.kind, true) + 26, condW = measure(`[${e.sections[0]!.label}]`, true);
+          const tabW = measure(e.kind, true) + 26, condW = measureInline(`[${e.sections[0]!.label}]`, measure, true);
           const w = Math.max(sub[1] - sub[0] + 2 * S.fragPad, tabW + condW + 20);
           const fs: Extract<Shape, { t: 'fragment' }> = {
             t: 'fragment', line: e.line, x: sub[0] - S.fragPad, y, w, h: 0, kind: e.kind,
@@ -298,13 +327,13 @@ export function layout(d: Diagram, th: Theme, measure: Measure): Scene {
           break;
         }
         case 'divider': {
-          const h = S.dividerH, w = measure(e.text, true) + 24;
+          const h = S.dividerH, w = measureInline(e.text, measure, true) + 24;
           fg.push({ t: 'divider', line: e.line, y: y + 4, h, x1: 0, x2: 0, text: e.text, w });
           y += h + 12;
           break;
         }
         case 'delay': {
-          const w = e.text ? measure(e.text) + 10 : 0;
+          const w = e.text ? measureInline(e.text, measure) + 10 : 0;
           fg.push({ t: 'delay', line: e.line, y, h: S.delayH, x: 0, text: e.text, w });
           y += S.delayH;
           break;
@@ -321,6 +350,7 @@ export function layout(d: Diagram, th: Theme, measure: Measure): Scene {
   const lifeEnd = y;
   for (const [id, st] of stacks) while (st.length) closeBar(id, lifeEnd);
   const footY = lifeEnd;
+  const delays = fg.filter((s): s is Extract<Shape, { t: 'delay' }> => s.t === 'delay');
   let bottom = footY;
   P.forEach((p, i) => {
     const dm = dims[i]!, x = X(i) - dm.w / 2;
@@ -328,7 +358,15 @@ export function layout(d: Diagram, th: Theme, measure: Measure): Scene {
     fg.push({ t: 'participant', p, x, y: top, w: dm.w, h: dm.h, lines: dm.ls, line: p.line });
     tr(x, x + dm.w);
     const end = destroyY.get(p.id) ?? lifeEnd;
-    life.push({ t: 'lifeline', x: X(i), y1: top + dm.h, y2: end });
+    let segmentY = top + dm.h;
+    for (const delay of delays) {
+      const y1 = Math.max(segmentY, delay.y), y2 = Math.min(end, delay.y + delay.h);
+      if (y2 <= segmentY || y1 >= end) continue;
+      if (y1 > segmentY) life.push({ t: 'lifeline', x: X(i), y1: segmentY, y2: y1 });
+      if (y2 > y1) life.push({ t: 'lifeline', x: X(i), y1, y2, dotted: true });
+      segmentY = y2;
+    }
+    if (segmentY < end) life.push({ t: 'lifeline', x: X(i), y1: segmentY, y2: end });
     if (!d.options.hideFootbox && !destroyY.has(p.id)) {
       fg.push({ t: 'participant', p, x, y: footY, w: dm.w, h: dm.h, lines: dm.ls, line: p.line });
       bottom = Math.max(bottom, footY + dm.h);

@@ -1,7 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 0 130.72 399" width="130.72" height="399" font-family="'Liberation Sans', Arimo, Helvetica, Arial, sans-serif" font-size="13" fill="#000000">
 <rect x="-20" y="0" width="130.72" height="399" fill="#FFFFFF"/>
-<line x1="0" y1="29" x2="0" y2="369" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
-<line x1="90.72" y1="29" x2="90.72" y2="369" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<line x1="0" y1="29" x2="0" y2="143" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<line x1="0" y1="143" x2="0" y2="173" stroke="#A80036" stroke-width="0.5" stroke-dasharray="1,3"/>
+<line x1="0" y1="173" x2="0" y2="369" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<line x1="90.72" y1="29" x2="90.72" y2="143" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<line x1="90.72" y1="143" x2="90.72" y2="173" stroke="#A80036" stroke-width="0.5" stroke-dasharray="1,3"/>
+<line x1="90.72" y1="173" x2="90.72" y2="369" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
 <g data-line="2">
 <line x1="0" y1="55" x2="90.72" y2="55" stroke="#A80036" stroke-width="1"/>
 <polygon points="80.72,51 90.72,55 80.72,59 84.72,55" fill="#A80036" stroke="#A80036" stroke-width="1"/>

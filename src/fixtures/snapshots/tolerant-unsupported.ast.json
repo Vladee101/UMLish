@@ -34,6 +34,11 @@
       "endHead": "filled"
     },
     {
+      "type": "newpage",
+      "line": 6,
+      "title": "optional title"
+    },
+    {
       "type": "message",
       "line": 7,
       "from": {
@@ -58,10 +63,6 @@
     {
       "line": 2,
       "message": "preprocessor directive not supported, skipped: !include"
-    },
-    {
-      "line": 6,
-      "message": "newpage not supported yet, skipped"
     }
   ]
 }

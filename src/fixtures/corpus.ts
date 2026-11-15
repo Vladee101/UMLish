@@ -567,4 +567,46 @@ return order result
 [-> Events : deliver receipt
 note over Orders, Events : consumers retry safely`),
   },
+  {
+    slug: 'creole-inline-markup',
+    name: 'Creole inline markup',
+    source: uml(`title A **bold** and //italic// title
+participant "**Bold User**" as User
+participant App
+User -> App : **bold** and //italic// and <color:red>red text</color>
+note over User, App : **nested //bold italic// text** and <color:#0000FF>blue</color>
+App --> User : <color:#008000>escaped <&> text</color>`),
+  },
+  {
+    slug: 'parallel-messages',
+    name: 'Parallel messages',
+    source: uml(`participant A
+participant B
+participant C
+A -> B : first
+& B -> C : second
+& C -> A : third
+A -> B : normal spacing`),
+  },
+  {
+    slug: 'multiple-pages',
+    name: 'Multiple pages',
+    source: uml(`title First page
+participant A
+participant B
+A -> B : page one
+newpage Second page
+A -> B : page two`),
+  },
+  {
+    slug: 'multiline-reference',
+    name: 'Multiline reference',
+    source: uml(`participant Web
+participant Auth
+ref over Web, Auth
+See the **authentication** flow
+for //token renewal// details
+end ref
+Web -> Auth : renew`),
+  },
 ];

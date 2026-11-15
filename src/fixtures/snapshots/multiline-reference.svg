@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-24.61 0 228.29 181" width="228.29" height="181" font-family="'Liberation Sans', Arimo, Helvetica, Arial, sans-serif" font-size="13" fill="#000000">
+<rect x="-24.61" y="0" width="228.29" height="181" fill="#FFFFFF"/>
+<line x1="0" y1="29" x2="0" y2="151" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<line x1="176.73" y1="29" x2="176.73" y2="151" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<g data-line="4"><rect x="-10" y="35" width="196.73" height="54" fill="none" stroke="#000000" stroke-width="1.5"/>
+<polygon points="-10,35 20,35 20,46 14,52 -10,52" fill="#EEEEEE" stroke="#000000" stroke-width="1"/>
+<text x="-4" y="48.55" font-weight="bold" xml:space="preserve">ref</text>
+<text x="88.37" y="59.55" text-anchor="middle" xml:space="preserve">See the <tspan font-weight="bold">authentication</tspan> flow</text>
+<text x="88.37" y="75.55" text-anchor="middle" xml:space="preserve">for <tspan font-style="italic">token renewal</tspan> details</text>
+</g>
+<g data-line="8">
+<line x1="0" y1="123" x2="176.73" y2="123" stroke="#A80036" stroke-width="1"/>
+<polygon points="166.73,119 176.73,123 166.73,127 170.73,123" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="7" y="115.55" xml:space="preserve">renew</text>
+</g>
+<g data-line="2">
+<rect x="-19.61" y="5" width="39.22" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="0" y="21.55" text-anchor="middle" xml:space="preserve">Web</text>
+</g>
+<g data-line="2">
+<rect x="-19.61" y="151" width="39.22" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="0" y="167.55" text-anchor="middle" xml:space="preserve">Web</text>
+</g>
+<g data-line="3">
+<rect x="154.78" y="5" width="43.9" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="176.73" y="21.55" text-anchor="middle" xml:space="preserve">Auth</text>
+</g>
+<g data-line="3">
+<rect x="154.78" y="151" width="43.9" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="176.73" y="167.55" text-anchor="middle" xml:space="preserve">Auth</text>
+</g>
+</svg>

@@ -1,6 +1,7 @@
 import type { ArrowHead } from './parser/ast.ts';
 import type { Scene, Shape } from './layout.ts';
 import { css, type Theme } from './theme.ts';
+import { inlineSpans } from './richText.ts';
 
 const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const r1 = (n: number) => Math.round(n * 100) / 100;
@@ -13,7 +14,12 @@ export function renderSvg(scene: Scene, th: Theme, opts: { fontCss?: string } = 
   const text = (ls: string[], x: number, top: number, o: { anchor?: string; bold?: boolean; prefix?: string; cls?: string } = {}) => {
     ls.forEach((l, k) => {
       const pre = k === 0 && o.prefix ? `<tspan font-weight="bold">${esc(o.prefix)}</tspan> ` : '';
-      out.push(`<text x="${r1(x)}" y="${r1(top + k * F.lineHeight + base)}"${o.anchor ? ` text-anchor="${o.anchor}"` : ''}${o.bold ? ' font-weight="bold"' : ''} xml:space="preserve">${pre}${esc(l)}</text>`);
+      const content = inlineSpans(l).map((s) => {
+        if (!s.bold && !s.italic && !s.color) return esc(s.text);
+        const attrs = `${s.bold ? ' font-weight="bold"' : ''}${s.italic ? ' font-style="italic"' : ''}${s.color ? ` fill="${esc(s.color)}"` : ''}`;
+        return `<tspan${attrs}>${esc(s.text)}</tspan>`;
+      }).join('');
+      out.push(`<text x="${r1(x)}" y="${r1(top + k * F.lineHeight + base)}"${o.anchor ? ` text-anchor="${o.anchor}"` : ''}${o.bold ? ' font-weight="bold"' : ''} xml:space="preserve">${pre}${content}</text>`);
     });
     if (o.prefix && !ls.length) out.push(`<text x="${r1(x)}" y="${r1(top + base)}" font-weight="bold">${esc(o.prefix)}</text>`);
   };
@@ -71,7 +77,7 @@ export function renderSvg(scene: Scene, th: Theme, opts: { fontCss?: string } = 
         text([s.name], s.x + s.w / 2, s.y + 1, { anchor: 'middle', bold: true });
         out.push('</g>');
         break;
-      case 'lifeline': line(s.x, s.y1, s.x, s.y2, C.lifeline, W.lifeline, '5,5'); break;
+      case 'lifeline': line(s.x, s.y1, s.x, s.y2, C.lifeline, W.lifeline, s.dotted ? '1,3' : '5,5'); break;
       case 'activation':
         out.push(`<rect x="${r1(s.x)}" y="${r1(s.y1)}" width="${S.actW}" height="${r1(s.y2 - s.y1)}" fill="${s.color ? css(s.color) : C.barFill}" stroke="${C.barStroke}" stroke-width="${W.line}"/>`);
         break;

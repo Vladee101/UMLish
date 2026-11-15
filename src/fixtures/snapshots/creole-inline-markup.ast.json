@@ -1,0 +1,70 @@
+{
+  "participants": [
+    {
+      "id": "User",
+      "label": "**Bold User**",
+      "kind": "participant",
+      "implicit": false,
+      "line": 3
+    },
+    {
+      "id": "App",
+      "label": "App",
+      "kind": "participant",
+      "implicit": false,
+      "line": 4
+    }
+  ],
+  "boxes": [],
+  "events": [
+    {
+      "type": "message",
+      "line": 5,
+      "from": {
+        "kind": "participant",
+        "id": "User"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "App"
+      },
+      "text": "**bold** and //italic// and <color:red>red text</color>",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled"
+    },
+    {
+      "type": "note",
+      "line": 6,
+      "shape": "note",
+      "position": "over",
+      "targets": [
+        "User",
+        "App"
+      ],
+      "text": "**nested //bold italic// text** and <color:#0000FF>blue</color>"
+    },
+    {
+      "type": "message",
+      "line": 7,
+      "from": {
+        "kind": "participant",
+        "id": "App"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "User"
+      },
+      "text": "<color:#008000>escaped <&> text</color>",
+      "dashed": true,
+      "startHead": "none",
+      "endHead": "filled"
+    }
+  ],
+  "options": {
+    "hideFootbox": false
+  },
+  "skinparams": {},
+  "warnings": [],
+  "title": "A **bold** and //italic// title"
+}

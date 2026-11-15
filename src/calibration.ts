@@ -2,10 +2,11 @@ import './calibration.css';
 import { download } from './export.ts';
 import { loadFonts } from './fonts.ts';
 import { fixtures } from './fixtures/corpus.ts';
-import { layout } from './layout.ts';
+import { layoutPages, type Scene } from './layout.ts';
 import { canvasMeasure } from './measure.ts';
 import { parse } from './parser/parse.ts';
 import { renderSvg } from './render.ts';
+import { plainInline } from './richText.ts';
 import { classic, withSkinparams } from './theme.ts';
 
 const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
@@ -16,7 +17,9 @@ const referenceImage = $<HTMLImageElement>('reference-image');
 const referenceEmpty = $('reference-empty');
 const overlay = $<HTMLInputElement>('overlay');
 const opacity = $<HTMLInputElement>('opacity');
+const pageSelect = $<HTMLSelectElement>('page');
 let referenceUrl: string | undefined;
+let scenes: Scene[] = [], page = 0, pageTheme = classic;
 
 for (const fixture of fixtures) select.append(new Option(fixture.name, fixture.slug));
 
@@ -26,19 +29,7 @@ const applyView = () => {
   referenceImage.style.opacity = overlay.checked ? String(opacity.valueAsNumber / 100) : '';
 };
 
-const showFixture = () => {
-  const fixture = fixtures.find((f) => f.slug === select.value) ?? fixtures[0]!;
-  const diagram = parse(fixture.source);
-  const theme = withSkinparams(classic, diagram.skinparams);
-  const scene = layout(diagram, theme, canvasMeasure(theme.font.family, theme.font.size));
-  const warnings = [...diagram.warnings, ...scene.warnings];
-
-  $('ours').innerHTML = renderSvg(scene, theme);
-  $('source').textContent = fixture.source;
-  $('status').textContent = warnings.length
-    ? warnings.map((w) => `Line ${w.line}: ${w.message}`).join(' · ')
-    : 'No parser or layout warnings';
-
+const clearReference = () => {
   referenceFile.value = '';
   referenceImage.hidden = true;
   referenceImage.removeAttribute('src');
@@ -47,7 +38,31 @@ const showFixture = () => {
   referenceUrl = undefined;
 };
 
+const showPage = () => {
+  $('ours').innerHTML = renderSvg(scenes[page]!, pageTheme);
+};
+
+const showFixture = () => {
+  const fixture = fixtures.find((f) => f.slug === select.value) ?? fixtures[0]!;
+  const diagram = parse(fixture.source);
+  pageTheme = withSkinparams(classic, diagram.skinparams);
+  scenes = layoutPages(diagram, pageTheme, canvasMeasure(pageTheme.font.family, pageTheme.font.size));
+  const warnings = [...diagram.warnings, ...scenes.flatMap((s) => s.warnings)];
+
+  page = 0;
+  pageSelect.hidden = scenes.length < 2;
+  pageSelect.replaceChildren(...scenes.map((s, i) => new Option(s.title?.lines[0] ? plainInline(s.title.lines[0]) : `Page ${i + 1}`, String(i))));
+  pageSelect.value = '0';
+  showPage();
+  $('source').textContent = fixture.source;
+  $('status').textContent = warnings.length
+    ? warnings.map((w) => `Line ${w.line}: ${w.message}`).join(' · ')
+    : 'No parser or layout warnings';
+  clearReference();
+};
+
 select.onchange = showFixture;
+pageSelect.onchange = () => { page = Number(pageSelect.value); showPage(); clearReference(); };
 $('download-source').onclick = () => {
   const fixture = fixtures.find((f) => f.slug === select.value) ?? fixtures[0]!;
   download(`${fixture.slug}.puml`, new Blob([fixture.source], { type: 'text/plain' }));

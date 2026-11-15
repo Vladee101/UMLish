@@ -49,6 +49,7 @@ text --parse--> Diagram (AST + warnings)
 | `parser/parse.ts` | Tolerant line-oriented parser. Never throws. |
 | `theme.ts` | The classic theme as data, plus `skinparam` overrides. |
 | `measure.ts` | Canvas text measurer for the browser; deterministic estimator for tests. |
+| `richText.ts` | Creole inline spans, plain-text labels, and style-aware measurement. |
 | `layout.ts` | Diagram to `Scene`: columns, rows, activations, fragments. |
 | `render.ts` | `Scene` to SVG, with `data-line` on each element. |
 | `editor.ts` | CodeMirror 6 editor, highlighting, warning gutter. |
@@ -71,10 +72,11 @@ Anything it does not understand becomes a `{line, message}` warning and is skipp
 ### 5.2 Supported syntax (Tier 1 plus some Tier 2)
 
 - **Participants:** `participant`, `actor`, `boundary`, `control`, `entity`, `database`, `collections`, `queue`; `as` aliases in either order; quoted names; `#color`; `order N`; implicit creation on first use; `create`; `box ... end box`.
-- **Messages:** `->`, `-->`, `->>`, `->x`, `->o`, `<-`, `<->`, colored `-[#red]>`, found/lost messages (`[->`, `->]`), self-messages, `\n` in labels, and activation shorthand (`++`, `--`, `**`, `!!`).
-- **Structure:** `alt/else`, `opt`, `loop`, `par`, `break`, `critical`, `group` (arbitrarily nested); single- and multi-line notes (`note`, `hnote`, `rnote`; `left/right of`, `over A,B`, `across`); `ref over`; `activate`, `deactivate`, `destroy`, `return`; `== divider ==`, `... delay ...`, `|||` and `||N||` spacing.
-- **Document level:** `title`, `header`, `footer`, `autonumber` (start, step, format, stop, resume), `hide footbox`, `skinparam` (flat and block forms).
-- **Skipped with a warning:** `!` directives, `legend`, `newpage`, `autonumber inc`.
+- **Messages:** `->`, `-->`, `->>`, `->x`, `->o`, `<-`, `<->`, colored `-[#red]>`, found/lost messages (`[->`, `->]`), self-messages, `\n` in labels, activation shorthand (`++`, `--`, `**`, `!!`), and compact parallel groups with `&`.
+- **Structure:** `alt/else`, `opt`, `loop`, `par`, `break`, `critical`, `group` (arbitrarily nested); single- and multi-line notes (`note`, `hnote`, `rnote`; `left/right of`, `over A,B`, `across`); single- and multi-line `ref over`; `activate`, `deactivate`, `destroy`, `return`; `== divider ==`, `... delay ...` with dotted lifelines, `|||` and `||N||` spacing.
+- **Document level:** `title`, `header`, `footer`, `newpage` with independent titled scenes and page selection, `autonumber` (start, step, format, stop, resume), `hide footbox`, `skinparam` (flat and block forms).
+- **Inline markup:** Creole `**bold**`, `//italic//`, and `<color:name>text</color>`, including nested styles and style-aware measurement.
+- **Skipped with a warning:** `!` directives, `legend`, `autonumber inc`.
 
 ### 5.3 AST decisions
 
@@ -88,7 +90,7 @@ Anything it does not understand becomes a `{line, message}` warning and is skipp
 - `A ->oscar B` with no space reads `o` as a circle head. Spaced input, which is nearly all real input, is unaffected.
 - A participant named like a keyword (`loop`, `alt`) can be misread in rare cases.
 - Only the first `@startuml` block in an input is parsed.
-- Parallel messages (`& A -> B`) are not yet supported and fall through to an "unsupported syntax" warning.
+- `newpage` inside a fragment is not supported and produces a warning.
 
 ## 6. Layout
 
@@ -125,6 +127,8 @@ A y cursor walks the events top to bottom. A message occupies label height, then
 ### 6.4 Bounds
 
 Bounds are tracked as shapes are emitted, then widened for the title, header and footer if those are wider than the diagram. The SVG viewBox may start at a negative x; no shifting pass is needed.
+
+**Pages and parallel groups.** `layoutPages` splits top-level `newpage` events into independent scenes; the app and calibration tool select the active scene, and exports contain only that page. Messages prefixed with `&` use compact rows 20 px below the preceding message, matching the reference renderer.
 
 ## 7. Rendering and the classic theme
 
@@ -178,11 +182,11 @@ User input is treated as untrusted: all text is XML-escaped before entering SVG,
 
 **Unit tests (Vitest).** The parser tests cover participants, arrows, structure, autonumber, skinparam, boxes and error tolerance. The layout tests cover vertical ordering, column widening, the `return` call stack, and SVG escaping with `data-line`. The share tests cover round-trip, large input, and rejection of corrupt hashes.
 
-**Fixture corpus.** Fifty-one original diagrams in `src/fixtures/corpus.ts` cover supported syntax, realistic combinations, spacing stress cases, and error recovery. `src/fixtures/fixtures.test.ts` renders each one and stores its AST as JSON and its SVG in `src/fixtures/snapshots/`. Any diagram a user reports as broken becomes a new fixture.
+**Fixture corpus.** Fifty-five original diagrams in `src/fixtures/corpus.ts` cover supported syntax, realistic combinations, spacing stress cases, and error recovery. `src/fixtures/fixtures.test.ts` renders each one and stores its AST as JSON and its SVG in `src/fixtures/snapshots/`. Any diagram a user reports as broken becomes a new fixture.
 
 **Calibration page.** `calibration.html` is a Vite development-only entry point and is excluded from the production build. It downloads a fixture's `.puml` source, accepts a PNG rendered by real PlantUML on the developer's own machine, and provides side-by-side, flip, overlay, and opacity controls. Nothing is uploaded. Initial calibration against PlantUML 1.2023.13 covered basic messages, activation, notes, long labels, autonumbering, and realistic flows; it reduced the outer margin from 10 to 5 px and removed a duplicate trailing margin. Spacing and proportion matter more than color for the "feels right" factor: box padding, row spacing, lifeline overshoot, label alignment and arrowhead geometry. These are all theme numbers, so tuning is cheap.
 
-**Current verification status.** All 74 unit and fixture snapshot tests pass. The Vite production build and app shell have been exercised in Chromium: editing, warnings, click-to-source, persistence, share-link restoration, and SVG/PNG export work. Fixture switching, source download, local PNG loading, and calibration comparison controls also pass browser checks. Initial reference-based theme tuning is complete; Vercel CSP headers, print/PDF, and Safari PNG export still need deployment/device verification.
+**Current verification status.** All 86 unit and fixture snapshot tests pass. The Vite production build and app shell have been exercised in Chromium: editing, warnings, click-to-source, persistence, share-link restoration, and SVG/PNG export work. Fixture switching, source download, local PNG loading, calibration comparison controls, Creole styling, parallel messages, dotted delays, and multipage selection/export also pass browser checks. Initial reference-based theme tuning is complete; Vercel CSP headers, print/PDF, and Safari PNG export still need deployment/device verification.
 
 ## 11. Licensing and provenance
 
@@ -205,7 +209,7 @@ These are choices made from memory or inference that should be verified against 
 
 1. **Verify the app end to end.** Install dependencies, fix any Vite/CodeMirror wiring issues, confirm fonts and CSP behave in a Vercel preview, check PNG export on Safari.
 2. **Fixture corpus and calibration page.** Built and initially calibrated against local PlantUML 1.2023.13 reference renders.
-3. **Tier 2 syntax.** Creole inline markup (`**bold**`, `//italic//`, `<color>`), `newpage`, multi-line `ref`, parallel messages (`&`), dotted lifelines inside delays.
+3. **Tier 2 syntax.** Implemented Creole inline markup (`**bold**`, `//italic//`, `<color>`), `newpage`, multi-line `ref`, parallel messages (`&`), and dotted lifelines inside delays.
 4. **Editor polish.** Autocomplete for keywords and participant names, a warnings panel, file open/save via the File System Access API.
 5. **Themes.** A modern theme and a hand-drawn theme, selectable in the UI.
 6. **PWA.** Service worker so the app works fully offline after the first load.

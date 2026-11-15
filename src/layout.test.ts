@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { parse } from './parser/parse.ts';
-import { layout, type Shape } from './layout.ts';
+import { layout, layoutPages, type Shape } from './layout.ts';
 import { renderSvg } from './render.ts';
 import { classic } from './theme.ts';
 import { estimateMeasure } from './measure.ts';
@@ -35,5 +35,31 @@ describe('layout', () => {
     expect(svg.startsWith('<svg')).toBe(true);
     expect(svg).toContain('data-line="2"');
     expect(svg).toContain('&lt;&amp;&gt; &quot;q&quot;');
+  });
+  it('uses compact rows for parallel messages', () => {
+    const { msgs } = run('A -> B : first\n& B -> C : second\n& C -> A : third\nA -> B : normal');
+    expect(msgs[1]!.y - msgs[0]!.y).toBe(20);
+    expect(msgs[2]!.y - msgs[1]!.y).toBe(20);
+    expect(msgs[3]!.y - msgs[2]!.y).toBe(34);
+  });
+  it('lays out newpage as independent titled scenes', () => {
+    const d = parse('@startuml\ntitle First\nA -> B : one\nnewpage Second\nA -> B : two\n@enduml');
+    const scenes = layoutPages(d, classic, estimateMeasure(classic.font.size));
+    expect(scenes).toHaveLength(2);
+    expect(scenes.map((s) => s.title?.lines[0])).toEqual(['First', 'Second']);
+    expect(scenes.map((s) => s.shapes.filter((x) => x.t === 'message'))).toHaveLength(2);
+  });
+  it('switches lifelines to dotted strokes inside delays', () => {
+    const { scene } = run('A -> B : before\n... later ...\nA -> B : after');
+    const lifelines = scene.shapes.filter((s): s is Extract<Shape, { t: 'lifeline' }> => s.t === 'lifeline');
+    expect(lifelines.filter((s) => s.dotted)).toHaveLength(2);
+    expect(lifelines.filter((s) => !s.dotted).length).toBeGreaterThan(2);
+  });
+  it('renders escaped Creole spans', () => {
+    const { scene } = run('A -> B : **bold** //italic// <color:red><&></color>');
+    const svg = renderSvg(scene, classic);
+    expect(svg).toContain('<tspan font-weight="bold">bold</tspan>');
+    expect(svg).toContain('<tspan font-style="italic">italic</tspan>');
+    expect(svg).toContain('<tspan fill="red">&lt;&amp;&gt;</tspan>');
   });
 });

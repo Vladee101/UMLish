@@ -110,7 +110,7 @@ export function parse(source: string): Diagram {
     return { kind: 'participant', id: ensure(tok) };
   };
 
-  const message = (m: RegExpMatchArray) => {
+  const message = (m: RegExpMatchArray, parallel = false) => {
     const a = ARROW.exec(m[2]!);
     if (!a) return warn(`could not read arrow "${m[2]}"`);
     const from = endpoint(m[1]);
@@ -130,6 +130,7 @@ export function parse(source: string): Diagram {
     };
     if (color) msg.color = color;
     if (m[4]) msg.activation = { op: m[4] as '++' | '--' | '**' | '!!', ...(m[5] ? { color: m[5] } : {}) };
+    if (parallel) msg.parallel = true;
     cur().push(msg);
     lastTarget = to.kind === 'participant' ? to.id : from.kind === 'participant' ? from.id : lastTarget;
   };
@@ -179,7 +180,11 @@ export function parse(source: string): Diagram {
     if ((m = t.match(/^skinparam\s+(\w+)\s*\{$/i))) { skinPrefix = m[1]!; continue; }
     if ((m = t.match(/^skinparam\s+(\w+)\s+(.+)$/i))) { d.skinparams[m[1]!] = m[2]!.trim(); continue; }
     if (/^legend\b/i.test(t)) { warn('legend not supported, skipped'); startBlock(/^end\s*legend$/i, () => {}); continue; }
-    if (/^newpage\b/i.test(t)) { warn('newpage not supported yet, skipped'); continue; }
+    if ((m = t.match(/^newpage\b\s*(.*)$/i))) {
+      if (stack.length) warn('newpage inside a fragment is not supported, skipped');
+      else cur().push({ type: 'newpage', line: ln, title: txt(m[1]) });
+      continue;
+    }
 
     if ((m = t.match(/^autonumber(?:\s+(.*))?$/i))) {
       const rest = m[1] ?? '';
@@ -281,7 +286,8 @@ export function parse(source: string): Diagram {
     }
 
     // ---- messages ---------------------------------------------------------
-    if ((m = t.match(MSG))) { message(m); continue; }
+    const parallel = /^&\s*/.test(t);
+    if ((m = t.replace(/^&\s*/, '').match(MSG))) { message(m, parallel); continue; }
 
     warn(`unsupported syntax, skipped: ${t.length > 40 ? t.slice(0, 40) + '…' : t}`);
   }

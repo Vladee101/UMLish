@@ -1,10 +1,10 @@
-export type Measure = (text: string, bold?: boolean) => number;
+export type Measure = (text: string, bold?: boolean, italic?: boolean) => number;
 
 /** Browser measurer. Use the same family/size the SVG will use. */
 export function canvasMeasure(family: string, size: number): Measure {
   const ctx = document.createElement('canvas').getContext('2d')!;
-  return (text, bold = false) => {
-    ctx.font = `${bold ? 'bold ' : ''}${size}px ${family}`;
+  return (text, bold = false, italic = false) => {
+    ctx.font = `${italic ? 'italic ' : ''}${bold ? 'bold ' : ''}${size}px ${family}`;
     return ctx.measureText(text).width;
   };
 }

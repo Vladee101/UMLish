@@ -1,7 +1,7 @@
 import { mkdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
-import { layout } from '../layout.ts';
+import { layoutPages } from '../layout.ts';
 import { estimateMeasure } from '../measure.ts';
 import { parse } from '../parser/parse.ts';
 import { renderSvg } from '../render.ts';
@@ -18,12 +18,18 @@ describe('fixture corpus', () => {
 
   it.each(fixtures)('$name', async ({ slug, source }) => {
     const diagram = parse(source);
-    const scene = layout(diagram, classic, estimateMeasure(classic.font.size));
-    const svg = renderSvg(scene, classic);
+    const scenes = layoutPages(diagram, classic, estimateMeasure(classic.font.size));
 
-    expect(scene.viewBox.w).toBeGreaterThan(0);
-    expect(scene.viewBox.h).toBeGreaterThan(0);
+    expect(scenes.length).toBeGreaterThan(0);
+    for (const scene of scenes) {
+      expect(scene.viewBox.w).toBeGreaterThan(0);
+      expect(scene.viewBox.h).toBeGreaterThan(0);
+    }
     await expect(JSON.stringify(diagram, null, 2) + '\n').toMatchFileSnapshot(`${snapshotDir}/${slug}.ast.json`);
-    await expect(svg + '\n').toMatchFileSnapshot(`${snapshotDir}/${slug}.svg`);
+    for (let i = 0; i < scenes.length; i++) {
+      const svg = renderSvg(scenes[i]!, classic);
+      const suffix = i === 0 ? '' : `.page-${i + 1}`;
+      await expect(svg + '\n').toMatchFileSnapshot(`${snapshotDir}/${slug}${suffix}.svg`);
+    }
   });
 });

@@ -90,6 +90,19 @@ describe('structure', () => {
   });
 });
 
+describe('tier 2 syntax', () => {
+  it('parses parallel messages and page breaks', () => {
+    const d = parse(wrap('A -> B : first\n& B -> A : second\nnewpage Next page\nA -> B : third'));
+    expect(d.events).toMatchObject([
+      { type: 'message', text: 'first' },
+      { type: 'message', text: 'second', parallel: true },
+      { type: 'newpage', title: 'Next page' },
+      { type: 'message', text: 'third' },
+    ]);
+    expect(d.warnings).toEqual([]);
+  });
+});
+
 describe('tolerance', () => {
   it('warns instead of failing on unsupported syntax', () => {
     const d = parse(wrap('!include foo.puml\nA -> B\nwat is this\n'));

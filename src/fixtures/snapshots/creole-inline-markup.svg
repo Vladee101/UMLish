@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-43.83 0 262.38 217" width="262.38" height="217" font-family="'Liberation Sans', Arimo, Helvetica, Arial, sans-serif" font-size="13" fill="#000000">
+<rect x="-43.83" y="0" width="262.38" height="217" fill="#FFFFFF"/>
+<text x="87.36" y="17.55" text-anchor="middle" font-weight="bold" xml:space="preserve">A <tspan font-weight="bold">bold</tspan> and <tspan font-style="italic">italic</tspan> title</text>
+<line x1="0" y1="59" x2="0" y2="187" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<line x1="195.11" y1="59" x2="195.11" y2="187" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<g data-line="5">
+<line x1="0" y1="85" x2="195.11" y2="85" stroke="#A80036" stroke-width="1"/>
+<polygon points="185.11,81 195.11,85 185.11,89 189.11,85" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="7" y="77.55" xml:space="preserve"><tspan font-weight="bold">bold</tspan> and <tspan font-style="italic">italic</tspan> and <tspan fill="red">red text</tspan></text>
+</g>
+<g data-line="6">
+<polygon points="-10,99 195.11,99 205.11,109 205.11,125 -10,125" fill="#FBFB77" stroke="#A80036" stroke-width="1"/>
+<path d="M195.11,99 v10 h10" fill="none" stroke="#A80036" stroke-width="1"/>
+<text x="-2" y="116.55" xml:space="preserve"><tspan font-weight="bold">nested </tspan><tspan font-weight="bold" font-style="italic">bold italic</tspan><tspan font-weight="bold"> text</tspan> and <tspan fill="#0000FF">blue</tspan></text>
+</g>
+<g data-line="7">
+<line x1="195.11" y1="159" x2="0" y2="159" stroke="#A80036" stroke-width="1" stroke-dasharray="2,2"/>
+<polygon points="10,155 0,159 10,163 6,159" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="7" y="151.55" xml:space="preserve"><tspan fill="#008000">escaped &lt;&amp;&gt; text</tspan></text>
+</g>
+<g data-line="3">
+<rect x="-38.83" y="35" width="77.66" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="0" y="51.55" text-anchor="middle" xml:space="preserve"><tspan font-weight="bold">Bold User</tspan></text>
+</g>
+<g data-line="3">
+<rect x="-38.83" y="187" width="77.66" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="0" y="203.55" text-anchor="middle" xml:space="preserve"><tspan font-weight="bold">Bold User</tspan></text>
+</g>
+<g data-line="4">
+<rect x="176.67" y="35" width="36.88" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="195.11" y="51.55" text-anchor="middle" xml:space="preserve">App</text>
+</g>
+<g data-line="4">
+<rect x="176.67" y="187" width="36.88" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="195.11" y="203.55" text-anchor="middle" xml:space="preserve">App</text>
+</g>
+</svg>

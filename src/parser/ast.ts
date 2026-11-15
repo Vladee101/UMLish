@@ -37,6 +37,8 @@ export interface Message {
   endHead: ArrowHead;
   /** ++ / -- / ** / !! shorthand. Recorded verbatim; the layout step decides who it applies to. */
   activation?: { op: '++' | '--' | '**' | '!!'; color?: string };
+  /** An ampersand prefix places this message in a compact parallel group. */
+  parallel?: boolean;
 }
 
 export interface Note {
@@ -80,6 +82,7 @@ export interface Divider { type: 'divider'; line: number; text: string }
 export interface Delay { type: 'delay'; line: number; text: string }
 export interface Spacing { type: 'spacing'; line: number; height?: number }
 export interface Ref { type: 'ref'; line: number; targets: string[]; text: string }
+export interface NewPage { type: 'newpage'; line: number; title: string }
 
 export interface Autonumber {
   type: 'autonumber';
@@ -92,7 +95,7 @@ export interface Autonumber {
 
 export type Event =
   | Message | Note | Fragment | ActivationEvent | ReturnEvent
-  | Divider | Delay | Spacing | Ref | Autonumber;
+  | Divider | Delay | Spacing | Ref | NewPage | Autonumber;
 
 export interface Box {
   name: string;

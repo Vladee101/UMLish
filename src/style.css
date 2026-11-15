@@ -6,7 +6,7 @@ body { display: flex; flex-direction: column; }
 .grow { flex: 1; }
 .badge { font-size: 12px; color: #166534; background: #dcfce7; padding: 2px 8px; border-radius: 10px; }
 #status { font-size: 12px; color: #92400e; }
-button { font: inherit; padding: 3px 10px; border: 1px solid #ccc; border-radius: 4px; background: #fff; cursor: pointer; }
+button, select { font: inherit; padding: 3px 10px; border: 1px solid #ccc; border-radius: 4px; background: #fff; cursor: pointer; }
 button:hover { background: #f0f0f0; }
 main { flex: 1; min-height: 0; display: grid; grid-template-columns: minmax(280px, 1fr) 1.4fr; }
 #editor { min-width: 0; border-right: 1px solid #ddd; overflow: hidden; }

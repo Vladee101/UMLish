@@ -1,0 +1,51 @@
+{
+  "participants": [
+    {
+      "id": "Web",
+      "label": "Web",
+      "kind": "participant",
+      "implicit": false,
+      "line": 2
+    },
+    {
+      "id": "Auth",
+      "label": "Auth",
+      "kind": "participant",
+      "implicit": false,
+      "line": 3
+    }
+  ],
+  "boxes": [],
+  "events": [
+    {
+      "type": "ref",
+      "line": 4,
+      "targets": [
+        "Web",
+        "Auth"
+      ],
+      "text": "See the **authentication** flow\nfor //token renewal// details"
+    },
+    {
+      "type": "message",
+      "line": 8,
+      "from": {
+        "kind": "participant",
+        "id": "Web"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "Auth"
+      },
+      "text": "renew",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled"
+    }
+  ],
+  "options": {
+    "hideFootbox": false
+  },
+  "skinparams": {},
+  "warnings": []
+}
