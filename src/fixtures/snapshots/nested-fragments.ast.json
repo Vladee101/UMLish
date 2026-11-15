@@ -1,0 +1,122 @@
+{
+  "participants": [
+    {
+      "id": "A",
+      "label": "A",
+      "kind": "participant",
+      "implicit": false,
+      "line": 2
+    },
+    {
+      "id": "B",
+      "label": "B",
+      "kind": "participant",
+      "implicit": false,
+      "line": 3
+    }
+  ],
+  "boxes": [],
+  "events": [
+    {
+      "type": "fragment",
+      "kind": "alt",
+      "line": 4,
+      "endLine": 13,
+      "sections": [
+        {
+          "label": "connected",
+          "line": 4,
+          "events": [
+            {
+              "type": "fragment",
+              "kind": "loop",
+              "line": 5,
+              "endLine": 10,
+              "sections": [
+                {
+                  "label": "up to 3 attempts",
+                  "line": 5,
+                  "events": [
+                    {
+                      "type": "message",
+                      "line": 6,
+                      "from": {
+                        "kind": "participant",
+                        "id": "A"
+                      },
+                      "to": {
+                        "kind": "participant",
+                        "id": "B"
+                      },
+                      "text": "ping",
+                      "dashed": false,
+                      "startHead": "none",
+                      "endHead": "filled"
+                    },
+                    {
+                      "type": "fragment",
+                      "kind": "opt",
+                      "line": 7,
+                      "endLine": 9,
+                      "sections": [
+                        {
+                          "label": "diagnostic mode",
+                          "line": 7,
+                          "events": [
+                            {
+                              "type": "message",
+                              "line": 8,
+                              "from": {
+                                "kind": "participant",
+                                "id": "B"
+                              },
+                              "to": {
+                                "kind": "participant",
+                                "id": "A"
+                              },
+                              "text": "diagnostics",
+                              "dashed": true,
+                              "startHead": "none",
+                              "endHead": "filled"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "offline",
+          "line": 11,
+          "events": [
+            {
+              "type": "message",
+              "line": 12,
+              "from": {
+                "kind": "participant",
+                "id": "A"
+              },
+              "to": {
+                "kind": "participant",
+                "id": "A"
+              },
+              "text": "queue locally",
+              "dashed": false,
+              "startHead": "none",
+              "endHead": "filled"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "options": {
+    "hideFootbox": false
+  },
+  "skinparams": {},
+  "warnings": []
+}

@@ -1,0 +1,90 @@
+{
+  "participants": [
+    {
+      "id": "A",
+      "label": "A",
+      "kind": "participant",
+      "implicit": true,
+      "line": 2
+    },
+    {
+      "id": "B",
+      "label": "B",
+      "kind": "participant",
+      "implicit": true,
+      "line": 2
+    }
+  ],
+  "boxes": [],
+  "events": [
+    {
+      "type": "message",
+      "line": 2,
+      "from": {
+        "kind": "participant",
+        "id": "B"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "A"
+      },
+      "text": "reversed",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled"
+    },
+    {
+      "type": "message",
+      "line": 3,
+      "from": {
+        "kind": "participant",
+        "id": "A"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "B"
+      },
+      "text": "both ends",
+      "dashed": false,
+      "startHead": "filled",
+      "endHead": "filled"
+    },
+    {
+      "type": "message",
+      "line": 4,
+      "from": {
+        "kind": "participant",
+        "id": "B"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "A"
+      },
+      "text": "reversed dashed",
+      "dashed": true,
+      "startHead": "none",
+      "endHead": "filled"
+    },
+    {
+      "type": "message",
+      "line": 5,
+      "from": {
+        "kind": "participant",
+        "id": "A"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "B"
+      },
+      "text": "both dashed",
+      "dashed": true,
+      "startHead": "filled",
+      "endHead": "filled"
+    }
+  ],
+  "options": {
+    "hideFootbox": false
+  },
+  "skinparams": {},
+  "warnings": []
+}

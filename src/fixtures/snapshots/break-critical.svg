@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-31 0 225.93 223" width="225.93" height="223" font-family="'Liberation Sans', Arimo, Helvetica, Arial, sans-serif" font-size="13" fill="#000000">
+<rect x="-31" y="0" width="225.93" height="223" fill="#FFFFFF"/>
+<line x1="0" y1="29" x2="0" y2="193" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<line x1="69.4" y1="29" x2="69.4" y2="193" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<g data-line="4"><rect x="-26" y="35" width="215.93" height="134" fill="none" stroke="#000000" stroke-width="1.5"/>
+<polygon points="-26,35 48.78,35 48.78,45 42.78,51 -26,51" fill="#EEEEEE" stroke="#000000" stroke-width="1"/>
+<text x="-18" y="47.55" font-weight="bold" xml:space="preserve">critical</text>
+<text x="56.78" y="47.55" font-weight="bold" xml:space="preserve">[transaction]</text>
+</g>
+<g data-line="5">
+<line x1="0" y1="81" x2="69.4" y2="81" stroke="#A80036" stroke-width="1"/>
+<polygon points="59.4,77 69.4,81 59.4,85 63.4,81" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="7" y="73.55" xml:space="preserve">update</text>
+</g>
+<g data-line="6"><rect x="-16" y="95" width="195.93" height="62" fill="none" stroke="#000000" stroke-width="1.5"/>
+<polygon points="-16,95 47.21,95 47.21,105 41.21,111 -16,111" fill="#EEEEEE" stroke="#000000" stroke-width="1"/>
+<text x="-8" y="107.55" font-weight="bold" xml:space="preserve">break</text>
+<text x="55.21" y="107.55" font-weight="bold" xml:space="preserve">[validation failed]</text>
+</g>
+<g data-line="7">
+<line x1="69.4" y1="141" x2="0" y2="141" stroke="#A80036" stroke-width="1" stroke-dasharray="2,2"/>
+<polygon points="10,137 0,141 10,145 6,141" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="7" y="133.55" xml:space="preserve">rollback</text>
+</g>
+<g data-line="2">
+<rect x="-18.44" y="5" width="36.88" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="0" y="21.55" text-anchor="middle" xml:space="preserve">App</text>
+</g>
+<g data-line="2">
+<rect x="-18.44" y="193" width="36.88" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="0" y="209.55" text-anchor="middle" xml:space="preserve">App</text>
+</g>
+<g data-line="3">
+<rect x="53.56" y="5" width="31.68" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="69.4" y="21.55" text-anchor="middle" xml:space="preserve">DB</text>
+</g>
+<g data-line="3">
+<rect x="53.56" y="193" width="31.68" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="69.4" y="209.55" text-anchor="middle" xml:space="preserve">DB</text>
+</g>
+</svg>

@@ -141,7 +141,7 @@ The classic look is expressed as theme tokens:
 - Participant kinds have distinct icons: actor stick figure, database cylinder, boundary, control, entity, stacked collections, rounded queue.
 - Participant boxes appear at the top and bottom unless `hide footbox`.
 
-`skinparam` values for arrow color, lifeline color, participant and note colors, background, and default font name and size are applied as overrides on a cloned theme. Message labels are left-aligned beside the source lifeline, and autonumbers are bold prefixes.
+`skinparam` values for arrow color, lifeline color, participant and note colors, background, and default font name and size are applied as overrides on a cloned theme. Message labels are left-aligned at the left end of the arrow, and autonumbers are bold prefixes.
 
 Color strings accept both `#red` and `#FF0000`. The renderer converts the former to CSS-valid `red`.
 
@@ -178,11 +178,11 @@ User input is treated as untrusted: all text is XML-escaped before entering SVG,
 
 **Unit tests (Vitest).** The parser tests cover participants, arrows, structure, autonumber, skinparam, boxes and error tolerance. The layout tests cover vertical ordering, column widening, the `return` call stack, and SVG escaping with `data-line`. The share tests cover round-trip, large input, and rejection of corrupt hashes.
 
-**Fixture corpus (planned).** About 50 diagrams written in the style of the public PlantUML sequence documentation (our own versions, not copies). Each stores the AST and SVG snapshots. Any diagram a user reports as broken becomes a new fixture.
+**Fixture corpus.** Fifty-one original diagrams in `src/fixtures/corpus.ts` cover supported syntax, realistic combinations, spacing stress cases, and error recovery. `src/fixtures/fixtures.test.ts` renders each one and stores its AST as JSON and its SVG in `src/fixtures/snapshots/`. Any diagram a user reports as broken becomes a new fixture.
 
-**Calibration page (planned).** A dev-only page that shows our SVG beside a PNG rendered by real PlantUML on the developer's own machine, with a flip/overlay toggle. Spacing and proportion matter more than color for the "feels right" factor: box padding, row spacing, lifeline overshoot, label alignment and arrowhead geometry. These are all theme numbers, so tuning is cheap.
+**Calibration page.** `calibration.html` is a Vite development-only entry point and is excluded from the production build. It downloads a fixture's `.puml` source, accepts a PNG rendered by real PlantUML on the developer's own machine, and provides side-by-side, flip, overlay, and opacity controls. Nothing is uploaded. Initial calibration against PlantUML 1.2023.13 covered basic messages, activation, notes, long labels, autonumbering, and realistic flows; it reduced the outer margin from 10 to 5 px and removed a duplicate trailing margin. Spacing and proportion matter more than color for the "feels right" factor: box padding, row spacing, lifeline overshoot, label alignment and arrowhead geometry. These are all theme numbers, so tuning is cheap.
 
-**Current verification status.** Parser, layout, renderer and share modules typecheck and all 22 unit tests pass. The Vite production build and app shell have been exercised in Chromium: editing, warnings, click-to-source, persistence, share-link restoration, and SVG/PNG export work. Vercel CSP headers, print/PDF, and Safari PNG export still need deployment/device verification.
+**Current verification status.** All 74 unit and fixture snapshot tests pass. The Vite production build and app shell have been exercised in Chromium: editing, warnings, click-to-source, persistence, share-link restoration, and SVG/PNG export work. Fixture switching, source download, local PNG loading, and calibration comparison controls also pass browser checks. Initial reference-based theme tuning is complete; Vercel CSP headers, print/PDF, and Safari PNG export still need deployment/device verification.
 
 ## 11. Licensing and provenance
 
@@ -196,9 +196,7 @@ These are choices made from memory or inference that should be verified against 
 
 | Decision | Current behaviour | How to verify |
 | --- | --- | --- |
-| `--` message shorthand | Deactivates the **sender** | Render `Bob --> Alice --` in PlantUML |
 | `participant Foo as Bar` (neither quoted) | `Foo` is the label, `Bar` is the id | Compare references in later messages |
-| Message label alignment | Left-aligned beside the source lifeline | Compare several label lengths and directions |
 | Half arrowheads (`\`, `/`) | Both draw the upper half | Compare against `A -\ B` and `A -/ B` |
 | Note `left`/`right` position | 6 px from the lifeline, ignoring bar offsets | Compare notes beside activated participants |
 | Row spacing, box padding | Estimated | Overlay on the calibration page |
@@ -206,7 +204,7 @@ These are choices made from memory or inference that should be verified against 
 ## 13. Roadmap
 
 1. **Verify the app end to end.** Install dependencies, fix any Vite/CodeMirror wiring issues, confirm fonts and CSP behave in a Vercel preview, check PNG export on Safari.
-2. **Fixture corpus and calibration page.** Tune theme numbers against reference renders.
+2. **Fixture corpus and calibration page.** Built and initially calibrated against local PlantUML 1.2023.13 reference renders.
 3. **Tier 2 syntax.** Creole inline markup (`**bold**`, `//italic//`, `<color>`), `newpage`, multi-line `ref`, parallel messages (`&`), dotted lifelines inside delays.
 4. **Editor polish.** Autocomplete for keywords and participant names, a warnings panel, file open/save via the File System Access API.
 5. **Themes.** A modern theme and a hand-drawn theme, selectable in the UI.

@@ -1,0 +1,268 @@
+{
+  "participants": [
+    {
+      "id": "User",
+      "label": "User",
+      "kind": "actor",
+      "implicit": false,
+      "line": 4
+    },
+    {
+      "id": "Browser",
+      "label": "Browser",
+      "kind": "boundary",
+      "implicit": false,
+      "line": 5
+    },
+    {
+      "id": "Auth",
+      "label": "Auth",
+      "kind": "control",
+      "implicit": false,
+      "line": 6
+    },
+    {
+      "id": "Sessions",
+      "label": "Sessions",
+      "kind": "database",
+      "implicit": false,
+      "line": 7
+    }
+  ],
+  "boxes": [],
+  "events": [
+    {
+      "type": "autonumber",
+      "line": 3,
+      "action": "start"
+    },
+    {
+      "type": "message",
+      "line": 8,
+      "from": {
+        "kind": "participant",
+        "id": "User"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "Browser"
+      },
+      "text": "submit credentials",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled"
+    },
+    {
+      "type": "message",
+      "line": 9,
+      "from": {
+        "kind": "participant",
+        "id": "Browser"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "Auth"
+      },
+      "text": "login",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled",
+      "activation": {
+        "op": "++"
+      }
+    },
+    {
+      "type": "message",
+      "line": 10,
+      "from": {
+        "kind": "participant",
+        "id": "Auth"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "Sessions"
+      },
+      "text": "find session",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled",
+      "activation": {
+        "op": "++"
+      }
+    },
+    {
+      "type": "fragment",
+      "kind": "alt",
+      "line": 11,
+      "endLine": 21,
+      "sections": [
+        {
+          "label": "valid session",
+          "line": 11,
+          "events": [
+            {
+              "type": "message",
+              "line": 12,
+              "from": {
+                "kind": "participant",
+                "id": "Sessions"
+              },
+              "to": {
+                "kind": "participant",
+                "id": "Auth"
+              },
+              "text": "session data",
+              "dashed": true,
+              "startHead": "none",
+              "endHead": "filled"
+            },
+            {
+              "type": "message",
+              "line": 13,
+              "from": {
+                "kind": "participant",
+                "id": "Auth"
+              },
+              "to": {
+                "kind": "participant",
+                "id": "Browser"
+              },
+              "text": "authenticated",
+              "dashed": true,
+              "startHead": "none",
+              "endHead": "filled"
+            }
+          ]
+        },
+        {
+          "label": "missing or expired",
+          "line": 14,
+          "events": [
+            {
+              "type": "message",
+              "line": 15,
+              "from": {
+                "kind": "participant",
+                "id": "Sessions"
+              },
+              "to": {
+                "kind": "participant",
+                "id": "Auth"
+              },
+              "text": "no session",
+              "dashed": true,
+              "startHead": "none",
+              "endHead": "filled"
+            },
+            {
+              "type": "message",
+              "line": 16,
+              "from": {
+                "kind": "participant",
+                "id": "Auth"
+              },
+              "to": {
+                "kind": "participant",
+                "id": "Auth"
+              },
+              "text": "validate password",
+              "dashed": false,
+              "startHead": "none",
+              "endHead": "filled"
+            },
+            {
+              "type": "fragment",
+              "kind": "opt",
+              "line": 17,
+              "endLine": 19,
+              "sections": [
+                {
+                  "label": "remember me",
+                  "line": 17,
+                  "events": [
+                    {
+                      "type": "message",
+                      "line": 18,
+                      "from": {
+                        "kind": "participant",
+                        "id": "Auth"
+                      },
+                      "to": {
+                        "kind": "participant",
+                        "id": "Sessions"
+                      },
+                      "text": "create persistent session",
+                      "dashed": false,
+                      "startHead": "none",
+                      "endHead": "filled"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "message",
+              "line": 20,
+              "from": {
+                "kind": "participant",
+                "id": "Auth"
+              },
+              "to": {
+                "kind": "participant",
+                "id": "Browser"
+              },
+              "text": "new session",
+              "dashed": true,
+              "startHead": "none",
+              "endHead": "filled"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "activation",
+      "line": 22,
+      "op": "deactivate",
+      "target": "Sessions"
+    },
+    {
+      "type": "activation",
+      "line": 23,
+      "op": "deactivate",
+      "target": "Auth"
+    },
+    {
+      "type": "message",
+      "line": 24,
+      "from": {
+        "kind": "participant",
+        "id": "Browser"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "User"
+      },
+      "text": "redirect home",
+      "dashed": true,
+      "startHead": "none",
+      "endHead": "filled"
+    },
+    {
+      "type": "note",
+      "line": 25,
+      "shape": "note",
+      "position": "right",
+      "targets": [
+        "Auth"
+      ],
+      "text": "all credentials stay local"
+    }
+  ],
+  "options": {
+    "hideFootbox": false
+  },
+  "skinparams": {},
+  "warnings": [],
+  "title": "Login with cached credentials"
+}

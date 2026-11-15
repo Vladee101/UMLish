@@ -1,0 +1,45 @@
+{
+  "participants": [
+    {
+      "id": "A",
+      "label": "A",
+      "kind": "participant",
+      "implicit": true,
+      "line": 12
+    },
+    {
+      "id": "B",
+      "label": "B",
+      "kind": "participant",
+      "implicit": true,
+      "line": 12
+    }
+  ],
+  "boxes": [],
+  "events": [
+    {
+      "type": "message",
+      "line": 12,
+      "from": {
+        "kind": "participant",
+        "id": "A"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "B"
+      },
+      "text": "checkout",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled"
+    }
+  ],
+  "options": {
+    "hideFootbox": false
+  },
+  "skinparams": {},
+  "warnings": [],
+  "title": "Checkout flow\nwith inventory reservation",
+  "header": "Architecture group",
+  "footer": "Draft for review"
+}

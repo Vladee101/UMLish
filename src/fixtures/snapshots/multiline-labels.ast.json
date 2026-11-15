@@ -1,0 +1,67 @@
+{
+  "participants": [
+    {
+      "id": "Orders",
+      "label": "Order Service",
+      "kind": "participant",
+      "implicit": false,
+      "line": 2
+    },
+    {
+      "id": "Payments",
+      "label": "Payment Service",
+      "kind": "participant",
+      "implicit": false,
+      "line": 3
+    }
+  ],
+  "boxes": [],
+  "events": [
+    {
+      "type": "message",
+      "line": 4,
+      "from": {
+        "kind": "participant",
+        "id": "Orders"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "Payments"
+      },
+      "text": "authorize customer",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled"
+    },
+    {
+      "type": "message",
+      "line": 6,
+      "from": {
+        "kind": "participant",
+        "id": "Payments"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "Orders"
+      },
+      "text": "approved",
+      "dashed": true,
+      "startHead": "none",
+      "endHead": "filled"
+    }
+  ],
+  "options": {
+    "hideFootbox": false
+  },
+  "skinparams": {},
+  "warnings": [
+    {
+      "line": 5,
+      "message": "unsupported syntax, skipped: and reserve funds"
+    },
+    {
+      "line": 7,
+      "message": "unsupported syntax, skipped: reference 12345"
+    }
+  ]
+}

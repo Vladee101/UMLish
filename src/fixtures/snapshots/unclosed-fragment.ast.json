@@ -1,0 +1,61 @@
+{
+  "participants": [
+    {
+      "id": "A",
+      "label": "A",
+      "kind": "participant",
+      "implicit": false,
+      "line": 2
+    },
+    {
+      "id": "B",
+      "label": "B",
+      "kind": "participant",
+      "implicit": false,
+      "line": 3
+    }
+  ],
+  "boxes": [],
+  "events": [
+    {
+      "type": "fragment",
+      "kind": "alt",
+      "line": 4,
+      "endLine": 5,
+      "sections": [
+        {
+          "label": "recoverable",
+          "line": 4,
+          "events": [
+            {
+              "type": "message",
+              "line": 5,
+              "from": {
+                "kind": "participant",
+                "id": "A"
+              },
+              "to": {
+                "kind": "participant",
+                "id": "B"
+              },
+              "text": "still rendered",
+              "dashed": false,
+              "startHead": "none",
+              "endHead": "filled"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "options": {
+    "hideFootbox": false
+  },
+  "skinparams": {},
+  "warnings": [
+    {
+      "line": 4,
+      "message": "'alt' block is never closed"
+    }
+  ]
+}

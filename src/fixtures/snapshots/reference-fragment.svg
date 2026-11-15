@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-24.61 0 196.28 199" width="196.28" height="199" font-family="'Liberation Sans', Arimo, Helvetica, Arial, sans-serif" font-size="13" fill="#000000">
+<rect x="-24.61" y="0" width="196.28" height="199" fill="#FFFFFF"/>
+<line x1="0" y1="29" x2="0" y2="169" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<line x1="144.72" y1="29" x2="144.72" y2="169" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<g data-line="4">
+<line x1="0" y1="55" x2="144.72" y2="55" stroke="#A80036" stroke-width="1"/>
+<polygon points="134.72,51 144.72,55 134.72,59 138.72,55" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="7" y="47.55" xml:space="preserve">login</text>
+</g>
+<g data-line="5"><rect x="-10" y="69" width="164.72" height="38" fill="none" stroke="#000000" stroke-width="1.5"/>
+<polygon points="-10,69 20,69 20,80 14,86 -10,86" fill="#EEEEEE" stroke="#000000" stroke-width="1"/>
+<text x="-4" y="82.55" font-weight="bold" xml:space="preserve">ref</text>
+<text x="72.36" y="93.55" text-anchor="middle" xml:space="preserve">see authentication flow</text>
+</g>
+<g data-line="6">
+<line x1="144.72" y1="141" x2="0" y2="141" stroke="#A80036" stroke-width="1" stroke-dasharray="2,2"/>
+<polygon points="10,137 0,141 10,145 6,141" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="7" y="133.55" xml:space="preserve">session</text>
+</g>
+<g data-line="2">
+<rect x="-19.61" y="5" width="39.22" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="0" y="21.55" text-anchor="middle" xml:space="preserve">Web</text>
+</g>
+<g data-line="2">
+<rect x="-19.61" y="169" width="39.22" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="0" y="185.55" text-anchor="middle" xml:space="preserve">Web</text>
+</g>
+<g data-line="3">
+<rect x="122.77" y="5" width="43.9" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="144.72" y="21.55" text-anchor="middle" xml:space="preserve">Auth</text>
+</g>
+<g data-line="3">
+<rect x="122.77" y="169" width="43.9" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="144.72" y="185.55" text-anchor="middle" xml:space="preserve">Auth</text>
+</g>
+</svg>

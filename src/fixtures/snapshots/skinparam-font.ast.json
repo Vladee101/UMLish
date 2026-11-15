@@ -1,0 +1,45 @@
+{
+  "participants": [
+    {
+      "id": "A",
+      "label": "A",
+      "kind": "participant",
+      "implicit": false,
+      "line": 4
+    },
+    {
+      "id": "B",
+      "label": "B",
+      "kind": "participant",
+      "implicit": false,
+      "line": 5
+    }
+  ],
+  "boxes": [],
+  "events": [
+    {
+      "type": "message",
+      "line": 6,
+      "from": {
+        "kind": "participant",
+        "id": "A"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "B"
+      },
+      "text": "larger text",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled"
+    }
+  ],
+  "options": {
+    "hideFootbox": false
+  },
+  "skinparams": {
+    "defaultFontName": "Liberation Sans",
+    "defaultFontSize": "15"
+  },
+  "warnings": []
+}

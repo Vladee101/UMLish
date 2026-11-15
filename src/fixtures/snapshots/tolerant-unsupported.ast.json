@@ -1,0 +1,67 @@
+{
+  "participants": [
+    {
+      "id": "A",
+      "label": "A",
+      "kind": "participant",
+      "implicit": false,
+      "line": 3
+    },
+    {
+      "id": "B",
+      "label": "B",
+      "kind": "participant",
+      "implicit": false,
+      "line": 4
+    }
+  ],
+  "boxes": [],
+  "events": [
+    {
+      "type": "message",
+      "line": 5,
+      "from": {
+        "kind": "participant",
+        "id": "A"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "B"
+      },
+      "text": "retained",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled"
+    },
+    {
+      "type": "message",
+      "line": 7,
+      "from": {
+        "kind": "participant",
+        "id": "B"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "A"
+      },
+      "text": "also retained",
+      "dashed": true,
+      "startHead": "none",
+      "endHead": "filled"
+    }
+  ],
+  "options": {
+    "hideFootbox": false
+  },
+  "skinparams": {},
+  "warnings": [
+    {
+      "line": 2,
+      "message": "preprocessor directive not supported, skipped: !include"
+    },
+    {
+      "line": 6,
+      "message": "newpage not supported yet, skipped"
+    }
+  ]
+}

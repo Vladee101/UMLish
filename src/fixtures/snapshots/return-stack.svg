@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 0 205.56 283" width="205.56" height="283" font-family="'Liberation Sans', Arimo, Helvetica, Arial, sans-serif" font-size="13" fill="#000000">
+<rect x="-20" y="0" width="205.56" height="283" fill="#FFFFFF"/>
+<line x1="0" y1="29" x2="0" y2="253" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<line x1="51.72" y1="29" x2="51.72" y2="253" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<line x1="113.84" y1="29" x2="113.84" y2="253" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<line x1="165.56" y1="29" x2="165.56" y2="253" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<rect x="160.56" y="123" width="10" height="34" fill="#FFFFFF" stroke="#A80036" stroke-width="1"/>
+<rect x="108.84" y="89" width="10" height="102" fill="#FFFFFF" stroke="#A80036" stroke-width="1"/>
+<rect x="46.72" y="55" width="10" height="170" fill="#FFFFFF" stroke="#A80036" stroke-width="1"/>
+<g data-line="2">
+<line x1="0" y1="55" x2="46.72" y2="55" stroke="#A80036" stroke-width="1"/>
+<polygon points="36.72,51 46.72,55 36.72,59 40.72,55" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="7" y="47.55" xml:space="preserve">first</text>
+</g>
+<g data-line="3">
+<line x1="56.72" y1="89" x2="108.84" y2="89" stroke="#A80036" stroke-width="1"/>
+<polygon points="98.84,85 108.84,89 98.84,93 102.84,89" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="63.72" y="81.55" xml:space="preserve">second</text>
+</g>
+<g data-line="4">
+<line x1="118.84" y1="123" x2="160.56" y2="123" stroke="#A80036" stroke-width="1"/>
+<polygon points="150.56,119 160.56,123 150.56,127 154.56,123" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="125.84" y="115.55" xml:space="preserve">third</text>
+</g>
+<g data-line="5">
+<line x1="160.56" y1="157" x2="118.84" y2="157" stroke="#A80036" stroke-width="1" stroke-dasharray="2,2"/>
+<polygon points="128.84,153 118.84,157 128.84,161 124.84,157" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="125.84" y="149.55" xml:space="preserve">D result</text>
+</g>
+<g data-line="6">
+<line x1="108.84" y1="191" x2="56.72" y2="191" stroke="#A80036" stroke-width="1" stroke-dasharray="2,2"/>
+<polygon points="66.72,187 56.72,191 66.72,195 62.72,191" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="63.72" y="183.55" xml:space="preserve">C result</text>
+</g>
+<g data-line="7">
+<line x1="46.72" y1="225" x2="0" y2="225" stroke="#A80036" stroke-width="1" stroke-dasharray="2,2"/>
+<polygon points="10,221 0,225 10,229 6,225" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="7" y="217.55" xml:space="preserve">B result</text>
+</g>
+<g data-line="2">
+<rect x="-15" y="5" width="30" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="0" y="21.55" text-anchor="middle" xml:space="preserve">A</text>
+</g>
+<g data-line="2">
+<rect x="-15" y="253" width="30" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="0" y="269.55" text-anchor="middle" xml:space="preserve">A</text>
+</g>
+<g data-line="2">
+<rect x="36.72" y="5" width="30" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="51.72" y="21.55" text-anchor="middle" xml:space="preserve">B</text>
+</g>
+<g data-line="2">
+<rect x="36.72" y="253" width="30" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="51.72" y="269.55" text-anchor="middle" xml:space="preserve">B</text>
+</g>
+<g data-line="3">
+<rect x="98.84" y="5" width="30" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="113.84" y="21.55" text-anchor="middle" xml:space="preserve">C</text>
+</g>
+<g data-line="3">
+<rect x="98.84" y="253" width="30" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="113.84" y="269.55" text-anchor="middle" xml:space="preserve">C</text>
+</g>
+<g data-line="4">
+<rect x="150.56" y="5" width="30" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="165.56" y="21.55" text-anchor="middle" xml:space="preserve">D</text>
+</g>
+<g data-line="4">
+<rect x="150.56" y="253" width="30" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="165.56" y="269.55" text-anchor="middle" xml:space="preserve">D</text>
+</g>
+</svg>

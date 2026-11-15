@@ -1,0 +1,50 @@
+{
+  "participants": [
+    {
+      "id": "Web",
+      "label": "Web",
+      "kind": "participant",
+      "implicit": false,
+      "line": 6
+    },
+    {
+      "id": "Orders",
+      "label": "Orders",
+      "kind": "participant",
+      "implicit": false,
+      "line": 7
+    }
+  ],
+  "boxes": [],
+  "events": [
+    {
+      "type": "message",
+      "line": 8,
+      "from": {
+        "kind": "participant",
+        "id": "Web"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "Orders"
+      },
+      "text": "submit",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled"
+    }
+  ],
+  "options": {
+    "hideFootbox": false
+  },
+  "skinparams": {},
+  "warnings": [
+    {
+      "line": 3,
+      "message": "unsupported syntax, skipped: sequence overview"
+    }
+  ],
+  "title": "Order processing",
+  "header": "Internal design",
+  "footer": "Generated locally"
+}

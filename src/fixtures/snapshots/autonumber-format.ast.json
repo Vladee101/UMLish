@@ -1,0 +1,89 @@
+{
+  "participants": [
+    {
+      "id": "A",
+      "label": "A",
+      "kind": "participant",
+      "implicit": true,
+      "line": 3
+    },
+    {
+      "id": "B",
+      "label": "B",
+      "kind": "participant",
+      "implicit": true,
+      "line": 3
+    },
+    {
+      "id": "C",
+      "label": "C",
+      "kind": "participant",
+      "implicit": true,
+      "line": 4
+    }
+  ],
+  "boxes": [],
+  "events": [
+    {
+      "type": "autonumber",
+      "line": 2,
+      "action": "start",
+      "start": 10,
+      "step": 5,
+      "format": "<b>[000]"
+    },
+    {
+      "type": "message",
+      "line": 3,
+      "from": {
+        "kind": "participant",
+        "id": "A"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "B"
+      },
+      "text": "ten",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled"
+    },
+    {
+      "type": "message",
+      "line": 4,
+      "from": {
+        "kind": "participant",
+        "id": "B"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "C"
+      },
+      "text": "fifteen",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled"
+    },
+    {
+      "type": "message",
+      "line": 5,
+      "from": {
+        "kind": "participant",
+        "id": "C"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "A"
+      },
+      "text": "twenty",
+      "dashed": true,
+      "startHead": "none",
+      "endHead": "filled"
+    }
+  ],
+  "options": {
+    "hideFootbox": false
+  },
+  "skinparams": {},
+  "warnings": []
+}

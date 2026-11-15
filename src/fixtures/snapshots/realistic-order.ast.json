@@ -1,0 +1,317 @@
+{
+  "participants": [
+    {
+      "id": "Customer",
+      "label": "Customer",
+      "kind": "actor",
+      "implicit": false,
+      "line": 5,
+      "box": 0
+    },
+    {
+      "id": "Storefront",
+      "label": "Storefront",
+      "kind": "boundary",
+      "implicit": false,
+      "line": 6,
+      "box": 0
+    },
+    {
+      "id": "Orders",
+      "label": "Orders",
+      "kind": "control",
+      "implicit": false,
+      "line": 9,
+      "box": 1
+    },
+    {
+      "id": "Inventory",
+      "label": "Inventory",
+      "kind": "database",
+      "implicit": false,
+      "line": 10,
+      "box": 1
+    },
+    {
+      "id": "Events",
+      "label": "Events",
+      "kind": "queue",
+      "implicit": false,
+      "line": 11,
+      "box": 1
+    }
+  ],
+  "boxes": [
+    {
+      "name": "Customer tier",
+      "line": 4,
+      "color": "#lightblue"
+    },
+    {
+      "name": "Backend",
+      "line": 8,
+      "color": "#FFE0B2"
+    }
+  ],
+  "events": [
+    {
+      "type": "autonumber",
+      "line": 3,
+      "action": "start",
+      "format": "<b>Step 0"
+    },
+    {
+      "type": "message",
+      "line": 13,
+      "from": {
+        "kind": "participant",
+        "id": "Customer"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "Storefront"
+      },
+      "text": "checkout",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled"
+    },
+    {
+      "type": "message",
+      "line": 14,
+      "from": {
+        "kind": "participant",
+        "id": "Storefront"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "Orders"
+      },
+      "text": "submit order",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled",
+      "activation": {
+        "op": "++"
+      }
+    },
+    {
+      "type": "message",
+      "line": 15,
+      "from": {
+        "kind": "participant",
+        "id": "Orders"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "Inventory"
+      },
+      "text": "reserve items",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled",
+      "activation": {
+        "op": "++"
+      }
+    },
+    {
+      "type": "fragment",
+      "kind": "alt",
+      "line": 16,
+      "endLine": 29,
+      "sections": [
+        {
+          "label": "all items available",
+          "line": 16,
+          "events": [
+            {
+              "type": "message",
+              "line": 17,
+              "from": {
+                "kind": "participant",
+                "id": "Inventory"
+              },
+              "to": {
+                "kind": "participant",
+                "id": "Orders"
+              },
+              "text": "reservation",
+              "dashed": true,
+              "startHead": "none",
+              "endHead": "filled"
+            },
+            {
+              "type": "message",
+              "line": 18,
+              "from": {
+                "kind": "participant",
+                "id": "Orders"
+              },
+              "to": {
+                "kind": "participant",
+                "id": "Events"
+              },
+              "text": "publish OrderPlaced",
+              "dashed": false,
+              "startHead": "none",
+              "endHead": "filled"
+            },
+            {
+              "type": "fragment",
+              "kind": "par",
+              "line": 19,
+              "endLine": 23,
+              "sections": [
+                {
+                  "label": "notifications",
+                  "line": 19,
+                  "events": [
+                    {
+                      "type": "message",
+                      "line": 20,
+                      "from": {
+                        "kind": "participant",
+                        "id": "Orders"
+                      },
+                      "to": {
+                        "kind": "participant",
+                        "id": "Storefront"
+                      },
+                      "text": "confirmation",
+                      "dashed": false,
+                      "startHead": "none",
+                      "endHead": "filled"
+                    }
+                  ]
+                },
+                {
+                  "label": "analytics",
+                  "line": 21,
+                  "events": [
+                    {
+                      "type": "message",
+                      "line": 22,
+                      "from": {
+                        "kind": "participant",
+                        "id": "Orders"
+                      },
+                      "to": {
+                        "kind": "participant",
+                        "id": "Events"
+                      },
+                      "text": "publish Metrics",
+                      "dashed": false,
+                      "startHead": "none",
+                      "endHead": "filled"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "insufficient stock",
+          "line": 24,
+          "events": [
+            {
+              "type": "message",
+              "line": 25,
+              "from": {
+                "kind": "participant",
+                "id": "Inventory"
+              },
+              "to": {
+                "kind": "participant",
+                "id": "Orders"
+              },
+              "text": "unavailable items",
+              "dashed": true,
+              "startHead": "none",
+              "endHead": "filled"
+            },
+            {
+              "type": "fragment",
+              "kind": "break",
+              "line": 26,
+              "endLine": 28,
+              "sections": [
+                {
+                  "label": "cannot fulfill",
+                  "line": 26,
+                  "events": [
+                    {
+                      "type": "message",
+                      "line": 27,
+                      "from": {
+                        "kind": "participant",
+                        "id": "Orders"
+                      },
+                      "to": {
+                        "kind": "participant",
+                        "id": "Storefront"
+                      },
+                      "text": "rejection",
+                      "dashed": true,
+                      "startHead": "none",
+                      "endHead": "filled"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "activation",
+      "line": 30,
+      "op": "deactivate",
+      "target": "Inventory"
+    },
+    {
+      "type": "return",
+      "line": 31,
+      "text": "order result"
+    },
+    {
+      "type": "delay",
+      "line": 32,
+      "text": "confirmation email arrives later"
+    },
+    {
+      "type": "message",
+      "line": 33,
+      "from": {
+        "kind": "edge",
+        "side": "left"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "Events"
+      },
+      "text": "deliver receipt",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled"
+    },
+    {
+      "type": "note",
+      "line": 34,
+      "shape": "note",
+      "position": "over",
+      "targets": [
+        "Orders",
+        "Events"
+      ],
+      "text": "consumers retry safely"
+    }
+  ],
+  "options": {
+    "hideFootbox": false
+  },
+  "skinparams": {},
+  "warnings": [],
+  "title": "Place an order"
+}

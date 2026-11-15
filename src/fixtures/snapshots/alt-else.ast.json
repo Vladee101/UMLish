@@ -1,0 +1,110 @@
+{
+  "participants": [
+    {
+      "id": "App",
+      "label": "App",
+      "kind": "participant",
+      "implicit": false,
+      "line": 2
+    },
+    {
+      "id": "Cache",
+      "label": "Cache",
+      "kind": "participant",
+      "implicit": false,
+      "line": 3
+    }
+  ],
+  "boxes": [],
+  "events": [
+    {
+      "type": "message",
+      "line": 4,
+      "from": {
+        "kind": "participant",
+        "id": "App"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "Cache"
+      },
+      "text": "lookup",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled"
+    },
+    {
+      "type": "fragment",
+      "kind": "alt",
+      "line": 5,
+      "endLine": 10,
+      "sections": [
+        {
+          "label": "cache hit",
+          "line": 5,
+          "events": [
+            {
+              "type": "message",
+              "line": 6,
+              "from": {
+                "kind": "participant",
+                "id": "Cache"
+              },
+              "to": {
+                "kind": "participant",
+                "id": "App"
+              },
+              "text": "cached value",
+              "dashed": true,
+              "startHead": "none",
+              "endHead": "filled"
+            }
+          ]
+        },
+        {
+          "label": "cache miss",
+          "line": 7,
+          "events": [
+            {
+              "type": "message",
+              "line": 8,
+              "from": {
+                "kind": "participant",
+                "id": "App"
+              },
+              "to": {
+                "kind": "participant",
+                "id": "Cache"
+              },
+              "text": "load value",
+              "dashed": false,
+              "startHead": "none",
+              "endHead": "filled"
+            },
+            {
+              "type": "message",
+              "line": 9,
+              "from": {
+                "kind": "participant",
+                "id": "Cache"
+              },
+              "to": {
+                "kind": "participant",
+                "id": "App"
+              },
+              "text": "fresh value",
+              "dashed": true,
+              "startHead": "none",
+              "endHead": "filled"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "options": {
+    "hideFootbox": false
+  },
+  "skinparams": {},
+  "warnings": []
+}

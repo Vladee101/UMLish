@@ -1,0 +1,85 @@
+{
+  "participants": [
+    {
+      "id": "Coordinator",
+      "label": "Coordinator",
+      "kind": "participant",
+      "implicit": false,
+      "line": 2
+    },
+    {
+      "id": "Alpha",
+      "label": "Alpha",
+      "kind": "participant",
+      "implicit": false,
+      "line": 3
+    },
+    {
+      "id": "Beta",
+      "label": "Beta",
+      "kind": "participant",
+      "implicit": false,
+      "line": 4
+    }
+  ],
+  "boxes": [],
+  "events": [
+    {
+      "type": "fragment",
+      "kind": "par",
+      "line": 5,
+      "endLine": 9,
+      "sections": [
+        {
+          "label": "first task",
+          "line": 5,
+          "events": [
+            {
+              "type": "message",
+              "line": 6,
+              "from": {
+                "kind": "participant",
+                "id": "Coordinator"
+              },
+              "to": {
+                "kind": "participant",
+                "id": "Alpha"
+              },
+              "text": "run",
+              "dashed": false,
+              "startHead": "none",
+              "endHead": "filled"
+            }
+          ]
+        },
+        {
+          "label": "second task",
+          "line": 7,
+          "events": [
+            {
+              "type": "message",
+              "line": 8,
+              "from": {
+                "kind": "participant",
+                "id": "Coordinator"
+              },
+              "to": {
+                "kind": "participant",
+                "id": "Beta"
+              },
+              "text": "run",
+              "dashed": false,
+              "startHead": "none",
+              "endHead": "filled"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "options": {
+    "hideFootbox": false
+  },
+  "skinparams": {},
+  "warnings": []
+}

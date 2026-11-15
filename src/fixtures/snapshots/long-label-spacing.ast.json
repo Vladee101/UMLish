@@ -1,0 +1,81 @@
+{
+  "participants": [
+    {
+      "id": "A",
+      "label": "A",
+      "kind": "participant",
+      "implicit": false,
+      "line": 2
+    },
+    {
+      "id": "B",
+      "label": "B",
+      "kind": "participant",
+      "implicit": false,
+      "line": 3
+    },
+    {
+      "id": "C",
+      "label": "C",
+      "kind": "participant",
+      "implicit": false,
+      "line": 4
+    }
+  ],
+  "boxes": [],
+  "events": [
+    {
+      "type": "message",
+      "line": 5,
+      "from": {
+        "kind": "participant",
+        "id": "A"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "C"
+      },
+      "text": "a particularly long message that must span two column gaps",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled"
+    },
+    {
+      "type": "message",
+      "line": 6,
+      "from": {
+        "kind": "participant",
+        "id": "B"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "B"
+      },
+      "text": "a long self-message label that needs its own horizontal space",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled"
+    },
+    {
+      "type": "message",
+      "line": 7,
+      "from": {
+        "kind": "participant",
+        "id": "C"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "A"
+      },
+      "text": "done",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled"
+    }
+  ],
+  "options": {
+    "hideFootbox": false
+  },
+  "skinparams": {},
+  "warnings": []
+}

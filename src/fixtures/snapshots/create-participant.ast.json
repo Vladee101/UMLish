@@ -1,0 +1,84 @@
+{
+  "participants": [
+    {
+      "id": "Factory",
+      "label": "Factory",
+      "kind": "participant",
+      "implicit": false,
+      "line": 2
+    },
+    {
+      "id": "Worker",
+      "label": "Worker",
+      "kind": "participant",
+      "implicit": false,
+      "line": 3,
+      "created": true
+    }
+  ],
+  "boxes": [],
+  "events": [
+    {
+      "type": "activation",
+      "line": 3,
+      "op": "create",
+      "target": "Worker"
+    },
+    {
+      "type": "message",
+      "line": 4,
+      "from": {
+        "kind": "participant",
+        "id": "Factory"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "Worker"
+      },
+      "text": "create",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled",
+      "activation": {
+        "op": "**"
+      }
+    },
+    {
+      "type": "message",
+      "line": 5,
+      "from": {
+        "kind": "participant",
+        "id": "Factory"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "Worker"
+      },
+      "text": "assign job",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled"
+    },
+    {
+      "type": "message",
+      "line": 6,
+      "from": {
+        "kind": "participant",
+        "id": "Worker"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "Factory"
+      },
+      "text": "ready",
+      "dashed": true,
+      "startHead": "none",
+      "endHead": "filled"
+    }
+  ],
+  "options": {
+    "hideFootbox": false
+  },
+  "skinparams": {},
+  "warnings": []
+}

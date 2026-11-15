@@ -1,0 +1,57 @@
+{
+  "participants": [
+    {
+      "id": "A",
+      "label": "A",
+      "kind": "participant",
+      "implicit": false,
+      "line": 2
+    },
+    {
+      "id": "B",
+      "label": "B",
+      "kind": "participant",
+      "implicit": false,
+      "line": 3
+    },
+    {
+      "id": "C",
+      "label": "C",
+      "kind": "participant",
+      "implicit": false,
+      "line": 4
+    }
+  ],
+  "boxes": [],
+  "events": [
+    {
+      "type": "note",
+      "line": 5,
+      "shape": "note",
+      "position": "across",
+      "targets": [],
+      "text": "applies to the whole diagram"
+    },
+    {
+      "type": "message",
+      "line": 6,
+      "from": {
+        "kind": "participant",
+        "id": "A"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "C"
+      },
+      "text": "message",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled"
+    }
+  ],
+  "options": {
+    "hideFootbox": false
+  },
+  "skinparams": {},
+  "warnings": []
+}

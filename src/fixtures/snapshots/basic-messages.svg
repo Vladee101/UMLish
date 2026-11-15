@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-30.59 0 140.72 147" width="140.72" height="147" font-family="'Liberation Sans', Arimo, Helvetica, Arial, sans-serif" font-size="13" fill="#000000">
+<rect x="-30.59" y="0" width="140.72" height="147" fill="#FFFFFF"/>
+<line x1="0" y1="29" x2="0" y2="117" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<line x1="76.16" y1="29" x2="76.16" y2="117" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<g data-line="4">
+<line x1="0" y1="55" x2="76.16" y2="55" stroke="#A80036" stroke-width="1"/>
+<polygon points="66.16,51 76.16,55 66.16,59 70.16,55" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="7" y="47.55" xml:space="preserve">request</text>
+</g>
+<g data-line="5">
+<line x1="76.16" y1="89" x2="0" y2="89" stroke="#A80036" stroke-width="1" stroke-dasharray="2,2"/>
+<polygon points="10,85 0,89 10,93 6,89" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="7" y="81.55" xml:space="preserve">response</text>
+</g>
+<g data-line="2">
+<rect x="-25.59" y="5" width="51.18" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="0" y="21.55" text-anchor="middle" xml:space="preserve">Client</text>
+</g>
+<g data-line="2">
+<rect x="-25.59" y="117" width="51.18" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="0" y="133.55" text-anchor="middle" xml:space="preserve">Client</text>
+</g>
+<g data-line="3">
+<rect x="47.19" y="5" width="57.94" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="76.16" y="21.55" text-anchor="middle" xml:space="preserve">Server</text>
+</g>
+<g data-line="3">
+<rect x="47.19" y="117" width="57.94" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="76.16" y="133.55" text-anchor="middle" xml:space="preserve">Server</text>
+</g>
+</svg>

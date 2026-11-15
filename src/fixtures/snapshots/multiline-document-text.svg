@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-56.9 0 189.97 207" width="189.97" height="207" font-family="'Liberation Sans', Arimo, Helvetica, Arial, sans-serif" font-size="13" fill="#000000">
+<rect x="-56.9" y="0" width="189.97" height="207" fill="#FFFFFF"/>
+<text x="38.08" y="39.55" text-anchor="middle" font-weight="bold" xml:space="preserve">Checkout flow</text>
+<text x="38.08" y="55.55" text-anchor="middle" font-weight="bold" xml:space="preserve">with inventory reservation</text>
+<text x="128.06" y="17.55" text-anchor="end" xml:space="preserve">Architecture group</text>
+<line x1="0" y1="97" x2="0" y2="151" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<line x1="76.16" y1="97" x2="76.16" y2="151" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<g data-line="12">
+<line x1="0" y1="123" x2="76.16" y2="123" stroke="#A80036" stroke-width="1"/>
+<polygon points="66.16,119 76.16,123 66.16,127 70.16,123" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="7" y="115.55" xml:space="preserve">checkout</text>
+</g>
+<g data-line="12">
+<rect x="-15" y="73" width="30" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="0" y="89.55" text-anchor="middle" xml:space="preserve">A</text>
+</g>
+<g data-line="12">
+<rect x="-15" y="151" width="30" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="0" y="167.55" text-anchor="middle" xml:space="preserve">A</text>
+</g>
+<g data-line="12">
+<rect x="61.16" y="73" width="30" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="76.16" y="89.55" text-anchor="middle" xml:space="preserve">B</text>
+</g>
+<g data-line="12">
+<rect x="61.16" y="151" width="30" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="76.16" y="167.55" text-anchor="middle" xml:space="preserve">B</text>
+</g>
+<text x="38.08" y="197.55" text-anchor="middle" xml:space="preserve">Draft for review</text>
+</svg>

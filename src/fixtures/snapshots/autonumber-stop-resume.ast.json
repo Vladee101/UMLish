@@ -1,0 +1,99 @@
+{
+  "participants": [
+    {
+      "id": "A",
+      "label": "A",
+      "kind": "participant",
+      "implicit": true,
+      "line": 3
+    },
+    {
+      "id": "B",
+      "label": "B",
+      "kind": "participant",
+      "implicit": true,
+      "line": 3
+    },
+    {
+      "id": "C",
+      "label": "C",
+      "kind": "participant",
+      "implicit": true,
+      "line": 5
+    }
+  ],
+  "boxes": [],
+  "events": [
+    {
+      "type": "autonumber",
+      "line": 2,
+      "action": "start",
+      "start": 1,
+      "step": 2
+    },
+    {
+      "type": "message",
+      "line": 3,
+      "from": {
+        "kind": "participant",
+        "id": "A"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "B"
+      },
+      "text": "numbered",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled"
+    },
+    {
+      "type": "autonumber",
+      "line": 4,
+      "action": "stop"
+    },
+    {
+      "type": "message",
+      "line": 5,
+      "from": {
+        "kind": "participant",
+        "id": "B"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "C"
+      },
+      "text": "unnumbered",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled"
+    },
+    {
+      "type": "autonumber",
+      "line": 6,
+      "action": "resume",
+      "step": 3
+    },
+    {
+      "type": "message",
+      "line": 7,
+      "from": {
+        "kind": "participant",
+        "id": "C"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "A"
+      },
+      "text": "numbered again",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled"
+    }
+  ],
+  "options": {
+    "hideFootbox": false
+  },
+  "skinparams": {},
+  "warnings": []
+}

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-49.83 0 219.1 209" width="219.1" height="209" font-family="'Liberation Sans', Arimo, Helvetica, Arial, sans-serif" font-size="13" fill="#000000">
+<rect x="-49.83" y="0" width="219.1" height="209" fill="#FFFFFF"/>
+<line x1="0" y1="29" x2="0" y2="179" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<line x1="82.6" y1="29" x2="82.6" y2="179" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<line x1="142.32" y1="29" x2="142.32" y2="179" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<g data-line="5"><rect x="-16" y="35" width="174.32" height="120" fill="none" stroke="#000000" stroke-width="1.5"/>
+<polygon points="-16,35 32.32,35 32.32,45 26.32,51 -16,51" fill="#EEEEEE" stroke="#000000" stroke-width="1"/>
+<text x="-8" y="47.55" font-weight="bold" xml:space="preserve">par</text>
+<text x="40.32" y="47.55" font-weight="bold" xml:space="preserve">[first task]</text>
+<line x1="-16" y1="99" x2="158.32" y2="99" stroke="#000000" stroke-width="1" stroke-dasharray="2,2"/>
+<text x="-8" y="113.55" font-weight="bold" xml:space="preserve">[second task]</text>
+</g>
+<g data-line="6">
+<line x1="0" y1="81" x2="82.6" y2="81" stroke="#A80036" stroke-width="1"/>
+<polygon points="72.6,77 82.6,81 72.6,85 76.6,81" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="7" y="73.55" xml:space="preserve">run</text>
+</g>
+<g data-line="8">
+<line x1="0" y1="139" x2="142.32" y2="139" stroke="#A80036" stroke-width="1"/>
+<polygon points="132.32,135 142.32,139 132.32,143 136.32,139" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="7" y="131.55" xml:space="preserve">run</text>
+</g>
+<g data-line="2">
+<rect x="-44.83" y="5" width="89.66" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="0" y="21.55" text-anchor="middle" xml:space="preserve">Coordinator</text>
+</g>
+<g data-line="2">
+<rect x="-44.83" y="179" width="89.66" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="0" y="195.55" text-anchor="middle" xml:space="preserve">Coordinator</text>
+</g>
+<g data-line="3">
+<rect x="58.83" y="5" width="47.54" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="82.6" y="21.55" text-anchor="middle" xml:space="preserve">Alpha</text>
+</g>
+<g data-line="3">
+<rect x="58.83" y="179" width="47.54" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="82.6" y="195.55" text-anchor="middle" xml:space="preserve">Alpha</text>
+</g>
+<g data-line="4">
+<rect x="120.37" y="5" width="43.9" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="142.32" y="21.55" text-anchor="middle" xml:space="preserve">Beta</text>
+</g>
+<g data-line="4">
+<rect x="120.37" y="179" width="43.9" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="142.32" y="195.55" text-anchor="middle" xml:space="preserve">Beta</text>
+</g>
+</svg>

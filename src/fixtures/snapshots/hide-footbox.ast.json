@@ -1,0 +1,58 @@
+{
+  "participants": [
+    {
+      "id": "User",
+      "label": "User",
+      "kind": "actor",
+      "implicit": false,
+      "line": 3
+    },
+    {
+      "id": "App",
+      "label": "App",
+      "kind": "participant",
+      "implicit": false,
+      "line": 4
+    }
+  ],
+  "boxes": [],
+  "events": [
+    {
+      "type": "message",
+      "line": 5,
+      "from": {
+        "kind": "participant",
+        "id": "User"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "App"
+      },
+      "text": "action",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled"
+    },
+    {
+      "type": "message",
+      "line": 6,
+      "from": {
+        "kind": "participant",
+        "id": "App"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "User"
+      },
+      "text": "result",
+      "dashed": true,
+      "startHead": "none",
+      "endHead": "filled"
+    }
+  ],
+  "options": {
+    "hideFootbox": true
+  },
+  "skinparams": {},
+  "warnings": []
+}

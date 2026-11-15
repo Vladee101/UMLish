@@ -1,0 +1,70 @@
+{
+  "participants": [
+    {
+      "id": "A",
+      "label": "A",
+      "kind": "participant",
+      "implicit": false,
+      "line": 2
+    },
+    {
+      "id": "B",
+      "label": "B",
+      "kind": "participant",
+      "implicit": false,
+      "line": 3
+    },
+    {
+      "id": "C",
+      "label": "C",
+      "kind": "participant",
+      "implicit": false,
+      "line": 4
+    }
+  ],
+  "boxes": [],
+  "events": [
+    {
+      "type": "note",
+      "line": 5,
+      "shape": "note",
+      "position": "left",
+      "targets": [
+        "A"
+      ],
+      "text": "a wide note on the left changes the first gap"
+    },
+    {
+      "type": "note",
+      "line": 6,
+      "shape": "note",
+      "position": "over",
+      "targets": [
+        "B",
+        "C"
+      ],
+      "text": "a wide shared note changes the final gap"
+    },
+    {
+      "type": "message",
+      "line": 7,
+      "from": {
+        "kind": "participant",
+        "id": "A"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "C"
+      },
+      "text": "message",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled"
+    }
+  ],
+  "options": {
+    "hideFootbox": false
+  },
+  "skinparams": {},
+  "warnings": []
+}

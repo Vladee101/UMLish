@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-35.14 0 162.02 223" width="162.02" height="223" font-family="'Liberation Sans', Arimo, Helvetica, Arial, sans-serif" font-size="13" fill="#000000">
+<rect x="-35.14" y="0" width="162.02" height="223" fill="#FFFFFF"/>
+<line x1="0" y1="29" x2="0" y2="193" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<g data-line="3">
+<path d="M0,55 h24 v14 h-24" fill="none" stroke="#A80036" stroke-width="1"/>
+<polygon points="10,65 0,69 10,73 6,69" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="7" y="47.55" xml:space="preserve">initialize</text>
+</g>
+<g data-line="4">
+<path d="M0,103 h24 v14 h-24" fill="none" stroke="#A80036" stroke-width="1"/>
+<polygon points="10,113 0,117 10,121 6,117" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="7" y="95.55" xml:space="preserve">process queue</text>
+</g>
+<g data-line="5">
+<path d="M0,151 h24 v14 h-24" fill="none" stroke="#A80036" stroke-width="1" stroke-dasharray="2,2"/>
+<polygon points="10,161 0,165 10,169 6,165" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="7" y="143.55" xml:space="preserve">checkpoint</text>
+</g>
+<g data-line="2">
+<rect x="-30.14" y="5" width="60.28" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="0" y="21.55" text-anchor="middle" xml:space="preserve">Worker</text>
+</g>
+<g data-line="2">
+<rect x="-30.14" y="193" width="60.28" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="0" y="209.55" text-anchor="middle" xml:space="preserve">Worker</text>
+</g>
+</svg>

@@ -1,0 +1,67 @@
+{
+  "participants": [
+    {
+      "id": "Worker",
+      "label": "Worker",
+      "kind": "participant",
+      "implicit": false,
+      "line": 2
+    }
+  ],
+  "boxes": [],
+  "events": [
+    {
+      "type": "message",
+      "line": 3,
+      "from": {
+        "kind": "participant",
+        "id": "Worker"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "Worker"
+      },
+      "text": "initialize",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled"
+    },
+    {
+      "type": "message",
+      "line": 4,
+      "from": {
+        "kind": "participant",
+        "id": "Worker"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "Worker"
+      },
+      "text": "process queue",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled"
+    },
+    {
+      "type": "message",
+      "line": 5,
+      "from": {
+        "kind": "participant",
+        "id": "Worker"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "Worker"
+      },
+      "text": "checkpoint",
+      "dashed": true,
+      "startHead": "none",
+      "endHead": "filled"
+    }
+  ],
+  "options": {
+    "hideFootbox": false
+  },
+  "skinparams": {},
+  "warnings": []
+}

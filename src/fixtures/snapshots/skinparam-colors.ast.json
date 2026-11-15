@@ -1,0 +1,60 @@
+{
+  "participants": [
+    {
+      "id": "A",
+      "label": "A",
+      "kind": "participant",
+      "implicit": false,
+      "line": 11
+    },
+    {
+      "id": "B",
+      "label": "B",
+      "kind": "participant",
+      "implicit": false,
+      "line": 12
+    }
+  ],
+  "boxes": [],
+  "events": [
+    {
+      "type": "message",
+      "line": 13,
+      "from": {
+        "kind": "participant",
+        "id": "A"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "B"
+      },
+      "text": "styled",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled"
+    },
+    {
+      "type": "note",
+      "line": 14,
+      "shape": "note",
+      "position": "over",
+      "targets": [
+        "B"
+      ],
+      "text": "themed note"
+    }
+  ],
+  "options": {
+    "hideFootbox": false
+  },
+  "skinparams": {
+    "backgroundcolor": "#FAFAFA",
+    "sequence.ArrowColor": "#224477",
+    "sequence.LifeLineBorderColor": "#888888",
+    "sequence.ParticipantBackgroundColor": "#E3F2FD",
+    "sequence.ParticipantBorderColor": "#1565C0",
+    "sequence.NoteBackgroundColor": "#FFF9C4",
+    "sequence.NoteBorderColor": "#F9A825"
+  },
+  "warnings": []
+}

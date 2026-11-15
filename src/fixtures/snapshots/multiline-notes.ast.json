@@ -1,0 +1,63 @@
+{
+  "participants": [
+    {
+      "id": "A",
+      "label": "A",
+      "kind": "participant",
+      "implicit": false,
+      "line": 2
+    },
+    {
+      "id": "B",
+      "label": "B",
+      "kind": "participant",
+      "implicit": false,
+      "line": 3
+    }
+  ],
+  "boxes": [],
+  "events": [
+    {
+      "type": "note",
+      "line": 4,
+      "shape": "note",
+      "position": "left",
+      "targets": [
+        "A"
+      ],
+      "text": "First line\nSecond line"
+    },
+    {
+      "type": "message",
+      "line": 8,
+      "from": {
+        "kind": "participant",
+        "id": "A"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "B"
+      },
+      "text": "work",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled"
+    },
+    {
+      "type": "note",
+      "line": 9,
+      "shape": "note",
+      "position": "over",
+      "targets": [
+        "A",
+        "B"
+      ],
+      "text": "Shared context\nacross two lines"
+    }
+  ],
+  "options": {
+    "hideFootbox": false
+  },
+  "skinparams": {},
+  "warnings": []
+}

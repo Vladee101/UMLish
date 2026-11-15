@@ -1,0 +1,67 @@
+{
+  "participants": [
+    {
+      "id": "Web",
+      "label": "Web",
+      "kind": "participant",
+      "implicit": false,
+      "line": 2
+    },
+    {
+      "id": "Auth",
+      "label": "Auth",
+      "kind": "participant",
+      "implicit": false,
+      "line": 3
+    }
+  ],
+  "boxes": [],
+  "events": [
+    {
+      "type": "message",
+      "line": 4,
+      "from": {
+        "kind": "participant",
+        "id": "Web"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "Auth"
+      },
+      "text": "login",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled"
+    },
+    {
+      "type": "ref",
+      "line": 5,
+      "targets": [
+        "Web",
+        "Auth"
+      ],
+      "text": "see authentication flow"
+    },
+    {
+      "type": "message",
+      "line": 6,
+      "from": {
+        "kind": "participant",
+        "id": "Auth"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "Web"
+      },
+      "text": "session",
+      "dashed": true,
+      "startHead": "none",
+      "endHead": "filled"
+    }
+  ],
+  "options": {
+    "hideFootbox": false
+  },
+  "skinparams": {},
+  "warnings": []
+}

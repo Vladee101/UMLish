@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-41 0 231.32 333" width="231.32" height="333" font-family="'Liberation Sans', Arimo, Helvetica, Arial, sans-serif" font-size="13" fill="#000000">
+<rect x="-41" y="0" width="231.32" height="333" fill="#FFFFFF"/>
+<line x1="0" y1="29" x2="0" y2="303" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<line x1="115.74" y1="29" x2="115.74" y2="303" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<g data-line="4"><rect x="-36" y="35" width="221.32" height="244" fill="none" stroke="#000000" stroke-width="1.5"/>
+<polygon points="-36,35 8.74,35 8.74,45 2.74,51 -36,51" fill="#EEEEEE" stroke="#000000" stroke-width="1"/>
+<text x="-28" y="47.55" font-weight="bold" xml:space="preserve">alt</text>
+<text x="16.74" y="47.55" font-weight="bold" xml:space="preserve">[connected]</text>
+<line x1="-36" y1="209" x2="185.32" y2="209" stroke="#000000" stroke-width="1" stroke-dasharray="2,2"/>
+<text x="-28" y="223.55" font-weight="bold" xml:space="preserve">[offline]</text>
+</g>
+<g data-line="5"><rect x="-26" y="61" width="201.32" height="134" fill="none" stroke="#000000" stroke-width="1.5"/>
+<polygon points="-26,61 26.18,61 26.18,71 20.18,77 -26,77" fill="#EEEEEE" stroke="#000000" stroke-width="1"/>
+<text x="-18" y="73.55" font-weight="bold" xml:space="preserve">loop</text>
+<text x="34.18" y="73.55" font-weight="bold" xml:space="preserve">[up to 3 attempts]</text>
+</g>
+<g data-line="6">
+<line x1="0" y1="107" x2="115.74" y2="107" stroke="#A80036" stroke-width="1"/>
+<polygon points="105.74,103 115.74,107 105.74,111 109.74,107" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="7" y="99.55" xml:space="preserve">ping</text>
+</g>
+<g data-line="7"><rect x="-16" y="121" width="181.32" height="62" fill="none" stroke="#000000" stroke-width="1.5"/>
+<polygon points="-16,121 32.32,121 32.32,131 26.32,137 -16,137" fill="#EEEEEE" stroke="#000000" stroke-width="1"/>
+<text x="-8" y="133.55" font-weight="bold" xml:space="preserve">opt</text>
+<text x="40.32" y="133.55" font-weight="bold" xml:space="preserve">[diagnostic mode]</text>
+</g>
+<g data-line="8">
+<line x1="115.74" y1="167" x2="0" y2="167" stroke="#A80036" stroke-width="1" stroke-dasharray="2,2"/>
+<polygon points="10,163 0,167 10,171 6,167" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="7" y="159.55" xml:space="preserve">diagnostics</text>
+</g>
+<g data-line="12">
+<path d="M0,249 h24 v14 h-24" fill="none" stroke="#A80036" stroke-width="1"/>
+<polygon points="10,259 0,263 10,267 6,263" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="7" y="241.55" xml:space="preserve">queue locally</text>
+</g>
+<g data-line="2">
+<rect x="-15" y="5" width="30" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="0" y="21.55" text-anchor="middle" xml:space="preserve">A</text>
+</g>
+<g data-line="2">
+<rect x="-15" y="303" width="30" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="0" y="319.55" text-anchor="middle" xml:space="preserve">A</text>
+</g>
+<g data-line="3">
+<rect x="100.74" y="5" width="30" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="115.74" y="21.55" text-anchor="middle" xml:space="preserve">B</text>
+</g>
+<g data-line="3">
+<rect x="100.74" y="303" width="30" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="115.74" y="319.55" text-anchor="middle" xml:space="preserve">B</text>
+</g>
+</svg>

@@ -1,0 +1,180 @@
+{
+  "participants": [
+    {
+      "id": "User",
+      "label": "User",
+      "kind": "actor",
+      "implicit": false,
+      "line": 2
+    },
+    {
+      "id": "UI",
+      "label": "UI",
+      "kind": "boundary",
+      "implicit": false,
+      "line": 3
+    },
+    {
+      "id": "Controller",
+      "label": "Controller",
+      "kind": "control",
+      "implicit": false,
+      "line": 4
+    },
+    {
+      "id": "Model",
+      "label": "Model",
+      "kind": "entity",
+      "implicit": false,
+      "line": 5
+    },
+    {
+      "id": "DB",
+      "label": "DB",
+      "kind": "database",
+      "implicit": false,
+      "line": 6
+    },
+    {
+      "id": "Replicas",
+      "label": "Replicas",
+      "kind": "collections",
+      "implicit": false,
+      "line": 7
+    },
+    {
+      "id": "Jobs",
+      "label": "Jobs",
+      "kind": "queue",
+      "implicit": false,
+      "line": 8
+    },
+    {
+      "id": "Service",
+      "label": "Service",
+      "kind": "participant",
+      "implicit": false,
+      "line": 9
+    }
+  ],
+  "boxes": [],
+  "events": [
+    {
+      "type": "message",
+      "line": 10,
+      "from": {
+        "kind": "participant",
+        "id": "User"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "UI"
+      },
+      "text": "use",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled"
+    },
+    {
+      "type": "message",
+      "line": 11,
+      "from": {
+        "kind": "participant",
+        "id": "UI"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "Controller"
+      },
+      "text": "dispatch",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled"
+    },
+    {
+      "type": "message",
+      "line": 12,
+      "from": {
+        "kind": "participant",
+        "id": "Controller"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "Model"
+      },
+      "text": "read",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled"
+    },
+    {
+      "type": "message",
+      "line": 13,
+      "from": {
+        "kind": "participant",
+        "id": "Controller"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "DB"
+      },
+      "text": "query",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled"
+    },
+    {
+      "type": "message",
+      "line": 14,
+      "from": {
+        "kind": "participant",
+        "id": "Controller"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "Replicas"
+      },
+      "text": "update",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled"
+    },
+    {
+      "type": "message",
+      "line": 15,
+      "from": {
+        "kind": "participant",
+        "id": "Controller"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "Jobs"
+      },
+      "text": "enqueue",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled"
+    },
+    {
+      "type": "message",
+      "line": 16,
+      "from": {
+        "kind": "participant",
+        "id": "Controller"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "Service"
+      },
+      "text": "call",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled"
+    }
+  ],
+  "options": {
+    "hideFootbox": false
+  },
+  "skinparams": {},
+  "warnings": []
+}

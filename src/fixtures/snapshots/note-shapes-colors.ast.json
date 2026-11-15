@@ -1,0 +1,60 @@
+{
+  "participants": [
+    {
+      "id": "A",
+      "label": "A",
+      "kind": "participant",
+      "implicit": false,
+      "line": 2
+    },
+    {
+      "id": "B",
+      "label": "B",
+      "kind": "participant",
+      "implicit": false,
+      "line": 3
+    }
+  ],
+  "boxes": [],
+  "events": [
+    {
+      "type": "note",
+      "line": 4,
+      "shape": "note",
+      "position": "right",
+      "targets": [
+        "A"
+      ],
+      "text": "standard",
+      "color": "#pink"
+    },
+    {
+      "type": "note",
+      "line": 5,
+      "shape": "hnote",
+      "position": "over",
+      "targets": [
+        "B"
+      ],
+      "text": "hexagonal",
+      "color": "#lightblue"
+    },
+    {
+      "type": "note",
+      "line": 6,
+      "shape": "rnote",
+      "position": "over",
+      "targets": [
+        "A",
+        "B"
+      ],
+      "text": "rectangular",
+      "color": "#FFE0B2"
+    }
+  ],
+  "options": {
+    "hideFootbox": false
+  },
+  "skinparams": {},
+  "warnings": []
+}

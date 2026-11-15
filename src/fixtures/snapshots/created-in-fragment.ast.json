@@ -1,0 +1,82 @@
+{
+  "participants": [
+    {
+      "id": "Factory",
+      "label": "Factory",
+      "kind": "participant",
+      "implicit": false,
+      "line": 2
+    },
+    {
+      "id": "Worker",
+      "label": "Worker",
+      "kind": "participant",
+      "implicit": false,
+      "line": 4,
+      "created": true
+    }
+  ],
+  "boxes": [],
+  "events": [
+    {
+      "type": "fragment",
+      "kind": "opt",
+      "line": 3,
+      "endLine": 7,
+      "sections": [
+        {
+          "label": "worker required",
+          "line": 3,
+          "events": [
+            {
+              "type": "activation",
+              "line": 4,
+              "op": "create",
+              "target": "Worker"
+            },
+            {
+              "type": "message",
+              "line": 5,
+              "from": {
+                "kind": "participant",
+                "id": "Factory"
+              },
+              "to": {
+                "kind": "participant",
+                "id": "Worker"
+              },
+              "text": "construct",
+              "dashed": false,
+              "startHead": "none",
+              "endHead": "filled",
+              "activation": {
+                "op": "**"
+              }
+            },
+            {
+              "type": "message",
+              "line": 6,
+              "from": {
+                "kind": "participant",
+                "id": "Factory"
+              },
+              "to": {
+                "kind": "participant",
+                "id": "Worker"
+              },
+              "text": "configure",
+              "dashed": false,
+              "startHead": "none",
+              "endHead": "filled"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "options": {
+    "hideFootbox": false
+  },
+  "skinparams": {},
+  "warnings": []
+}

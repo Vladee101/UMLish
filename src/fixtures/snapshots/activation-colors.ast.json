@@ -1,0 +1,111 @@
+{
+  "participants": [
+    {
+      "id": "A",
+      "label": "A",
+      "kind": "participant",
+      "implicit": true,
+      "line": 2
+    },
+    {
+      "id": "B",
+      "label": "B",
+      "kind": "participant",
+      "implicit": true,
+      "line": 2
+    },
+    {
+      "id": "C",
+      "label": "C",
+      "kind": "participant",
+      "implicit": true,
+      "line": 3
+    }
+  ],
+  "boxes": [],
+  "events": [
+    {
+      "type": "message",
+      "line": 2,
+      "from": {
+        "kind": "participant",
+        "id": "A"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "B"
+      },
+      "text": "blue bar",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled",
+      "activation": {
+        "op": "++",
+        "color": "#lightblue"
+      }
+    },
+    {
+      "type": "message",
+      "line": 3,
+      "from": {
+        "kind": "participant",
+        "id": "B"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "C"
+      },
+      "text": "orange bar",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled",
+      "activation": {
+        "op": "++",
+        "color": "#FFE0B2"
+      }
+    },
+    {
+      "type": "message",
+      "line": 4,
+      "from": {
+        "kind": "participant",
+        "id": "C"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "B"
+      },
+      "text": "finish",
+      "dashed": true,
+      "startHead": "none",
+      "endHead": "filled",
+      "activation": {
+        "op": "--"
+      }
+    },
+    {
+      "type": "message",
+      "line": 5,
+      "from": {
+        "kind": "participant",
+        "id": "B"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "A"
+      },
+      "text": "finish",
+      "dashed": true,
+      "startHead": "none",
+      "endHead": "filled",
+      "activation": {
+        "op": "--"
+      }
+    }
+  ],
+  "options": {
+    "hideFootbox": false
+  },
+  "skinparams": {},
+  "warnings": []
+}

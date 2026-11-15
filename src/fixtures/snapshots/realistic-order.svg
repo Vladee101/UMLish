@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-47.07 0 618.68 807" width="618.68" height="807" font-family="'Liberation Sans', Arimo, Helvetica, Arial, sans-serif" font-size="13" fill="#000000">
+<rect x="-47.07" y="0" width="618.68" height="807" fill="#FFFFFF"/>
+<text x="262.27" y="17.55" text-anchor="middle" font-weight="bold" xml:space="preserve">Place an order</text>
+<g><rect x="-42.07" y="35" width="214.16" height="772" fill="lightblue" stroke="#000" stroke-width="1"/>
+<text x="65.01" y="48.55" text-anchor="middle" font-weight="bold" xml:space="preserve">Customer tier</text>
+</g>
+<g><rect x="242.68" y="35" width="323.93" height="772" fill="#FFE0B2" stroke="#000" stroke-width="1"/>
+<text x="404.64" y="48.55" text-anchor="middle" font-weight="bold" xml:space="preserve">Backend</text>
+</g>
+<line x1="0" y1="115" x2="0" y2="741" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<line x1="125.08" y1="115" x2="125.08" y2="741" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<line x1="275.65" y1="115" x2="275.65" y2="741" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<line x1="451.17" y1="115" x2="451.17" y2="741" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<line x1="531.64" y1="79" x2="531.64" y2="741" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<rect x="446.17" y="209" width="10" height="342" fill="#FFFFFF" stroke="#A80036" stroke-width="1"/>
+<rect x="270.65" y="175" width="10" height="434" fill="#FFFFFF" stroke="#A80036" stroke-width="1"/>
+<g data-line="13">
+<line x1="0" y1="141" x2="125.08" y2="141" stroke="#A80036" stroke-width="1"/>
+<polygon points="115.08,137 125.08,141 115.08,145 119.08,141" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="7" y="133.55" xml:space="preserve"><tspan font-weight="bold">Step 1</tspan> checkout</text>
+</g>
+<g data-line="14">
+<line x1="125.08" y1="175" x2="270.65" y2="175" stroke="#A80036" stroke-width="1"/>
+<polygon points="260.65,171 270.65,175 260.65,179 264.65,175" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="132.08" y="167.55" xml:space="preserve"><tspan font-weight="bold">Step 2</tspan> submit order</text>
+</g>
+<g data-line="15">
+<line x1="280.65" y1="209" x2="446.17" y2="209" stroke="#A80036" stroke-width="1"/>
+<polygon points="436.17,205 446.17,209 436.17,213 440.17,209" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="287.65" y="201.55" xml:space="preserve"><tspan font-weight="bold">Step 3</tspan> reserve items</text>
+</g>
+<g data-line="16"><rect x="99.08" y="223" width="458.56" height="356" fill="none" stroke="#000000" stroke-width="1.5"/>
+<polygon points="99.08,223 143.82,223 143.82,233 137.82,239 99.08,239" fill="#EEEEEE" stroke="#000000" stroke-width="1"/>
+<text x="107.08" y="235.55" font-weight="bold" xml:space="preserve">alt</text>
+<text x="151.82" y="235.55" font-weight="bold" xml:space="preserve">[all items available]</text>
+<line x1="99.08" y1="451" x2="557.64" y2="451" stroke="#000000" stroke-width="1" stroke-dasharray="2,2"/>
+<text x="107.08" y="465.55" font-weight="bold" xml:space="preserve">[insufficient stock]</text>
+</g>
+<g data-line="17">
+<line x1="446.17" y1="269" x2="280.65" y2="269" stroke="#A80036" stroke-width="1" stroke-dasharray="2,2"/>
+<polygon points="290.65,265 280.65,269 290.65,273 286.65,269" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="287.65" y="261.55" xml:space="preserve"><tspan font-weight="bold">Step 4</tspan> reservation</text>
+</g>
+<g data-line="18">
+<line x1="280.65" y1="303" x2="531.64" y2="303" stroke="#A80036" stroke-width="1"/>
+<polygon points="521.64,299 531.64,303 521.64,307 525.64,303" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="287.65" y="295.55" xml:space="preserve"><tspan font-weight="bold">Step 5</tspan> publish OrderPlaced</text>
+</g>
+<g data-line="19"><rect x="109.08" y="317" width="438.56" height="120" fill="none" stroke="#000000" stroke-width="1.5"/>
+<polygon points="109.08,317 157.41,317 157.41,327 151.41,333 109.08,333" fill="#EEEEEE" stroke="#000000" stroke-width="1"/>
+<text x="117.08" y="329.55" font-weight="bold" xml:space="preserve">par</text>
+<text x="165.41" y="329.55" font-weight="bold" xml:space="preserve">[notifications]</text>
+<line x1="109.08" y1="381" x2="547.64" y2="381" stroke="#000000" stroke-width="1" stroke-dasharray="2,2"/>
+<text x="117.08" y="395.55" font-weight="bold" xml:space="preserve">[analytics]</text>
+</g>
+<g data-line="20">
+<line x1="270.65" y1="363" x2="125.08" y2="363" stroke="#A80036" stroke-width="1"/>
+<polygon points="135.08,359 125.08,363 135.08,367 131.08,363" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="132.08" y="355.55" xml:space="preserve"><tspan font-weight="bold">Step 6</tspan> confirmation</text>
+</g>
+<g data-line="22">
+<line x1="280.65" y1="421" x2="531.64" y2="421" stroke="#A80036" stroke-width="1"/>
+<polygon points="521.64,417 531.64,421 521.64,425 525.64,421" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="287.65" y="413.55" xml:space="preserve"><tspan font-weight="bold">Step 7</tspan> publish Metrics</text>
+</g>
+<g data-line="25">
+<line x1="446.17" y1="491" x2="280.65" y2="491" stroke="#A80036" stroke-width="1" stroke-dasharray="2,2"/>
+<polygon points="290.65,487 280.65,491 290.65,495 286.65,491" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="287.65" y="483.55" xml:space="preserve"><tspan font-weight="bold">Step 8</tspan> unavailable items</text>
+</g>
+<g data-line="26"><rect x="109.08" y="505" width="182.56" height="62" fill="none" stroke="#000000" stroke-width="1.5"/>
+<polygon points="109.08,505 172.29,505 172.29,515 166.29,521 109.08,521" fill="#EEEEEE" stroke="#000000" stroke-width="1"/>
+<text x="117.08" y="517.55" font-weight="bold" xml:space="preserve">break</text>
+<text x="180.29" y="517.55" font-weight="bold" xml:space="preserve">[cannot fulfill]</text>
+</g>
+<g data-line="27">
+<line x1="270.65" y1="551" x2="125.08" y2="551" stroke="#A80036" stroke-width="1" stroke-dasharray="2,2"/>
+<polygon points="135.08,547 125.08,551 135.08,555 131.08,551" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="132.08" y="543.55" xml:space="preserve"><tspan font-weight="bold">Step 9</tspan> rejection</text>
+</g>
+<g data-line="31">
+<line x1="270.65" y1="609" x2="125.08" y2="609" stroke="#A80036" stroke-width="1" stroke-dasharray="2,2"/>
+<polygon points="135.08,605 125.08,609 135.08,613 131.08,609" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="132.08" y="601.55" xml:space="preserve"><tspan font-weight="bold">Step 10</tspan> order result</text>
+</g>
+<rect x="156" y="630" width="212.54" height="16" fill="#FFFFFF"/>
+<text x="262.27" y="642.55" text-anchor="middle" xml:space="preserve">confirmation email arrives later</text>
+<g data-line="33">
+<line x1="-30" y1="673" x2="531.64" y2="673" stroke="#A80036" stroke-width="1"/>
+<polygon points="521.64,669 531.64,673 521.64,677 525.64,673" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="-23" y="665.55" xml:space="preserve"><tspan font-weight="bold">Step 11</tspan> deliver receipt</text>
+</g>
+<g data-line="34">
+<polygon points="265.65,687 531.64,687 541.64,697 541.64,713 265.65,713" fill="#FBFB77" stroke="#A80036" stroke-width="1"/>
+<path d="M531.64,687 v10 h10" fill="none" stroke="#A80036" stroke-width="1"/>
+<text x="273.65" y="704.55" xml:space="preserve">consumers retry safely</text>
+</g>
+<g data-line="5">
+<circle cx="0" cy="64" r="8" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<line x1="0" y1="72" x2="0" y2="85" stroke="#A80036" stroke-width="1.5"/>
+<line x1="-13" y1="77" x2="13" y2="77" stroke="#A80036" stroke-width="1.5"/>
+<line x1="0" y1="85" x2="-13" y2="93" stroke="#A80036" stroke-width="1.5"/>
+<line x1="0" y1="85" x2="13" y2="93" stroke="#A80036" stroke-width="1.5"/>
+<text x="0" y="109.55" text-anchor="middle" xml:space="preserve">Customer</text>
+</g>
+<g data-line="5">
+<circle cx="0" cy="750" r="8" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<line x1="0" y1="758" x2="0" y2="771" stroke="#A80036" stroke-width="1.5"/>
+<line x1="-13" y1="763" x2="13" y2="763" stroke="#A80036" stroke-width="1.5"/>
+<line x1="0" y1="771" x2="-13" y2="779" stroke="#A80036" stroke-width="1.5"/>
+<line x1="0" y1="771" x2="13" y2="779" stroke="#A80036" stroke-width="1.5"/>
+<text x="0" y="795.55" text-anchor="middle" xml:space="preserve">Customer</text>
+</g>
+<g data-line="6">
+<circle cx="129.08" cy="72" r="11" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<line x1="111.08" y1="61" x2="111.08" y2="83" stroke="#A80036" stroke-width="1.5"/>
+<line x1="111.08" y1="72" x2="118.08" y2="72" stroke="#A80036" stroke-width="1.5"/>
+<text x="125.08" y="109.55" text-anchor="middle" xml:space="preserve">Storefront</text>
+</g>
+<g data-line="6">
+<circle cx="129.08" cy="758" r="11" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<line x1="111.08" y1="747" x2="111.08" y2="769" stroke="#A80036" stroke-width="1.5"/>
+<line x1="111.08" y1="758" x2="118.08" y2="758" stroke="#A80036" stroke-width="1.5"/>
+<text x="125.08" y="795.55" text-anchor="middle" xml:space="preserve">Storefront</text>
+</g>
+<g data-line="9">
+<circle cx="275.65" cy="74" r="11" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<polygon points="272.65,59 278.65,63 272.65,67" fill="#A80036"/>
+<text x="275.65" y="109.55" text-anchor="middle" xml:space="preserve">Orders</text>
+</g>
+<g data-line="9">
+<circle cx="275.65" cy="760" r="11" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<polygon points="272.65,745 278.65,749 272.65,753" fill="#A80036"/>
+<text x="275.65" y="795.55" text-anchor="middle" xml:space="preserve">Orders</text>
+</g>
+<g data-line="10">
+<path d="M436.17,61 a15,6 0 0 1 30,0 v24 a15,6 0 0 1 -30,0 z" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<path d="M436.17,61 a15,6 0 0 0 30,0" fill="none" stroke="#A80036" stroke-width="1.5"/>
+<text x="451.17" y="109.55" text-anchor="middle" xml:space="preserve">Inventory</text>
+</g>
+<g data-line="10">
+<path d="M436.17,747 a15,6 0 0 1 30,0 v24 a15,6 0 0 1 -30,0 z" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<path d="M436.17,747 a15,6 0 0 0 30,0" fill="none" stroke="#A80036" stroke-width="1.5"/>
+<text x="451.17" y="795.55" text-anchor="middle" xml:space="preserve">Inventory</text>
+</g>
+<g data-line="11">
+<rect x="502.67" y="55" width="57.94" height="24" rx="12" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="531.64" y="71.55" text-anchor="middle" xml:space="preserve">Events</text>
+</g>
+<g data-line="11">
+<rect x="502.67" y="741" width="57.94" height="24" rx="12" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="531.64" y="757.55" text-anchor="middle" xml:space="preserve">Events</text>
+</g>
+</svg>

@@ -1,0 +1,86 @@
+{
+  "participants": [
+    {
+      "id": "App",
+      "label": "App",
+      "kind": "participant",
+      "implicit": false,
+      "line": 2
+    },
+    {
+      "id": "DB",
+      "label": "DB",
+      "kind": "participant",
+      "implicit": false,
+      "line": 3
+    }
+  ],
+  "boxes": [],
+  "events": [
+    {
+      "type": "fragment",
+      "kind": "critical",
+      "line": 4,
+      "endLine": 9,
+      "sections": [
+        {
+          "label": "transaction",
+          "line": 4,
+          "events": [
+            {
+              "type": "message",
+              "line": 5,
+              "from": {
+                "kind": "participant",
+                "id": "App"
+              },
+              "to": {
+                "kind": "participant",
+                "id": "DB"
+              },
+              "text": "update",
+              "dashed": false,
+              "startHead": "none",
+              "endHead": "filled"
+            },
+            {
+              "type": "fragment",
+              "kind": "break",
+              "line": 6,
+              "endLine": 8,
+              "sections": [
+                {
+                  "label": "validation failed",
+                  "line": 6,
+                  "events": [
+                    {
+                      "type": "message",
+                      "line": 7,
+                      "from": {
+                        "kind": "participant",
+                        "id": "DB"
+                      },
+                      "to": {
+                        "kind": "participant",
+                        "id": "App"
+                      },
+                      "text": "rollback",
+                      "dashed": true,
+                      "startHead": "none",
+                      "endHead": "filled"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "options": {
+    "hideFootbox": false
+  },
+  "skinparams": {},
+  "warnings": []
+}

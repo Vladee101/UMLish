@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-28.77 0 184.68 219" width="184.68" height="219" font-family="'Liberation Sans', Arimo, Helvetica, Arial, sans-serif" font-size="13" fill="#000000">
+<rect x="-28.77" y="0" width="184.68" height="219" fill="#FFFFFF"/>
+<line x1="0" y1="29" x2="0" y2="153" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<line x1="59.72" y1="29" x2="59.72" y2="153" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<line x1="123.29" y1="65" x2="123.29" y2="153" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<g data-line="5">
+<line x1="0" y1="91" x2="59.72" y2="91" stroke="#A80036" stroke-width="1"/>
+<polygon points="49.72,87 59.72,91 49.72,95 53.72,91" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="7" y="83.55" xml:space="preserve">ping</text>
+</g>
+<g data-line="6">
+<line x1="59.72" y1="125" x2="123.29" y2="125" stroke="#A80036" stroke-width="1"/>
+<polygon points="113.29,121 123.29,125 113.29,129 117.29,125" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="66.72" y="117.55" xml:space="preserve">notify</text>
+</g>
+<g data-line="2">
+<rect x="-23.77" y="5" width="47.54" height="24" rx="2.5" fill="lightblue" stroke="#A80036" stroke-width="1.5"/>
+<text x="0" y="21.55" text-anchor="middle" xml:space="preserve">Alpha</text>
+</g>
+<g data-line="2">
+<rect x="-23.77" y="153" width="47.54" height="24" rx="2.5" fill="lightblue" stroke="#A80036" stroke-width="1.5"/>
+<text x="0" y="169.55" text-anchor="middle" xml:space="preserve">Alpha</text>
+</g>
+<g data-line="3">
+<rect x="37.77" y="5" width="43.9" height="24" rx="2.5" fill="#FFE0B2" stroke="#A80036" stroke-width="1.5"/>
+<text x="59.72" y="21.55" text-anchor="middle" xml:space="preserve">Beta</text>
+</g>
+<g data-line="3">
+<rect x="37.77" y="153" width="43.9" height="24" rx="2.5" fill="#FFE0B2" stroke="#A80036" stroke-width="1.5"/>
+<text x="59.72" y="169.55" text-anchor="middle" xml:space="preserve">Beta</text>
+</g>
+<g data-line="4">
+<circle cx="123.29" cy="14" r="8" fill="pink" stroke="#A80036" stroke-width="1.5"/>
+<line x1="123.29" y1="22" x2="123.29" y2="35" stroke="#A80036" stroke-width="1.5"/>
+<line x1="110.29" y1="27" x2="136.29" y2="27" stroke="#A80036" stroke-width="1.5"/>
+<line x1="123.29" y1="35" x2="110.29" y2="43" stroke="#A80036" stroke-width="1.5"/>
+<line x1="123.29" y1="35" x2="136.29" y2="43" stroke="#A80036" stroke-width="1.5"/>
+<text x="123.29" y="59.55" text-anchor="middle" xml:space="preserve">Gamma</text>
+</g>
+<g data-line="4">
+<circle cx="123.29" cy="162" r="8" fill="pink" stroke="#A80036" stroke-width="1.5"/>
+<line x1="123.29" y1="170" x2="123.29" y2="183" stroke="#A80036" stroke-width="1.5"/>
+<line x1="110.29" y1="175" x2="136.29" y2="175" stroke="#A80036" stroke-width="1.5"/>
+<line x1="123.29" y1="183" x2="110.29" y2="191" stroke="#A80036" stroke-width="1.5"/>
+<line x1="123.29" y1="183" x2="136.29" y2="191" stroke="#A80036" stroke-width="1.5"/>
+<text x="123.29" y="207.55" text-anchor="middle" xml:space="preserve">Gamma</text>
+</g>
+</svg>

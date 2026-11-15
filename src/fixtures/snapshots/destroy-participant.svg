@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-38.65 0 164.57 195" width="164.57" height="195" font-family="'Liberation Sans', Arimo, Helvetica, Arial, sans-serif" font-size="13" fill="#000000">
+<rect x="-38.65" y="0" width="164.57" height="195" fill="#FFFFFF"/>
+<line x1="0" y1="29" x2="0" y2="165" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<line x1="90.78" y1="29" x2="90.78" y2="89" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<rect x="85.78" y="55" width="10" height="110" fill="#FFFFFF" stroke="#A80036" stroke-width="1"/>
+<g data-line="4">
+<line x1="0" y1="55" x2="85.78" y2="55" stroke="#A80036" stroke-width="1"/>
+<polygon points="75.78,51 85.78,55 75.78,59 79.78,55" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="7" y="47.55" xml:space="preserve">start</text>
+</g>
+<g data-line="5">
+<line x1="0" y1="89" x2="85.78" y2="89" stroke="#A80036" stroke-width="1"/>
+<polygon points="75.78,85 85.78,89 75.78,93 79.78,89" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="7" y="81.55" xml:space="preserve">stop</text>
+</g>
+<line x1="81.78" y1="80" x2="99.78" y2="98" stroke="#A80036" stroke-width="2"/>
+<line x1="81.78" y1="98" x2="99.78" y2="80" stroke="#A80036" stroke-width="2"/>
+<g data-line="6">
+<path d="M0,123 h24 v14 h-24" fill="none" stroke="#A80036" stroke-width="1"/>
+<polygon points="10,133 0,137 10,141 6,137" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="7" y="115.55" xml:space="preserve">continue</text>
+</g>
+<g data-line="2">
+<rect x="-33.65" y="5" width="67.3" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="0" y="21.55" text-anchor="middle" xml:space="preserve">Manager</text>
+</g>
+<g data-line="2">
+<rect x="-33.65" y="165" width="67.3" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="0" y="181.55" text-anchor="middle" xml:space="preserve">Manager</text>
+</g>
+<g data-line="3">
+<rect x="60.64" y="5" width="60.28" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="90.78" y="21.55" text-anchor="middle" xml:space="preserve">Worker</text>
+</g>
+</svg>

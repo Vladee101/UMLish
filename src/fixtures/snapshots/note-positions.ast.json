@@ -1,0 +1,90 @@
+{
+  "participants": [
+    {
+      "id": "A",
+      "label": "A",
+      "kind": "participant",
+      "implicit": false,
+      "line": 2
+    },
+    {
+      "id": "B",
+      "label": "B",
+      "kind": "participant",
+      "implicit": false,
+      "line": 3
+    },
+    {
+      "id": "C",
+      "label": "C",
+      "kind": "participant",
+      "implicit": false,
+      "line": 4
+    }
+  ],
+  "boxes": [],
+  "events": [
+    {
+      "type": "note",
+      "line": 5,
+      "shape": "note",
+      "position": "left",
+      "targets": [
+        "A"
+      ],
+      "text": "left note"
+    },
+    {
+      "type": "note",
+      "line": 6,
+      "shape": "note",
+      "position": "over",
+      "targets": [
+        "B"
+      ],
+      "text": "over one"
+    },
+    {
+      "type": "note",
+      "line": 7,
+      "shape": "note",
+      "position": "right",
+      "targets": [
+        "C"
+      ],
+      "text": "right note"
+    },
+    {
+      "type": "message",
+      "line": 8,
+      "from": {
+        "kind": "participant",
+        "id": "A"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "B"
+      },
+      "text": "message",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled"
+    },
+    {
+      "type": "note",
+      "line": 9,
+      "shape": "note",
+      "position": "over",
+      "targets": [
+        "A",
+        "C"
+      ],
+      "text": "over several"
+    }
+  ],
+  "options": {
+    "hideFootbox": false
+  },
+  "skinparams": {},
+  "warnings": []
+}

@@ -1,0 +1,72 @@
+{
+  "participants": [
+    {
+      "id": "Client",
+      "label": "Client",
+      "kind": "participant",
+      "implicit": false,
+      "line": 2
+    },
+    {
+      "id": "Metrics",
+      "label": "Metrics",
+      "kind": "participant",
+      "implicit": false,
+      "line": 3
+    }
+  ],
+  "boxes": [],
+  "events": [
+    {
+      "type": "message",
+      "line": 4,
+      "from": {
+        "kind": "participant",
+        "id": "Client"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "Client"
+      },
+      "text": "handle request",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled"
+    },
+    {
+      "type": "fragment",
+      "kind": "opt",
+      "line": 5,
+      "endLine": 7,
+      "sections": [
+        {
+          "label": "metrics enabled",
+          "line": 5,
+          "events": [
+            {
+              "type": "message",
+              "line": 6,
+              "from": {
+                "kind": "participant",
+                "id": "Client"
+              },
+              "to": {
+                "kind": "participant",
+                "id": "Metrics"
+              },
+              "text": "record latency",
+              "dashed": false,
+              "startHead": "none",
+              "endHead": "filled"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "options": {
+    "hideFootbox": false
+  },
+  "skinparams": {},
+  "warnings": []
+}

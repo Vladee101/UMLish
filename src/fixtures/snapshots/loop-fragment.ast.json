@@ -1,0 +1,72 @@
+{
+  "participants": [
+    {
+      "id": "Poller",
+      "label": "Poller",
+      "kind": "participant",
+      "implicit": false,
+      "line": 2
+    },
+    {
+      "id": "API",
+      "label": "API",
+      "kind": "participant",
+      "implicit": false,
+      "line": 3
+    }
+  ],
+  "boxes": [],
+  "events": [
+    {
+      "type": "fragment",
+      "kind": "loop",
+      "line": 4,
+      "endLine": 7,
+      "sections": [
+        {
+          "label": "every 30 seconds",
+          "line": 4,
+          "events": [
+            {
+              "type": "message",
+              "line": 5,
+              "from": {
+                "kind": "participant",
+                "id": "Poller"
+              },
+              "to": {
+                "kind": "participant",
+                "id": "API"
+              },
+              "text": "health check",
+              "dashed": false,
+              "startHead": "none",
+              "endHead": "filled"
+            },
+            {
+              "type": "message",
+              "line": 6,
+              "from": {
+                "kind": "participant",
+                "id": "API"
+              },
+              "to": {
+                "kind": "participant",
+                "id": "Poller"
+              },
+              "text": "healthy",
+              "dashed": true,
+              "startHead": "none",
+              "endHead": "filled"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "options": {
+    "hideFootbox": false
+  },
+  "skinparams": {},
+  "warnings": []
+}

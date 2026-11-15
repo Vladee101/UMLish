@@ -1,0 +1,121 @@
+{
+  "participants": [
+    {
+      "id": "A",
+      "label": "A",
+      "kind": "participant",
+      "implicit": true,
+      "line": 2
+    },
+    {
+      "id": "B",
+      "label": "B",
+      "kind": "participant",
+      "implicit": true,
+      "line": 2
+    },
+    {
+      "id": "C",
+      "label": "C",
+      "kind": "participant",
+      "implicit": true,
+      "line": 4
+    }
+  ],
+  "boxes": [],
+  "events": [
+    {
+      "type": "message",
+      "line": 2,
+      "from": {
+        "kind": "participant",
+        "id": "A"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "B"
+      },
+      "text": "call",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled"
+    },
+    {
+      "type": "activation",
+      "line": 3,
+      "op": "activate",
+      "target": "B"
+    },
+    {
+      "type": "message",
+      "line": 4,
+      "from": {
+        "kind": "participant",
+        "id": "B"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "C"
+      },
+      "text": "delegate",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled"
+    },
+    {
+      "type": "activation",
+      "line": 5,
+      "op": "activate",
+      "target": "C"
+    },
+    {
+      "type": "message",
+      "line": 6,
+      "from": {
+        "kind": "participant",
+        "id": "C"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "B"
+      },
+      "text": "result",
+      "dashed": true,
+      "startHead": "none",
+      "endHead": "filled"
+    },
+    {
+      "type": "activation",
+      "line": 7,
+      "op": "deactivate",
+      "target": "C"
+    },
+    {
+      "type": "message",
+      "line": 8,
+      "from": {
+        "kind": "participant",
+        "id": "B"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "A"
+      },
+      "text": "result",
+      "dashed": true,
+      "startHead": "none",
+      "endHead": "filled"
+    },
+    {
+      "type": "activation",
+      "line": 9,
+      "op": "deactivate",
+      "target": "B"
+    }
+  ],
+  "options": {
+    "hideFootbox": false
+  },
+  "skinparams": {},
+  "warnings": []
+}

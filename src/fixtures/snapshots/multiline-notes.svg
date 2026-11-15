@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-95.9 0 214.86 225" width="214.86" height="225" font-family="'Liberation Sans', Arimo, Helvetica, Arial, sans-serif" font-size="13" fill="#000000">
+<rect x="-95.9" y="0" width="214.86" height="225" fill="#FFFFFF"/>
+<line x1="0" y1="29" x2="0" y2="195" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<line x1="98.96" y1="29" x2="98.96" y2="195" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<g data-line="4">
+<polygon points="-90.9,35 -16,35 -6,45 -6,77 -90.9,77" fill="#FBFB77" stroke="#A80036" stroke-width="1"/>
+<path d="M-16,35 v10 h10" fill="none" stroke="#A80036" stroke-width="1"/>
+<text x="-82.9" y="52.55" xml:space="preserve">First line</text>
+<text x="-82.9" y="68.55" xml:space="preserve">Second line</text>
+</g>
+<g data-line="8">
+<line x1="0" y1="111" x2="98.96" y2="111" stroke="#A80036" stroke-width="1"/>
+<polygon points="88.96,107 98.96,111 88.96,115 92.96,111" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="7" y="103.55" xml:space="preserve">work</text>
+</g>
+<g data-line="9">
+<polygon points="-10,125 98.96,125 108.96,135 108.96,167 -10,167" fill="#FBFB77" stroke="#A80036" stroke-width="1"/>
+<path d="M98.96,125 v10 h10" fill="none" stroke="#A80036" stroke-width="1"/>
+<text x="-2" y="142.55" xml:space="preserve">Shared context</text>
+<text x="-2" y="158.55" xml:space="preserve">across two lines</text>
+</g>
+<g data-line="2">
+<rect x="-15" y="5" width="30" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="0" y="21.55" text-anchor="middle" xml:space="preserve">A</text>
+</g>
+<g data-line="2">
+<rect x="-15" y="195" width="30" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="0" y="211.55" text-anchor="middle" xml:space="preserve">A</text>
+</g>
+<g data-line="3">
+<rect x="83.96" y="5" width="30" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="98.96" y="21.55" text-anchor="middle" xml:space="preserve">B</text>
+</g>
+<g data-line="3">
+<rect x="83.96" y="195" width="30" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="98.96" y="211.55" text-anchor="middle" xml:space="preserve">B</text>
+</g>
+</svg>

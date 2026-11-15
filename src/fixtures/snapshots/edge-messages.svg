@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-102.12 0 200.86 181" width="200.86" height="181" font-family="'Liberation Sans', Arimo, Helvetica, Arial, sans-serif" font-size="13" fill="#000000">
+<rect x="-102.12" y="0" width="200.86" height="181" fill="#FFFFFF"/>
+<line x1="0" y1="29" x2="0" y2="151" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<line x1="44" y1="29" x2="44" y2="151" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<g data-line="4">
+<line x1="-97.12" y1="55" x2="0" y2="55" stroke="#A80036" stroke-width="1"/>
+<polygon points="-10,51 0,55 -10,59 -6,55" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="-90.12" y="47.55" xml:space="preserve">found on left</text>
+</g>
+<g data-line="5">
+<line x1="0" y1="89" x2="93.74" y2="89" stroke="#A80036" stroke-width="1"/>
+<polygon points="83.74,85 93.74,89 83.74,93 87.74,89" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="7" y="81.55" xml:space="preserve">lost on right</text>
+</g>
+<g data-line="6">
+<line x1="-67.16" y1="123" x2="44" y2="123" stroke="#A80036" stroke-width="1"/>
+<polygon points="34,119 44,123 34,127 38,123" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="-60.16" y="115.55" xml:space="preserve">another arrival</text>
+</g>
+<g data-line="2">
+<rect x="-15" y="5" width="30" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="0" y="21.55" text-anchor="middle" xml:space="preserve">A</text>
+</g>
+<g data-line="2">
+<rect x="-15" y="151" width="30" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="0" y="167.55" text-anchor="middle" xml:space="preserve">A</text>
+</g>
+<g data-line="3">
+<rect x="29" y="5" width="30" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="44" y="21.55" text-anchor="middle" xml:space="preserve">B</text>
+</g>
+<g data-line="3">
+<rect x="29" y="151" width="30" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="44" y="167.55" text-anchor="middle" xml:space="preserve">B</text>
+</g>
+</svg>

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-24.95 0 107.13 159" width="107.13" height="159" font-family="'Liberation Sans', Arimo, Helvetica, Arial, sans-serif" font-size="13" fill="#000000">
+<rect x="-24.95" y="0" width="107.13" height="159" fill="#FFFFFF"/>
+<line x1="0" y1="65" x2="0" y2="153" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<line x1="58.74" y1="29" x2="58.74" y2="153" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<g data-line="5">
+<line x1="0" y1="91" x2="58.74" y2="91" stroke="#A80036" stroke-width="1"/>
+<polygon points="48.74,87 58.74,91 48.74,95 52.74,91" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="7" y="83.55" xml:space="preserve">action</text>
+</g>
+<g data-line="6">
+<line x1="58.74" y1="125" x2="0" y2="125" stroke="#A80036" stroke-width="1" stroke-dasharray="2,2"/>
+<polygon points="10,121 0,125 10,129 6,125" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="7" y="117.55" xml:space="preserve">result</text>
+</g>
+<g data-line="3">
+<circle cx="0" cy="14" r="8" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<line x1="0" y1="22" x2="0" y2="35" stroke="#A80036" stroke-width="1.5"/>
+<line x1="-13" y1="27" x2="13" y2="27" stroke="#A80036" stroke-width="1.5"/>
+<line x1="0" y1="35" x2="-13" y2="43" stroke="#A80036" stroke-width="1.5"/>
+<line x1="0" y1="35" x2="13" y2="43" stroke="#A80036" stroke-width="1.5"/>
+<text x="0" y="59.55" text-anchor="middle" xml:space="preserve">User</text>
+</g>
+<g data-line="4">
+<rect x="40.3" y="5" width="36.88" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="58.74" y="21.55" text-anchor="middle" xml:space="preserve">App</text>
+</g>
+</svg>

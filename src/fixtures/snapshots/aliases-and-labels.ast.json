@@ -1,0 +1,81 @@
+{
+  "participants": [
+    {
+      "id": "IdP",
+      "label": "Identity Provider",
+      "kind": "participant",
+      "implicit": false,
+      "line": 2
+    },
+    {
+      "id": "API",
+      "label": "Public API",
+      "kind": "participant",
+      "implicit": false,
+      "line": 3
+    },
+    {
+      "id": "EU",
+      "label": "End User",
+      "kind": "actor",
+      "implicit": false,
+      "line": 4
+    }
+  ],
+  "boxes": [],
+  "events": [
+    {
+      "type": "message",
+      "line": 5,
+      "from": {
+        "kind": "participant",
+        "id": "EU"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "API"
+      },
+      "text": "authenticate",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled"
+    },
+    {
+      "type": "message",
+      "line": 6,
+      "from": {
+        "kind": "participant",
+        "id": "API"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "IdP"
+      },
+      "text": "verify token",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled"
+    },
+    {
+      "type": "message",
+      "line": 7,
+      "from": {
+        "kind": "participant",
+        "id": "IdP"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "API"
+      },
+      "text": "claims",
+      "dashed": true,
+      "startHead": "none",
+      "endHead": "filled"
+    }
+  ],
+  "options": {
+    "hideFootbox": false
+  },
+  "skinparams": {},
+  "warnings": []
+}

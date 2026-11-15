@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-83.42 0 291.16 273" width="291.16" height="273" font-family="'Liberation Sans', Arimo, Helvetica, Arial, sans-serif" font-size="13" fill="#000000">
+<rect x="-83.42" y="0" width="291.16" height="273" fill="#FFFFFF"/>
+<line x1="0" y1="29" x2="0" y2="243" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<line x1="73.3" y1="29" x2="73.3" y2="243" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<line x1="117.3" y1="29" x2="117.3" y2="243" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<g data-line="5">
+<polygon points="-78.42,35 -16,35 -6,45 -6,61 -78.42,61" fill="#FBFB77" stroke="#A80036" stroke-width="1"/>
+<path d="M-16,35 v10 h10" fill="none" stroke="#A80036" stroke-width="1"/>
+<text x="-70.42" y="52.55" xml:space="preserve">left note</text>
+</g>
+<g data-line="6">
+<polygon points="38.91,75 97.69,75 107.69,85 107.69,101 38.91,101" fill="#FBFB77" stroke="#A80036" stroke-width="1"/>
+<path d="M97.69,75 v10 h10" fill="none" stroke="#A80036" stroke-width="1"/>
+<text x="46.91" y="92.55" xml:space="preserve">over one</text>
+</g>
+<g data-line="7">
+<polygon points="123.3,115 192.74,115 202.74,125 202.74,141 123.3,141" fill="#FBFB77" stroke="#A80036" stroke-width="1"/>
+<path d="M192.74,115 v10 h10" fill="none" stroke="#A80036" stroke-width="1"/>
+<text x="131.3" y="132.55" xml:space="preserve">right note</text>
+</g>
+<g data-line="8">
+<line x1="0" y1="175" x2="73.3" y2="175" stroke="#A80036" stroke-width="1"/>
+<polygon points="63.3,171 73.3,175 63.3,179 67.3,175" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="7" y="167.55" xml:space="preserve">message</text>
+</g>
+<g data-line="9">
+<polygon points="-10,189 117.3,189 127.3,199 127.3,215 -10,215" fill="#FBFB77" stroke="#A80036" stroke-width="1"/>
+<path d="M117.3,189 v10 h10" fill="none" stroke="#A80036" stroke-width="1"/>
+<text x="-2" y="206.55" xml:space="preserve">over several</text>
+</g>
+<g data-line="2">
+<rect x="-15" y="5" width="30" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="0" y="21.55" text-anchor="middle" xml:space="preserve">A</text>
+</g>
+<g data-line="2">
+<rect x="-15" y="243" width="30" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="0" y="259.55" text-anchor="middle" xml:space="preserve">A</text>
+</g>
+<g data-line="3">
+<rect x="58.3" y="5" width="30" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="73.3" y="21.55" text-anchor="middle" xml:space="preserve">B</text>
+</g>
+<g data-line="3">
+<rect x="58.3" y="243" width="30" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="73.3" y="259.55" text-anchor="middle" xml:space="preserve">B</text>
+</g>
+<g data-line="4">
+<rect x="102.3" y="5" width="30" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="117.3" y="21.55" text-anchor="middle" xml:space="preserve">C</text>
+</g>
+<g data-line="4">
+<rect x="102.3" y="243" width="30" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="117.3" y="259.55" text-anchor="middle" xml:space="preserve">C</text>
+</g>
+</svg>

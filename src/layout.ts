@@ -362,7 +362,7 @@ export function layout(d: Diagram, th: Theme, measure: Measure): Scene {
   }
 
   return {
-    viewBox: { x: minX - S.margin, y: 0, w: spanW() + 2 * S.margin, h: y + S.margin },
+    viewBox: { x: minX - S.margin, y: 0, w: spanW() + 2 * S.margin, h: y },
     shapes: [...groups, ...life, ...bars, ...fg],
     ...(title ? { title } : {}), ...(header ? { header } : {}), ...(footer ? { footer } : {}),
     warnings,

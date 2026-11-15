@@ -1,0 +1,68 @@
+{
+  "participants": [
+    {
+      "id": "First",
+      "label": "First",
+      "kind": "participant",
+      "implicit": false,
+      "line": 3,
+      "order": 10
+    },
+    {
+      "id": "Second",
+      "label": "Second",
+      "kind": "participant",
+      "implicit": false,
+      "line": 4,
+      "order": 20
+    },
+    {
+      "id": "Third",
+      "label": "Third",
+      "kind": "participant",
+      "implicit": false,
+      "line": 2,
+      "order": 30
+    }
+  ],
+  "boxes": [],
+  "events": [
+    {
+      "type": "message",
+      "line": 5,
+      "from": {
+        "kind": "participant",
+        "id": "First"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "Second"
+      },
+      "text": "one",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled"
+    },
+    {
+      "type": "message",
+      "line": 6,
+      "from": {
+        "kind": "participant",
+        "id": "Second"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "Third"
+      },
+      "text": "two",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled"
+    }
+  ],
+  "options": {
+    "hideFootbox": false
+  },
+  "skinparams": {},
+  "warnings": []
+}

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-68.42 0 325.58 253" width="325.58" height="253" font-family="'Liberation Sans', Arimo, Helvetica, Arial, sans-serif" font-size="13" fill="#000000">
+<rect x="-68.42" y="0" width="325.58" height="253" fill="#FFFFFF"/>
+<line x1="0" y1="29" x2="0" y2="187" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<line x1="118.09" y1="29" x2="118.09" y2="187" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<line x1="218.95" y1="65" x2="218.95" y2="187" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<g data-line="5">
+<line x1="218.95" y1="91" x2="118.09" y2="91" stroke="#A80036" stroke-width="1"/>
+<polygon points="128.09,87 118.09,91 128.09,95 124.09,91" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="125.09" y="83.55" xml:space="preserve">authenticate</text>
+</g>
+<g data-line="6">
+<line x1="118.09" y1="125" x2="0" y2="125" stroke="#A80036" stroke-width="1"/>
+<polygon points="10,121 0,125 10,129 6,125" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="7" y="117.55" xml:space="preserve">verify token</text>
+</g>
+<g data-line="7">
+<line x1="0" y1="159" x2="118.09" y2="159" stroke="#A80036" stroke-width="1" stroke-dasharray="2,2"/>
+<polygon points="108.09,155 118.09,159 108.09,163 112.09,159" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="7" y="151.55" xml:space="preserve">claims</text>
+</g>
+<g data-line="2">
+<rect x="-63.42" y="5" width="126.84" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="0" y="21.55" text-anchor="middle" xml:space="preserve">Identity Provider</text>
+</g>
+<g data-line="2">
+<rect x="-63.42" y="187" width="126.84" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="0" y="203.55" text-anchor="middle" xml:space="preserve">Identity Provider</text>
+</g>
+<g data-line="3">
+<rect x="77.42" y="5" width="81.34" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="118.09" y="21.55" text-anchor="middle" xml:space="preserve">Public API</text>
+</g>
+<g data-line="3">
+<rect x="77.42" y="187" width="81.34" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="118.09" y="203.55" text-anchor="middle" xml:space="preserve">Public API</text>
+</g>
+<g data-line="4">
+<circle cx="218.95" cy="14" r="8" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<line x1="218.95" y1="22" x2="218.95" y2="35" stroke="#A80036" stroke-width="1.5"/>
+<line x1="205.95" y1="27" x2="231.95" y2="27" stroke="#A80036" stroke-width="1.5"/>
+<line x1="218.95" y1="35" x2="205.95" y2="43" stroke="#A80036" stroke-width="1.5"/>
+<line x1="218.95" y1="35" x2="231.95" y2="43" stroke="#A80036" stroke-width="1.5"/>
+<text x="218.95" y="59.55" text-anchor="middle" xml:space="preserve">End User</text>
+</g>
+<g data-line="4">
+<circle cx="218.95" cy="196" r="8" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<line x1="218.95" y1="204" x2="218.95" y2="217" stroke="#A80036" stroke-width="1.5"/>
+<line x1="205.95" y1="209" x2="231.95" y2="209" stroke="#A80036" stroke-width="1.5"/>
+<line x1="218.95" y1="217" x2="205.95" y2="225" stroke="#A80036" stroke-width="1.5"/>
+<line x1="218.95" y1="217" x2="231.95" y2="225" stroke="#A80036" stroke-width="1.5"/>
+<text x="218.95" y="241.55" text-anchor="middle" xml:space="preserve">End User</text>
+</g>
+</svg>

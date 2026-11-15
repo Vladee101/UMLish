@@ -1,0 +1,58 @@
+{
+  "participants": [
+    {
+      "id": "Client",
+      "label": "Client",
+      "kind": "participant",
+      "implicit": false,
+      "line": 2
+    },
+    {
+      "id": "Server",
+      "label": "Server",
+      "kind": "participant",
+      "implicit": false,
+      "line": 3
+    }
+  ],
+  "boxes": [],
+  "events": [
+    {
+      "type": "message",
+      "line": 4,
+      "from": {
+        "kind": "participant",
+        "id": "Client"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "Server"
+      },
+      "text": "request",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled"
+    },
+    {
+      "type": "message",
+      "line": 5,
+      "from": {
+        "kind": "participant",
+        "id": "Server"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "Client"
+      },
+      "text": "response",
+      "dashed": true,
+      "startHead": "none",
+      "endHead": "filled"
+    }
+  ],
+  "options": {
+    "hideFootbox": false
+  },
+  "skinparams": {},
+  "warnings": []
+}

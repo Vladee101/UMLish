@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 0 213.84 153" width="213.84" height="153" font-family="'Liberation Sans', Arimo, Helvetica, Arial, sans-serif" font-size="13" fill="#000000">
+<rect x="-20" y="0" width="213.84" height="153" fill="#FFFFFF"/>
+<line x1="0" y1="29" x2="0" y2="123" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<line x1="86.92" y1="29" x2="86.92" y2="123" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<line x1="173.84" y1="29" x2="173.84" y2="123" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<g data-line="5">
+<polygon points="-10,35 173.84,35 183.84,45 183.84,61 -10,61" fill="#FBFB77" stroke="#A80036" stroke-width="1"/>
+<path d="M173.84,35 v10 h10" fill="none" stroke="#A80036" stroke-width="1"/>
+<text x="-2" y="52.55" xml:space="preserve">applies to the whole diagram</text>
+</g>
+<g data-line="6">
+<line x1="0" y1="95" x2="173.84" y2="95" stroke="#A80036" stroke-width="1"/>
+<polygon points="163.84,91 173.84,95 163.84,99 167.84,95" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="7" y="87.55" xml:space="preserve">message</text>
+</g>
+<g data-line="2">
+<rect x="-15" y="5" width="30" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="0" y="21.55" text-anchor="middle" xml:space="preserve">A</text>
+</g>
+<g data-line="2">
+<rect x="-15" y="123" width="30" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="0" y="139.55" text-anchor="middle" xml:space="preserve">A</text>
+</g>
+<g data-line="3">
+<rect x="71.92" y="5" width="30" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="86.92" y="21.55" text-anchor="middle" xml:space="preserve">B</text>
+</g>
+<g data-line="3">
+<rect x="71.92" y="123" width="30" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="86.92" y="139.55" text-anchor="middle" xml:space="preserve">B</text>
+</g>
+<g data-line="4">
+<rect x="158.84" y="5" width="30" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="173.84" y="21.55" text-anchor="middle" xml:space="preserve">C</text>
+</g>
+<g data-line="4">
+<rect x="158.84" y="123" width="30" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="173.84" y="139.55" text-anchor="middle" xml:space="preserve">C</text>
+</g>
+</svg>

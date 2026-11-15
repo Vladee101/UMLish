@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-25.92 0 124.1 191" width="124.1" height="191" font-family="'Liberation Sans', Arimo, Helvetica, Arial, sans-serif" font-size="13" fill="#000000">
+<rect x="-25.92" y="0" width="124.1" height="191" fill="#FFFFFF"/>
+<text x="36.13" y="39.55" text-anchor="middle" font-weight="bold" xml:space="preserve">Order processing</text>
+<text x="93.18" y="17.55" text-anchor="end" xml:space="preserve">Internal design</text>
+<line x1="0" y1="81" x2="0" y2="135" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<line x1="62.9" y1="81" x2="62.9" y2="135" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<g data-line="8">
+<line x1="0" y1="107" x2="62.9" y2="107" stroke="#A80036" stroke-width="1"/>
+<polygon points="52.9,103 62.9,107 52.9,111 56.9,107" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="7" y="99.55" xml:space="preserve">submit</text>
+</g>
+<g data-line="6">
+<rect x="-19.61" y="57" width="39.22" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="0" y="73.55" text-anchor="middle" xml:space="preserve">Web</text>
+</g>
+<g data-line="6">
+<rect x="-19.61" y="135" width="39.22" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="0" y="151.55" text-anchor="middle" xml:space="preserve">Web</text>
+</g>
+<g data-line="7">
+<rect x="33.93" y="57" width="57.94" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="62.9" y="73.55" text-anchor="middle" xml:space="preserve">Orders</text>
+</g>
+<g data-line="7">
+<rect x="33.93" y="135" width="57.94" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="62.9" y="151.55" text-anchor="middle" xml:space="preserve">Orders</text>
+</g>
+<text x="36.13" y="181.55" text-anchor="middle" xml:space="preserve">Generated locally</text>
+</svg>

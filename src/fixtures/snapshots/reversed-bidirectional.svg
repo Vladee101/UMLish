@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 0 161.92 215" width="161.92" height="215" font-family="'Liberation Sans', Arimo, Helvetica, Arial, sans-serif" font-size="13" fill="#000000">
+<rect x="-20" y="0" width="161.92" height="215" fill="#FFFFFF"/>
+<line x1="0" y1="29" x2="0" y2="185" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<line x1="121.92" y1="29" x2="121.92" y2="185" stroke="#A80036" stroke-width="0.5" stroke-dasharray="5,5"/>
+<g data-line="2">
+<line x1="121.92" y1="55" x2="0" y2="55" stroke="#A80036" stroke-width="1"/>
+<polygon points="10,51 0,55 10,59 6,55" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="7" y="47.55" xml:space="preserve">reversed</text>
+</g>
+<g data-line="3">
+<line x1="0" y1="89" x2="121.92" y2="89" stroke="#A80036" stroke-width="1"/>
+<polygon points="111.92,85 121.92,89 111.92,93 115.92,89" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<polygon points="10,85 0,89 10,93 6,89" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="7" y="81.55" xml:space="preserve">both ends</text>
+</g>
+<g data-line="4">
+<line x1="121.92" y1="123" x2="0" y2="123" stroke="#A80036" stroke-width="1" stroke-dasharray="2,2"/>
+<polygon points="10,119 0,123 10,127 6,123" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="7" y="115.55" xml:space="preserve">reversed dashed</text>
+</g>
+<g data-line="5">
+<line x1="0" y1="157" x2="121.92" y2="157" stroke="#A80036" stroke-width="1" stroke-dasharray="2,2"/>
+<polygon points="111.92,153 121.92,157 111.92,161 115.92,157" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<polygon points="10,153 0,157 10,161 6,157" fill="#A80036" stroke="#A80036" stroke-width="1"/>
+<text x="7" y="149.55" xml:space="preserve">both dashed</text>
+</g>
+<g data-line="2">
+<rect x="-15" y="5" width="30" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="0" y="21.55" text-anchor="middle" xml:space="preserve">A</text>
+</g>
+<g data-line="2">
+<rect x="-15" y="185" width="30" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="0" y="201.55" text-anchor="middle" xml:space="preserve">A</text>
+</g>
+<g data-line="2">
+<rect x="106.92" y="5" width="30" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="121.92" y="21.55" text-anchor="middle" xml:space="preserve">B</text>
+</g>
+<g data-line="2">
+<rect x="106.92" y="185" width="30" height="24" rx="2.5" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<text x="121.92" y="201.55" text-anchor="middle" xml:space="preserve">B</text>
+</g>
+</svg>

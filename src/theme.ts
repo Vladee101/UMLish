@@ -25,7 +25,7 @@ export const classic: Theme = {
   },
   stroke: { box: 1.5, line: 1, lifeline: 0.5, frag: 1.5 },
   size: {
-    margin: 10, minBox: 30, boxPadX: 7, boxPadY: 4, boxRadius: 2.5,
+    margin: 5, minBox: 30, boxPadX: 7, boxPadY: 4, boxRadius: 2.5,
     iconW: 32, iconH: 38, minGap: 40, boxGap: 14, afterBoxes: 6,
     labelGap: 4, rowGap: 14, selfW: 24, selfH: 14, edgeLen: 30,
     actW: 10, actShift: 5, notePadX: 8, notePadY: 5, noteFold: 10,

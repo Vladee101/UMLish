@@ -1,0 +1,34 @@
+{
+  "participants": [
+    {
+      "id": "A",
+      "label": "A",
+      "kind": "participant",
+      "implicit": false,
+      "line": 2
+    }
+  ],
+  "boxes": [],
+  "events": [
+    {
+      "type": "note",
+      "line": 3,
+      "shape": "note",
+      "position": "right",
+      "targets": [
+        "A"
+      ],
+      "text": "first line\nsecond line"
+    }
+  ],
+  "options": {
+    "hideFootbox": false
+  },
+  "skinparams": {},
+  "warnings": [
+    {
+      "line": 3,
+      "message": "block is never closed"
+    }
+  ]
+}

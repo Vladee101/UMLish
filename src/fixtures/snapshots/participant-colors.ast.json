@@ -1,0 +1,68 @@
+{
+  "participants": [
+    {
+      "id": "Alpha",
+      "label": "Alpha",
+      "kind": "participant",
+      "implicit": false,
+      "line": 2,
+      "color": "#lightblue"
+    },
+    {
+      "id": "Beta",
+      "label": "Beta",
+      "kind": "participant",
+      "implicit": false,
+      "line": 3,
+      "color": "#FFE0B2"
+    },
+    {
+      "id": "Gamma",
+      "label": "Gamma",
+      "kind": "actor",
+      "implicit": false,
+      "line": 4,
+      "color": "#pink"
+    }
+  ],
+  "boxes": [],
+  "events": [
+    {
+      "type": "message",
+      "line": 5,
+      "from": {
+        "kind": "participant",
+        "id": "Alpha"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "Beta"
+      },
+      "text": "ping",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled"
+    },
+    {
+      "type": "message",
+      "line": 6,
+      "from": {
+        "kind": "participant",
+        "id": "Beta"
+      },
+      "to": {
+        "kind": "participant",
+        "id": "Gamma"
+      },
+      "text": "notify",
+      "dashed": false,
+      "startHead": "none",
+      "endHead": "filled"
+    }
+  ],
+  "options": {
+    "hideFootbox": false
+  },
+  "skinparams": {},
+  "warnings": []
+}
