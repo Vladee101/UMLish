@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 59" width="380" height="59" font-family="'Liberation Sans', Arimo, Helvetica, Arial, sans-serif" font-size="13" fill="#000000">
+<rect x="0" y="0" width="380" height="59" fill="#FFFFFF"/>
+<g data-line="4">
+<polyline points="155,29.5 225,29.5" fill="none" stroke="#A80036" stroke-width="1"/>
+<polyline points="162,23.5 162,35.5" fill="none" stroke="#A80036" stroke-width="1"/>
+<polyline points="168,23.5 168,35.5" fill="none" stroke="#A80036" stroke-width="1"/>
+<circle cx="213" cy="29.5" r="4" fill="#FFFFFF" stroke="#A80036" stroke-width="1"/>
+<polyline points="225,29.5 215,35.5" fill="none" stroke="#A80036" stroke-width="1"/>
+<polyline points="225,29.5 215,29.5" fill="none" stroke="#A80036" stroke-width="1"/>
+<polyline points="225,29.5 215,23.5" fill="none" stroke="#A80036" stroke-width="1"/>
+<rect x="159.61" y="9.5" width="60.78" height="16" fill="#FFFFFF"/>
+<text x="190" y="22.5" text-anchor="middle">borrows</text>
+</g>
+<g data-line="5">
+<polyline points="225,29.5 155,29.5" fill="none" stroke="#A80036" stroke-width="1"/>
+<circle cx="213" cy="29.5" r="4" fill="#FFFFFF" stroke="#A80036" stroke-width="1"/>
+<polyline points="225,29.5 215,35.5" fill="none" stroke="#A80036" stroke-width="1"/>
+<polyline points="225,29.5 215,29.5" fill="none" stroke="#A80036" stroke-width="1"/>
+<polyline points="225,29.5 215,23.5" fill="none" stroke="#A80036" stroke-width="1"/>
+<polyline points="162,23.5 162,35.5" fill="none" stroke="#A80036" stroke-width="1"/>
+<polyline points="168,23.5 168,35.5" fill="none" stroke="#A80036" stroke-width="1"/>
+<rect x="144.53" y="9.5" width="90.94" height="16" fill="#FFFFFF"/>
+<text x="190" y="22.5" text-anchor="middle">returned by</text>
+</g>
+<g data-line="2">
+<polygon points="5,5 155,5 155,54 5,54" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<polygon points="5,5 155,5 155,33 5,33" fill="#EEEEEE" stroke="#A80036" stroke-width="1.5"/>
+<text x="80" y="24" text-anchor="middle" font-weight="bold">Library Member</text>
+</g>
+<g data-line="3">
+<polygon points="225,5 375,5 375,54 225,54" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<polygon points="225,5 375,5 375,33 225,33" fill="#EEEEEE" stroke="#A80036" stroke-width="1.5"/>
+<text x="300" y="24" text-anchor="middle" font-weight="bold">Book</text>
+</g>
+</svg>

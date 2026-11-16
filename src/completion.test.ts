@@ -23,6 +23,11 @@ describe('PlantUML completions', () => {
     expect(result?.options[0]?.apply).toBe('"Web App"');
   });
 
+  it('offers ER entity names', () => {
+    const result = completions('entity "Web Customer" as C\nC ||--o{ ');
+    expect(result?.options[0]).toMatchObject({ label: 'C', detail: 'Web Customer', type: 'variable' });
+  });
+
   it('does not open automatically without a word', () => {
     expect(completions('A -> B : ', 9, false)).toBeNull();
   });

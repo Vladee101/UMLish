@@ -1,0 +1,27 @@
+{
+  "entities": [
+    {
+      "id": "Broken",
+      "label": "Broken",
+      "kind": "entity",
+      "attributes": [
+        {
+          "name": "id",
+          "required": true,
+          "line": 3,
+          "type": "INT",
+          "key": "PK"
+        }
+      ],
+      "line": 2
+    }
+  ],
+  "relationships": [],
+  "skinparams": {},
+  "warnings": [
+    {
+      "line": 2,
+      "message": "'Broken' entity is never closed"
+    }
+  ]
+}

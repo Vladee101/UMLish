@@ -2,6 +2,9 @@ import './style.css';
 import { parse } from './parser/parse.ts';
 import { layoutPages, type Scene } from './layout.ts';
 import { renderSvg } from './render.ts';
+import { isErDiagram, parseEr } from './er/parse.ts';
+import { layoutEr, type ErScene } from './er/layout.ts';
+import { renderErSvg } from './er/render.ts';
 import { classic, themes, withSkinparams, type Theme, type ThemeName } from './theme.ts';
 import { canvasMeasure } from './measure.ts';
 import { fontCss, loadFonts } from './fonts.ts';
@@ -51,7 +54,8 @@ async function main() {
   const savedTheme = store.get(THEME_KEY);
   let themeName: ThemeName = savedTheme && Object.hasOwn(themes, savedTheme) ? savedTheme as ThemeName : 'classic';
   themeSelect.value = themeName;
-  let scene: Scene | undefined, scenes: Scene[] = [], theme: Theme = themes[themeName], title = 'diagram', first = true;
+  let scene: Scene | ErScene | undefined, scenes: (Scene | ErScene)[] = [], theme: Theme = themes[themeName], title = 'diagram', first = true;
+  let diagramKind: 'sequence' | 'er' = 'sequence';
   let page = 0, fileHandle: DiagramFileHandle | undefined, fileName = 'diagram.puml';
   const warningsPanel = $('warnings'), warningList = $('warning-list');
 
@@ -73,23 +77,36 @@ async function main() {
     }));
   };
 
+  const renderScene = (value: Scene | ErScene, opts: { fontCss?: string } = {}) =>
+    diagramKind === 'er' ? renderErSvg(value as ErScene, theme, opts) : renderSvg(value as Scene, theme, opts);
+
   const showPage = () => {
     scene = scenes[page]!;
     title = (scene.title?.lines[0] ?? 'diagram').replace(/[^\w\- ]+/g, '').trim() || 'diagram';
-    stage.innerHTML = renderSvg(scene, theme);
+    stage.innerHTML = renderScene(scene);
     if (first) { vp.fit(scene.viewBox.w, scene.viewBox.h); first = false; }
   };
 
   const render = (text: string) => {
-    const d = parse(text);
-    theme = withSkinparams(themes[themeName], d.skinparams);
-    scenes = layoutPages(d, theme, canvasMeasure(theme.font.family, theme.font.size));
+    let warnings: Warning[];
+    if (isErDiagram(text)) {
+      diagramKind = 'er';
+      const d = parseEr(text);
+      theme = withSkinparams(themes[themeName], d.skinparams);
+      scenes = [layoutEr(d, theme, canvasMeasure(theme.font.family, theme.font.size))];
+      warnings = [...d.warnings, ...scenes[0]!.warnings];
+    } else {
+      diagramKind = 'sequence';
+      const d = parse(text);
+      theme = withSkinparams(themes[themeName], d.skinparams);
+      scenes = layoutPages(d, theme, canvasMeasure(theme.font.family, theme.font.size));
+      warnings = [...d.warnings, ...scenes.flatMap((s) => s.warnings)];
+    }
     if (page >= scenes.length) page = 0;
     pageSelect.hidden = scenes.length < 2;
     pageSelect.replaceChildren(...scenes.map((s, i) => new Option(s.title?.lines[0] ? plainInline(s.title.lines[0]) : `Page ${i + 1}`, String(i))));
     pageSelect.value = String(page);
     showPage();
-    const warnings = [...d.warnings, ...scenes.flatMap((s) => s.warnings)];
     editor.setWarnings(warnings);
     showWarnings(warnings);
     status.textContent = warnings.length ? `${warnings.length} warning${warnings.length > 1 ? 's' : ''}` : '';
@@ -121,7 +138,7 @@ async function main() {
     if (n) editor.goToLine(n);
   });
 
-  const svgText = () => scene && renderSvg(scene, theme, { fontCss });
+  const svgText = () => scene && renderScene(scene, { fontCss });
   themeSelect.onchange = () => {
     themeName = themeSelect.value as ThemeName;
     store.set(themeName, THEME_KEY);

@@ -1,10 +1,11 @@
 import type { Completion, CompletionContext } from '@codemirror/autocomplete';
 import { parse } from './parser/parse.ts';
+import { isErDiagram, parseEr } from './er/parse.ts';
 
 export const PLANTUML_KEYWORDS = (
   'participant actor boundary control entity database collections queue as order create destroy activate deactivate return ' +
   'alt else opt loop par par2 break critical group end note hnote rnote over left right of across ref box title header footer ' +
-  'autonumber stop resume hide show footbox skinparam newpage legend'
+  'autonumber stop resume hide show footbox skinparam newpage legend entity enum PK FK UK'
 ).split(' ');
 
 export function plantumlCompletions(context: CompletionContext) {
@@ -13,7 +14,9 @@ export function plantumlCompletions(context: CompletionContext) {
 
   const keywords: Completion[] = [...PLANTUML_KEYWORDS, '@startuml', '@enduml']
     .map((label) => ({ label, type: 'keyword' }));
-  const participants = parse(context.state.doc.toString()).participants.map((p): Completion => ({
+  const source = context.state.doc.toString();
+  const names = isErDiagram(source) ? parseEr(source).entities : parse(source).participants;
+  const participants = names.map((p): Completion => ({
     label: p.id,
     apply: /\s/.test(p.id) ? `"${p.id}"` : p.id,
     detail: p.label === p.id ? p.kind : p.label,

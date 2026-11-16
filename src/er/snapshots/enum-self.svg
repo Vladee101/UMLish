@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 490.82 80" width="490.82" height="80" font-family="'Liberation Sans', Arimo, Helvetica, Arial, sans-serif" font-size="13" fill="#000000">
+<rect x="0" y="0" width="490.82" height="80" fill="#FFFFFF"/>
+<g data-line="10">
+<polyline points="395.82,19 429.82,19 429.82,42.33 395.82,42.33" fill="none" stroke="#A80036" stroke-width="1"/>
+<polyline points="402.82,13 402.82,25" fill="none" stroke="#A80036" stroke-width="1"/>
+<polyline points="408.82,13 408.82,25" fill="none" stroke="#A80036" stroke-width="1"/>
+<circle cx="407.82" cy="42.33" r="4" fill="#FFFFFF" stroke="#A80036" stroke-width="1"/>
+<polyline points="395.82,42.33 405.82,36.33" fill="none" stroke="#A80036" stroke-width="1"/>
+<polyline points="395.82,42.33 405.82,42.33" fill="none" stroke="#A80036" stroke-width="1"/>
+<polyline points="395.82,42.33 405.82,48.33" fill="none" stroke="#A80036" stroke-width="1"/>
+<rect x="405.43" y="17.67" width="60.78" height="16" fill="#FFFFFF"/>
+<text x="435.82" y="30.67" text-anchor="middle">manages</text>
+</g>
+<g data-line="2">
+<polygon points="5,5 155,5 155,75 5,75" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<polygon points="5,5 155,5 155,33 5,33" fill="#EEEEEE" stroke="#A80036" stroke-width="1.5"/>
+<text x="80" y="24" text-anchor="middle" font-weight="bold">«enum» Status</text>
+<text x="17" y="49">OPEN</text>
+<text x="17" y="70">PAID</text>
+</g>
+<g data-line="6">
+<polygon points="225,5 395.82,5 395.82,75 225,75" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<polygon points="225,5 395.82,5 395.82,33 225,33" fill="#EEEEEE" stroke="#A80036" stroke-width="1.5"/>
+<text x="310.41" y="24" text-anchor="middle" font-weight="bold">Employee</text>
+<text x="237" y="49">*id</text>
+<text x="383.82" y="49" text-anchor="end">INT PK</text>
+<text x="237" y="70">manager_id</text>
+<text x="383.82" y="70" text-anchor="end">INT FK</text>
+</g>
+</svg>

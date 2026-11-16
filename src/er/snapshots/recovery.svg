@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 59" width="160" height="59" font-family="'Liberation Sans', Arimo, Helvetica, Arial, sans-serif" font-size="13" fill="#000000">
+<rect x="0" y="0" width="160" height="59" fill="#FFFFFF"/>
+<g data-line="2">
+<polygon points="5,5 155,5 155,54 5,54" fill="#FEFECE" stroke="#A80036" stroke-width="1.5"/>
+<polygon points="5,5 155,5 155,33 5,33" fill="#EEEEEE" stroke="#A80036" stroke-width="1.5"/>
+<text x="80" y="24" text-anchor="middle" font-weight="bold">Broken</text>
+<text x="17" y="49">*id</text>
+<text x="143" y="49" text-anchor="end">INT PK</text>
+</g>
+</svg>

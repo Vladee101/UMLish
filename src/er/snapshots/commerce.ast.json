@@ -1,0 +1,74 @@
+{
+  "entities": [
+    {
+      "id": "Customer",
+      "label": "Customer",
+      "kind": "entity",
+      "attributes": [
+        {
+          "name": "customer_id",
+          "required": true,
+          "line": 4,
+          "type": "INT",
+          "key": "PK"
+        },
+        {
+          "name": "name",
+          "required": false,
+          "line": 5,
+          "type": "VARCHAR"
+        },
+        {
+          "name": "email",
+          "required": false,
+          "line": 6,
+          "type": "VARCHAR",
+          "key": "UK"
+        }
+      ],
+      "line": 3
+    },
+    {
+      "id": "Order",
+      "label": "Order",
+      "kind": "entity",
+      "attributes": [
+        {
+          "name": "order_id",
+          "required": true,
+          "line": 9,
+          "type": "INT",
+          "key": "PK"
+        },
+        {
+          "name": "customer_id",
+          "required": false,
+          "line": 10,
+          "type": "INT",
+          "key": "FK"
+        },
+        {
+          "name": "placed_at",
+          "required": false,
+          "line": 11,
+          "type": "TIMESTAMP"
+        }
+      ],
+      "line": 8
+    }
+  ],
+  "relationships": [
+    {
+      "from": "Customer",
+      "to": "Order",
+      "fromCardinality": "||",
+      "toCardinality": "o{",
+      "label": "places",
+      "dashed": false,
+      "line": 13
+    }
+  ],
+  "skinparams": {},
+  "warnings": [],
+  "title": "Commerce model"
+}

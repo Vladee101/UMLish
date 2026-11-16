@@ -1,0 +1,40 @@
+{
+  "entities": [
+    {
+      "id": "Member",
+      "label": "Library Member",
+      "kind": "entity",
+      "attributes": [],
+      "line": 2
+    },
+    {
+      "id": "Book",
+      "label": "Book",
+      "kind": "entity",
+      "attributes": [],
+      "line": 3
+    }
+  ],
+  "relationships": [
+    {
+      "from": "Member",
+      "to": "Book",
+      "fromCardinality": "||",
+      "toCardinality": "o{",
+      "label": "borrows",
+      "dashed": false,
+      "line": 4
+    },
+    {
+      "from": "Book",
+      "to": "Member",
+      "fromCardinality": "}o",
+      "toCardinality": "||",
+      "label": "returned by",
+      "dashed": false,
+      "line": 5
+    }
+  ],
+  "skinparams": {},
+  "warnings": []
+}

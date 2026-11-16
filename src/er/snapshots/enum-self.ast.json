@@ -1,0 +1,57 @@
+{
+  "entities": [
+    {
+      "id": "Status",
+      "label": "Status",
+      "kind": "enum",
+      "attributes": [
+        {
+          "name": "OPEN",
+          "required": false,
+          "line": 3
+        },
+        {
+          "name": "PAID",
+          "required": false,
+          "line": 4
+        }
+      ],
+      "line": 2
+    },
+    {
+      "id": "Employee",
+      "label": "Employee",
+      "kind": "entity",
+      "attributes": [
+        {
+          "name": "id",
+          "required": true,
+          "line": 7,
+          "type": "INT",
+          "key": "PK"
+        },
+        {
+          "name": "manager_id",
+          "required": false,
+          "line": 8,
+          "type": "INT",
+          "key": "FK"
+        }
+      ],
+      "line": 6
+    }
+  ],
+  "relationships": [
+    {
+      "from": "Employee",
+      "to": "Employee",
+      "fromCardinality": "||",
+      "toCardinality": "o{",
+      "label": "manages",
+      "dashed": false,
+      "line": 10
+    }
+  ],
+  "skinparams": {},
+  "warnings": []
+}

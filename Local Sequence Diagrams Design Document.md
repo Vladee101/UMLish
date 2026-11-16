@@ -1,10 +1,10 @@
-# Local Sequence Diagrams: Design Document
+# UMLish: Design Document
 
-*Status: draft v1, written after the parser, layout engine, renderer and editor shell were built. Nothing here has been calibrated against real PlantUML output yet.*
+*Status: living implementation document. Sequence rendering has been calibrated against local PlantUML references; initial ER support is implemented.*
 
 ## 1. Summary
 
-A browser-only editor and renderer for **PlantUML-compatible sequence diagrams**. Users paste existing PlantUML text, see a classic-looking diagram immediately, and can export or share it. No server computes anything, and the page is hardened so the browser itself refuses network requests. It is a static site deployed on Vercel.
+A browser-only editor and renderer for **PlantUML-compatible sequence and entity-relationship diagrams**. Users paste existing PlantUML text, see a diagram immediately, and can export or share it. No server computes anything, and the page is hardened so the browser itself refuses network requests. It is a static site deployed on Vercel.
 
 The renderer is written from scratch (parser, layout, SVG) rather than wrapping the Java PlantUML engine. That keeps the bundle small, starts instantly, and makes "nothing leaves your machine" a property we can enforce rather than just claim.
 
@@ -13,6 +13,7 @@ The renderer is written from scratch (parser, layout, SVG) rather than wrapping 
 **Goals**
 
 - Paste a typical PlantUML sequence diagram and get a faithful, classic-looking result.
+- Render common PlantUML ER entities, attributes, and crow's-foot relationships with automatic layout.
 - Be tolerant: render what we understand, warn about what we don't, never show an error screen for a partly supported diagram.
 - Be provably local: no analytics, no CDN, no API routes, strict CSP.
 - Work well as an editor: syntax highlighting, inline warnings, click-to-source, pan/zoom.
@@ -20,7 +21,7 @@ The renderer is written from scratch (parser, layout, SVG) rather than wrapping 
 
 **Non-goals (for now)**
 
-- Other PlantUML diagram types (class, activity, state, and so on).
+- Other PlantUML diagram types beyond sequence and the initial ER subset (class, activity, state, and so on).
 - The PlantUML preprocessor (`!include`, `!define`, `!procedure`, `!if`). `!include` cannot work meaningfully in a local-only app anyway.
 - Pixel-identical output to PlantUML. The target is "looks the way people expect", checked by eye against reference renders.
 - Accounts, cloud storage, or collaboration.
@@ -52,6 +53,9 @@ text --parse--> Diagram (AST + warnings)
 | `richText.ts` | Creole inline spans, plain-text labels, and style-aware measurement. |
 | `layout.ts` | Diagram to `Scene`: columns, rows, activations, fragments. |
 | `render.ts` | `Scene` to SVG, with `data-line` on each element. |
+| `er/ast.ts`, `er/parse.ts` | ER AST, tolerant parser, and sequence/ER detection. |
+| `er/layout.ts` | Entity sizing, grid placement, and relationship endpoints. |
+| `er/render.ts` | Themed entity tables, attributes, labels, and crow's-foot markers. |
 | `editor.ts` | CodeMirror 6 editor, highlighting, warning gutter. |
 | `viewport.ts` | Wheel-zoom and drag-pan. |
 | `share.ts` | Compress/decompress the diagram into the URL hash. |
@@ -161,6 +165,14 @@ Color strings accept both `#red` and `#FF0000`. The renderer converts the former
 - **Sharing.** The text is compressed with `CompressionStream('deflate-raw')`, base64url-encoded, and kept in the hash as `#d=...`. Hashes are never sent to a server. Corrupt or foreign hashes are ignored.
 - **Export.** SVG is a standalone file with the fonts embedded. PNG rasterises that SVG at 2x on a canvas. PDF uses the browser print dialog with print CSS that shows only the diagram.
 
+### 8.1 ER diagrams
+
+`isErDiagram` selects the ER pipeline for entity blocks, enums, and crow's-foot relationships. A bare `entity E` remains a sequence participant because that syntax is ambiguous. `parseEr` supports aliases in either order, colors, required and visibility prefixes, attribute types, `<<PK>>`, `<<FK>>`, `<<UK>>`, enum members, solid and dashed relationships, labels, and implicit entities referenced by relationships.
+
+The initial layout measures each entity table and places entities in a declaration-order grid. Relationships connect rectangle borders, with self-relationships rendered as loops. The renderer draws one/zero-one/one-many/zero-many markers and entity tables in Classic, Modern, or Hand-drawn. Warnings, autocomplete, click-to-source, persistence, sharing, and SVG/PNG export use the same shell as sequence diagrams.
+
+Current ER limits are declaration-order rather than crossing-optimized placement, straight relationship paths between different entities, no packages, inheritance, or multiline titles, and no sequence-style `newpage` splitting.
+
 ## 9. Privacy and security model
 
 The site is static: no backend, no API routes, no analytics, no remote fonts or scripts. `vercel.json` sets the following headers on every response:
@@ -188,7 +200,9 @@ User input is treated as untrusted: all text is XML-escaped before entering SVG,
 
 **Calibration page.** `calibration.html` is a Vite development-only entry point and is excluded from the production build. It downloads a fixture's `.puml` source, accepts a PNG rendered by real PlantUML on the developer's own machine, and provides side-by-side, flip, overlay, and opacity controls. Nothing is uploaded. Initial calibration against PlantUML 1.2023.13 covered basic messages, activation, notes, long labels, autonumbering, and realistic flows; it reduced the outer margin from 10 to 5 px and removed a duplicate trailing margin. Spacing and proportion matter more than color for the "feels right" factor: box padding, row spacing, lifeline overshoot, label alignment and arrowhead geometry. These are all theme numbers, so tuning is cheap.
 
-**Current verification status.** All 97 unit and fixture snapshot tests pass. The Vite production build and app shell have been exercised in Chromium: editing, autocomplete, warning-panel navigation, click-to-source, persistence, share-link restoration, theme switching, and themed SVG/PNG export work. Native file handles and file-input/download fallbacks have focused tests; OS file-picker interaction still needs manual verification outside the built-in test browser. Fixture switching, source download, local PNG loading, calibration comparison controls, Creole styling, parallel messages, dotted delays, and multipage selection/export also pass browser checks. Initial reference-based theme tuning is complete; Vercel CSP headers, print/PDF, and Safari PNG export still need deployment/device verification.
+**ER fixtures.** Four initial examples in `src/er/fixtures.ts` cover attributes and keys, aliases and cardinalities, enums and self-relationships, and tolerant recovery. AST and Classic SVG snapshots are stored in `src/er/snapshots/`; every example also renders with Modern and Hand-drawn.
+
+**Current verification status.** All 109 unit and fixture snapshot tests pass. The Vite production build and app shell have been exercised in Chromium: editing, sequence and ER autocomplete, warning-panel navigation, click-to-source, persistence, share-link restoration, theme switching, and themed sequence/ER SVG and PNG export work. Native file handles and file-input/download fallbacks have focused tests; OS file-picker interaction still needs manual verification outside the built-in test browser. Fixture switching, source download, local PNG loading, calibration comparison controls, Creole styling, parallel messages, dotted delays, and multipage selection/export also pass browser checks. Initial reference-based theme tuning is complete; Vercel CSP headers, print/PDF, and Safari PNG export still need deployment/device verification.
 
 ## 11. Licensing and provenance
 
@@ -216,6 +230,7 @@ These are choices made from memory or inference that should be verified against 
 5. **Themes.** Implemented Modern and Hand-drawn themes alongside Classic, with a persisted UI selector and themed exports.
 6. **PWA.** Service worker so the app works fully offline after the first load.
 7. **Performance.** Move layout into a Web Worker if large diagrams make typing laggy.
+8. **ER diagrams.** Implemented the initial entity, attribute, relationship, automatic-layout, theme, editor, and export pipeline. Next: crossing reduction, orthogonal routing, packages, and richer ER syntax.
 
 ## 14. Risks
 
